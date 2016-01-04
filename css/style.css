@@ -11,7 +11,19 @@ body{
 	background-size: cover;
 }
 
-.jumbotron h1, .jumbotron h3,.jumbotron p {color:#fff}
+.jumbotron h1,.jumbotron h2, .jumbotron h3,.jumbotron p {color:#fff}
+
+.jumbotron a{
+	color:#fff;
+}
+
+.board_page{
+	text-align: center;
+}
+
+.board_title{
+	text-align: center;
+}
 
 .footer{
 	width:100%;
@@ -25,4 +37,8 @@ body{
 
 .container td>a{
 	color:#333;
+}
+
+#board_header{
+	text-align: center
 }
