@@ -122,6 +122,9 @@ body{
 	margin:0;
 }
 
+.list-thumb{
+	margin-bottom: 20px
+}
 
 .list-thumb:hover,
 .list-thumb:focus{
@@ -147,13 +150,30 @@ body{
 
 .thumbnail-title p{
 	color:#fff;
+	opacity: 1;
 }
 
 .thumbnail-title:hover,
 .thumbnail-title:focus{
-	opacity: 0.7;
+	opacity: 0.5;
 }
 
 .thumb-group{
 	margin-bottom: 30px;
+}
+
+.review-con a,
+.review-con a:link,
+.review-con a:visited{
+	color:#444;
+}
+
+.review-con a:hover,
+.review-con a:focus{
+	color:#999;
+	text-decoration: none;
+}
+
+#review-list{
+	margin-left: 8%;
 }
