@@ -10,8 +10,21 @@ var lines = ''+'<nav id="gnb" class="navbar navbar-default navbar-fixed-top">'+'
 			'</div>'+
 			'<div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">'+
 				'<ul class="nav navbar-nav navbar-right">'+
-					'<li><a href="login.html">로그인</a></li>'+
-					'<li><a href="register.html">회원가입</a></li>'+
+					'<li class="dropdown">'+
+						'<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">로그인</a>'+
+			          '<ul id="login-menu" class="dropdown-menu" role="menu">'+
+			            '<li><form class="form-inline">'+
+						  '<div class="form-group">'+
+						    '<label class="sr-only">ID</label>'+
+						    '<input type="text" id="login-input" placeholder="ID">'+
+						  '</div>'+
+						  '<div class="form-group">'+
+						    '<label class="sr-only">Password</label>'+
+						    '<input type="password"  id="login-input" placeholder="Password"></div>'+
+						    '<button type="submit" id="login-btn" class="btn btn-default">Sign in</button></form>'+
+						    '<p class="login-alpa"><a href="#">아이디/비밀번호 찾기</a> | <a href="#">회원가입</a></p></li>'+
+			          '</ul>'+
+			        '</li>'+
 					'<li class="dropdown">'+
 			          '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">연관사이트 <span class="caret"></span></a>'+
 			          '<ul class="dropdown-menu" role="menu">'+
