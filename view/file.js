@@ -15,11 +15,11 @@ var lines = ''+'<nav id="gnb" class="navbar navbar-default navbar-fixed-top">'+'
 					'<li class="dropdown">'+
 			          '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">연관사이트 <span class="caret"></span></a>'+
 			          '<ul class="dropdown-menu" role="menu">'+
-			            '<li><a href="#">한양대학교</a></li>'+
-			            '<li><a href="#">Hy-in</a></li>'+
-			            '<li><a href="#">정보시스템학과</a></li>'+
+			            '<li><a href="http://www.hanyang.ac.kr/">한양대학교</a></li>'+
+			            '<li><a href="https://portal.hanyang.ac.kr/sso/lgin.do">Hy-in</a></li>'+
+			            '<li><a href="http://www.hanyang.ac.kr/code_html/H3HADE/">정보시스템학과</a></li>'+
 			            '<li class="divider"></li>'+
-			            '<li><a href="#">쿷찡 사이트</a></li>'+
+			            '<li><a href="http://ak.hanyang.ac.kr/">쿷찡 사이트</a></li>'+
 			          '</ul>'+
 			        '</li>'+
 				'</ul>'+
