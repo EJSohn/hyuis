@@ -6,12 +6,13 @@
 	<meta charset="UTF-8">
 	<title>Hyuis-정보시스템학과 커뮤니티</title>
 
-	<link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css">
-	<link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 	<script src="http://code.jquery.com/jquery-latest.js">	</script>
+	<script type="text/javascript" src="{% static 'file.js' %}"> </script>
 </head>
-	<script type="text/javascript" src="file.js"> </script>
 	<header class="jumbotron">
 		<div class="container">
 			<h1>Hyuis</h1><h3>-정보시스템 커뮤니티</h3>
@@ -98,7 +99,7 @@
 		    	<p class="text-center">2016-01-01</p>
 		    	<p class="text-center">새내기배움터</p>
 		    </div>
-		      <img src="dummy_image.jpg" alt="...">
+		      <img src="{% static 'images/dummy_image.jpg'%}" alt="...">
 		    </a>
 		  </div>
 		   <div class="col-md-3 col-sm-6 thumb-group"><a href="review_post.html" class="thumbnail">
@@ -106,7 +107,7 @@
 		    	<p class="text-center">2016-01-01</p>
 		    	<p class="text-center">새내기배움터</p>
 		    </div>
-		      <img src="dummy_image.jpg" alt="...">
+		      <img src="{% static 'images/dummy_image.jpg'%}" alt="...">
 		    </a>
 		  </div>
 		   <div class="col-md-3 col-sm-6 thumb-group"><a href="review_post.html" class="thumbnail">
@@ -114,7 +115,7 @@
 		    	<p class="text-center">2016-01-01</p>
 		    	<p class="text-center">새내기배움터</p>
 		    </div>
-		      <img src="dummy_image2.jpg" alt="...">
+		      <img src="{% static 'images/dummy_image2.jpg'%}" alt="...">
 		    </a>
 		  </div>
 		   <div class="col-md-3 col-sm-6 thumb-group"><a href="review_post.html" class="thumbnail">
@@ -122,7 +123,7 @@
 		    	<p class="text-center">2016-01-01</p>
 		    	<p class="text-center">새내기배움터</p>
 		    </div>
-		      <img src="dummy_image.jpg" alt="...">
+		      <img src="{% static 'images/dummy_image.jpg'%}" alt="...">
 		    </a>
 		  </div>
 		</div>
