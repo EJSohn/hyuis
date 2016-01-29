@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'authen',
+    'board',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,7 +57,7 @@ ROOT_URLCONF = 'hyuis16.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,6 +82,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static"),
+]
 
 
 # Internationalization

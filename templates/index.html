@@ -1,0 +1,139 @@
+<!Doctype html>
+<html lang="ko">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<meta charset="UTF-8">
+	<title>Hyuis-정보시스템학과 커뮤니티</title>
+
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<script src="http://code.jquery.com/jquery-latest.js">	</script>
+	<script type="text/javascript" src="{% static 'file.js' %}"> </script>
+</head>
+	<header class="jumbotron">
+		<div class="container">
+			<h1>Hyuis</h1><h3>-정보시스템 커뮤니티</h3>
+			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+		</div>
+	</header>
+	<div class="container">
+		<ul class="nav nav-tabs">
+			<li role="presentation"><a href="board.html">공지</a></li>
+			<li role="presentation"><a href="board.html">자유</a></li>
+			<li role="presentation"><a href="board.html">새내기</a></li>
+			<li role="presentation"><a href="review.html">후기</a></li>
+		</ul>
+	</div>
+	<br />
+	<br />
+	<div class="container">
+		<div class="col-md-6">
+			<h3>공지사항</h3>
+			<table class="table table-hover">
+				<tr>
+					<td><a href="post.html">경영대학 선거관리 위원회 공고문</a> <span class="label label-danger">N</span></td>
+					<td>날짜</td>
+				</tr>
+				<tr>
+					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
+					<td>날짜</td>
+				</tr>
+				<tr>
+					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
+					<td>날짜</td>
+				</tr>
+				<tr>
+					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
+					<td>날짜</td>
+				</tr>
+				<tr>
+					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
+					<td>날짜</td>
+				</tr>
+				<tr>
+					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
+					<td>날짜</td>
+				</tr>
+			</table>
+		</div>
+		<div class="col-md-6">
+			<h3>자유게시판</h3>
+			<table class="table table-hover">
+				<tr>
+					<td><a href="post.html">경영대학 선거관리 위원회 공고문</a></td>
+					<td>날짜</td>
+				</tr>
+				<tr>
+					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
+					<td>날짜</td>
+				</tr>
+				<tr>
+					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
+					<td>날짜</td>
+				</tr>
+				<tr>
+					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
+					<td>날짜</td>
+				</tr>
+				<tr>
+					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
+					<td>날짜</td>
+				</tr>
+				<tr>
+					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
+					<td>날짜</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<br />
+	<br />
+	<div class="container main_image">
+		<h3>후기</h3>
+		<div class="row">
+		  <div class="col-md-3 col-sm-6 thumb-group"><a href="review_post.html" class="thumbnail">
+			<div class="thumbnail-title">
+		    	<p class="text-center">2016-01-01</p>
+		    	<p class="text-center">새내기배움터</p>
+		    </div>
+		      <img src="{% static 'images/dummy_image.jpg'%}" alt="...">
+		    </a>
+		  </div>
+		   <div class="col-md-3 col-sm-6 thumb-group"><a href="review_post.html" class="thumbnail">
+			<div class="thumbnail-title">
+		    	<p class="text-center">2016-01-01</p>
+		    	<p class="text-center">새내기배움터</p>
+		    </div>
+		      <img src="{% static 'images/dummy_image.jpg'%}" alt="...">
+		    </a>
+		  </div>
+		   <div class="col-md-3 col-sm-6 thumb-group"><a href="review_post.html" class="thumbnail">
+			<div class="thumbnail-title">
+		    	<p class="text-center">2016-01-01</p>
+		    	<p class="text-center">새내기배움터</p>
+		    </div>
+		      <img src="{% static 'images/dummy_image2.jpg'%}" alt="...">
+		    </a>
+		  </div>
+		   <div class="col-md-3 col-sm-6 thumb-group"><a href="review_post.html" class="thumbnail">
+			<div class="thumbnail-title">
+		    	<p class="text-center">2016-01-01</p>
+		    	<p class="text-center">새내기배움터</p>
+		    </div>
+		      <img src="{% static 'images/dummy_image.jpg'%}" alt="...">
+		    </a>
+		  </div>
+		</div>
+	</div>
+	<footer class="footer">
+		<div class="container">
+			<p class="text-muted text-center">Copyright(c)2016 All rights reserved by Tomatina, Information System Department in HYU</p>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+	</footer>
+</body>
+</html>
