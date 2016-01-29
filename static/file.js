@@ -22,7 +22,7 @@ var lines = ''+'<nav id="gnb" class="navbar navbar-default navbar-fixed-top">'+'
 						    '<label class="sr-only">Password</label>'+
 						    '<input type="password"  id="login-input" placeholder="Password"></div>'+
 						    '<button type="submit" id="login-btn" class="btn btn-default">Sign in</button></form>'+
-						    '<p class="login-alpa"><a href="#">아이디/비밀번호 찾기</a> | <a href="register.html">회원가입</a></p></li>'+
+						    '<p class="login-alpa"><a href="#">아이디/비밀번호 찾기</a> | <a href="http://localhost:8000/authen/register">회원가입</a></p></li>'+
 			          '</ul>'+
 			        '</li>'+
 					'<li class="dropdown">'+

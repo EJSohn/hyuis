@@ -20,7 +20,7 @@ from hyuis16.views import index
 
 urlpatterns = [
     url(r'^$', index),
-    #url('r^authen/', include('authen.urls')),
-    #url('r^board/', include('board.urls')),
+    url(r'^authen/', include('authen.urls')),
+    #url(r'^board/', include('board.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]
