@@ -13,8 +13,7 @@ var lines = ''+'<nav id="gnb" class="navbar navbar-default navbar-fixed-top">'+'
 					'<li class="dropdown">'+
 						'<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">로그인</a>'+
 			          '<ul id="login-menu" class="dropdown-menu" role="menu">'+
-			            '<li><form class="form-inline" action="http://localhost:8000/authen/login" method="POST">'+
-			              '{% csrf_token %}' +
+			            '<li><form class="form-inline" action="/authen/login" method="POST">{% csrf_token %}'+
 						  '<div class="form-group">'+
 						    '<label class="sr-only">ID</label>'+
 						    '<input type="text" id="user_id" placeholder="ID">'+
