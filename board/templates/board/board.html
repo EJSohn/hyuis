@@ -1,27 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-	<meta charset="UTF-8">
-	<title>Hyuis-정보시스템학과 커뮤니티</title>
-	<link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css">
-	<link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
-</head>
+{% extends 'base.html' %}
 
-<body>
-	<script type="text/javascript" src="file.js"> </script>
-	<script type="text/javascript" src="board_header.js"></script>
-	<div class="container">
-		<ul class="nav nav-tabs">
-			<li class="active" role="presentation"><a href="board.html">공지</a></li>
-			<li role="presentation"><a href="board.html">자유</a></li>
-			<li role="presentation"><a href="board.html">새내기</a></li>
-			<li role="presentation"><a href="review.html">후기</a></li>
-		</ul>
-	</div><!-- 
-	<div style="margin:25px;"></div> -->
+{% block header %}
+<header id="board_header" class="jumbotron">
+		<div class="container">
+			<h2><a href="post.html">경영대학 선거관리 위원회 공고문</a></h2>
+			<hr>
+			<p>Donec id elit non mi porta gravida at eget metus.(요약)
+		</div>
+</header>
+{% endblock header %}
+
+{% block contents %}
+	<!-- <div style="margin:25px;"></div> -->
 	<div class="container">
 		<ol id="breadcrumb" class="breadcrumb">
 		  <li><a href="index.html">Home</a></li>
@@ -47,52 +37,52 @@
 				<tbody>
 				<tr>
 					<td>10</td>
-					<td><a href="post.html">경영대학 선거관리 위원회 공고문</a></td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
 					<td>15 과대</td>
 				</tr>
 				<tr>
 					<td>9</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
 					<td>15 과대</td>
 				</tr>
 				<tr>
 					<td>8</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
 					<td>15 과대</td>
 				</tr>
 				<tr>
 					<td>7</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
 					<td>15 과대</td>
 				</tr>
 				<tr>
 					<td>6</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
 					<td>15 과대</td>
 				</tr>
 				<tr>
 					<td>5</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
 					<td>15 과대</td>
 				</tr>
 				<tr>
 					<td>4</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
 					<td>15 과대</td>
 				</tr>
 				<tr>
 					<td>3</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
 					<td>15 과대</td>
 				</tr>
 				<tr>
 					<td>2</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
 					<td>15 과대</td>
 				</tr>
 				<tr>
 					<td>1</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
 					<td>15 과대</td>
 				</tr>
 				</tbody>
@@ -118,14 +108,4 @@
 			</nav>
 		</div>
 	</div>
-	<footer class="footer">
-		<div class="container">
-			<p class="text-muted text-center">Copyright(c)2016 All rights reserved by Tomatina, Information System Department in HYU</p>
-		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	    <script src="./js/bootstrap.min.js"></script>
-	</footer>
-</body>
-
-</html>
-
+{% endblock contents %}

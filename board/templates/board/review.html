@@ -1,28 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-	<meta charset="UTF-8">
-	<title>Hyuis-정보시스템학과 커뮤니티</title>
+{% extends 'base.html' %}
 
-	<link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css">
-	<link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
-	<script src="http://code.jquery.com/jquery-latest.js">	</script>
-</head>
-<body>
-	<script type="text/javascript" src="file.js"> </script>
-	<script type="text/javascript" src="board_header.js"></script>
-	<div class="container">
-		<ul class="nav nav-tabs">
-			<li role="presentation"><a href="board.html">공지</a></li>
-			<li role="presentation"><a href="board.html">자유</a></li>
-			<li role="presentation"><a href="board.html">새내기</a></li>
-			<li class="active" role="presentation"><a href="review.html">후기</a></li>
-		</ul>
-	</div><!-- 
+{% block header %}
+	<header class="jumbotron">
+		<div class="container">
+			<h1>Hyuis</h1><h3>정보시스템 커뮤니티</h3>
+			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+		</div>
+	</header>
+{% endblock header %}
+
+{% block contents %}
+	<!--
 	<div style="margin:25px;"></div> -->
+	{% load staticfiles %}
 	<div class="container">
 		<ol id="breadcrumb" class="breadcrumb">
 		    <li><a href="index.html">Home</a></li>
@@ -34,11 +24,11 @@
 		<div id="review-list" class="col-md-10">
 			<div class="row">
 			    <div class="col-md-4">
-			        <a href="#" class="thumbnail list-thumb">
-			        <img class="media-object" src="dummy_image.jpg" alt="...">
+			        <a href="/board/review/post/" class="thumbnail list-thumb">
+			        <img class="media-object" src="{% static 'images/dummy_image.jpg' %}" alt="...">
 			        </a>
 			    </div>
-		  		<div class="col-md-8 text-justify review-con"><a href="review_post.html">
+		  		<div class="col-md-8 text-justify review-con"><a href="/board/review/post">
 				    <h4 class="media-heading">Middle aligned media <small>2016-01-05</small></h4>
 
 				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum saepe possimus, vero mollitia nulla ex placeat aspernatur veniam laborum nihil voluptatem exercitationem! Ratione voluptas non, fuga animi, adipisci sit?<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam facere incidunt delectus cum, eos! Molestias veniam possimus ex sunt qui minus neque a, repudiandae cupiditate dolore quod. Qui totam, asperiores.</span>
@@ -49,11 +39,11 @@
 			<div style="margin:20px;"></div>
 			<div class="row">
 			    <div class="col-md-4">
-			        <a href="#" class="thumbnail list-thumb">
-			        <img class="media-object" src="dummy_image.jpg" alt="...">
+			        <a href="/board/review/post/" class="thumbnail list-thumb">
+			        <img class="media-object" src="{% static 'images/dummy_image.jpg' %}" alt="...">
 			        </a>
 			    </div>
-		  		<div class="col-md-8 text-justify review-con"><a href="review_post.html">
+		  		<div class="col-md-8 text-justify review-con"><a href="/board/review/post">
 				    <h4 class="media-heading">Middle aligned media <small>2016-01-05</small></h4>
 
 				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum saepe possimus, vero mollitia nulla ex placeat aspernatur veniam laborum nihil voluptatem exercitationem! Ratione voluptas non, fuga animi, adipisci sit?<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam facere incidunt delectus cum, eos! Molestias veniam possimus ex sunt qui minus neque a, repudiandae cupiditate dolore quod. Qui totam, asperiores.</span>
@@ -64,11 +54,11 @@
 			<div style="margin:20px;"></div>
 			<div class="row">
 			    <div class="col-md-4">
-			        <a href="#" class="thumbnail list-thumb">
-			        <img class="media-object" src="dummy_image.jpg" alt="...">
+			        <a href="/board/review/post/" class="thumbnail list-thumb">
+			        <img class="media-object" src="{% static 'images/dummy_image.jpg' %}" alt="...">
 			        </a>
 			    </div>
-		  		<div class="col-md-8 text-justify review-con"><a href="review_post.html">
+		  		<div class="col-md-8 text-justify review-con"><a href="/board/review/post">
 				    <h4 class="media-heading">Middle aligned media <small>2016-01-05</small></h4>
 
 				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum saepe possimus, vero mollitia nulla ex placeat aspernatur veniam laborum nihil voluptatem exercitationem! Ratione voluptas non, fuga animi, adipisci sit?<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam facere incidunt delectus cum, eos! Molestias veniam possimus ex sunt qui minus neque a, repudiandae cupiditate dolore quod. Qui totam, asperiores.</span>
@@ -79,11 +69,11 @@
 			<div style="margin:20px;"></div>
 			<div class="row">
 			    <div class="col-md-4">
-			        <a href="#" class="thumbnail list-thumb">
-			        <img class="media-object" src="dummy_image.jpg" alt="...">
+			        <a href="/board/review/post/" class="thumbnail list-thumb">
+			        <img class="media-object" src="{% static 'images/dummy_image.jpg' %}" alt="...">
 			        </a>
 			    </div>
-		  		<div class="col-md-8 text-justify review-con"><a href="review_post.html">
+		  		<div class="col-md-8 text-justify review-con"><a href="/board/review/post">
 				    <h4 class="media-heading">Middle aligned media <small>2016-01-05</small></h4>
 
 				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum saepe possimus, vero mollitia nulla ex placeat aspernatur veniam laborum nihil voluptatem exercitationem! Ratione voluptas non, fuga animi, adipisci sit?<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam facere incidunt delectus cum, eos! Molestias veniam possimus ex sunt qui minus neque a, repudiandae cupiditate dolore quod. Qui totam, asperiores.</span>
@@ -94,11 +84,11 @@
 			<div style="margin:20px;"></div>
 			<div class="row">
 			    <div class="col-md-4">
-			        <a href="#" class="thumbnail list-thumb">
-			        <img class="media-object" src="dummy_image.jpg" alt="...">
+			        <a href="/board/review/post/" class="thumbnail list-thumb">
+			        <img class="media-object" src="{% static 'images/dummy_image.jpg' %}" alt="...">
 			        </a>
 			    </div>
-		  		<div class="col-md-8 text-justify review-con"><a href="review_post.html">
+		  		<div class="col-md-8 text-justify review-con"><a href="/board/review/post">
 				    <h4 class="media-heading">Middle aligned media <small>2016-01-05</small></h4>
 
 				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum saepe possimus, vero mollitia nulla ex placeat aspernatur veniam laborum nihil voluptatem exercitationem! Ratione voluptas non, fuga animi, adipisci sit?<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam facere incidunt delectus cum, eos! Molestias veniam possimus ex sunt qui minus neque a, repudiandae cupiditate dolore quod. Qui totam, asperiores.</span>
@@ -110,17 +100,17 @@
 			<nav class="board_page">
 			  <ul class="pagination">
 			    <li class="disabled">
-			      <a href="#" aria-label="Previous">
+			      <a href="/board/review/post/" aria-label="Previous">
 			        <span aria-hidden="true">&laquo;</span>
 			      </a>
 			    </li>
-			    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
-			    <li><a href="#">2</a></li>
-			    <li><a href="#">3</a></li>
-			    <li><a href="#">4</a></li>
-			    <li><a href="#">5</a></li>
+			    <li class="active"><a href="/board/review/post/">1<span class="sr-only">(current)</span></a></li>
+			    <li><a href="/board/review/post/">2</a></li>
+			    <li><a href="/board/review/post/">3</a></li>
+			    <li><a href="/board/review/post/">4</a></li>
+			    <li><a href="/board/review/post/">5</a></li>
 			    <li>
-			      <a href="#" aria-label="Next">
+			      <a href="/board/review/post/" aria-label="Next">
 			        <span aria-hidden="true">&raquo;</span>
 			      </a>
 			    </li>
@@ -128,12 +118,4 @@
 			</nav>
 		</div>
 	</div>
-	<footer class="footer">
-		<div class="container">
-			<p class="text-muted text-center">Copyright(c)2016 All rights reserved by Tomatina, Information System Department in HYU</p>
-		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	    <script src="./js/bootstrap.min.js"></script>
-	</footer>
-</body>
-</html>
+{% endblock contents %}
