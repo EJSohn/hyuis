@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import render, redirect
-from .models import users
+from .models import hyu_users
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -18,12 +19,13 @@ def register_user(request):
 
     # 비밀번호 암호화 처리는 나중에..
 
-    user = users(user_id=user_id, user_name=user_name, password=pw, admission_year=admin_year, phone_number=phone,
+    user = hyu_users(user_id=user_id, user_name=user_name, password=pw, admission_year=admin_year, phone_number=phone,
                  self_introduce=self)
 
-    try :
-        user.save()
-        return redirect('register_succeed', user=user.user_name)
-    except :
-        return KeyError
 
+    user.save()
+    return redirect('register_succeed')
+
+
+def register_succeed(request):
+    return HttpResponse('register complete!')
