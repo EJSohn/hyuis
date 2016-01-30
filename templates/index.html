@@ -1,82 +1,14 @@
-
-<!Doctype html>
-<html lang="ko">
-<head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-	<meta charset="UTF-8">
-	<title>Hyuis-정보시스템학과 커뮤니티</title>
-
-	{% load staticfiles %}
-	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
-	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-	<script src="http://code.jquery.com/jquery-latest.js">	</script>
-</head>
-	<nav id="gnb" class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html">HYUIS</a>
-				</div>
-				<div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
-					<ul class="nav navbar-nav navbar-right">
-						{% if flag == 'yes' %}
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">로그인</a>
-						  <ul id="login-menu" class="dropdown-menu" role="menu">
-							<li><form class="form-inline" action="/authen/login" method="POST">{% csrf_token %}
-							  <div class="form-group">
-								<label class="sr-only">ID</label>
-								<input type="text" id="user_id" name="user_id" placeholder="ID">
-							  </div>
-							  <div class="form-group">
-								<label class="sr-only">Password</label>
-								<input type="password"  id="password" name="password" placeholder="Password"></div>
-								<button type="submit" id="login-btn" class="btn btn-default">Sign in</button></form>
-								<p class="login-alpa"><a href="#">아이디/비밀번호 찾기</a> | <a href="/authen/register">회원가입</a></p></li>
-						  </ul>
-						</li>
-						{% else %}
-
-						<!-- logout mark for logged user here.!  -->
-
-						{% endif %}
-						<li class="dropdown">
-						  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">연관사이트 <span class="caret"></span></a>
-						  <ul class="dropdown-menu" role="menu">
-							<li><a href="http://www.hanyang.ac.kr/">한양대학교</a></li>
-							<li><a href="https://portal.hanyang.ac.kr/sso/lgin.do">Hy-in</a></li>
-							<li><a href="http://www.hanyang.ac.kr/code_html/H3HADE/">정보시스템학과</a></li>
-							<li class="divider"></li>
-							<li><a href="http://ak.hanyang.ac.kr/">쿷찡 사이트</a></li>
-						  </ul>
-						</li>
-					</ul>
-				</div>
-			</div>
-			</nav>
+{% extends 'base.html' %}
+{% block header %}
 	<header class="jumbotron">
 		<div class="container">
 			<h1>Hyuis</h1><h3>-정보시스템 커뮤니티</h3>
 			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
 		</div>
 	</header>
-	<div class="container">
-		<ul class="nav nav-tabs">
-			<li role="presentation"><a href="board.html">공지</a></li>
-			<li role="presentation"><a href="board.html">자유</a></li>
-			<li role="presentation"><a href="board.html">새내기</a></li>
-			<li role="presentation"><a href="review.html">후기</a></li>
-		</ul>
-	</div>
-	<br />
-	<br />
+{% endblock header %}
+
+{% block contents %}
 	<div class="container">
 		<div class="col-md-6">
 			<h3>공지사항</h3>
@@ -147,6 +79,7 @@
 		    	<p class="text-center">2016-01-01</p>
 		    	<p class="text-center">새내기배움터</p>
 		    </div>
+			  {% load staticfiles %}
 		      <img src="{% static 'images/dummy_image.jpg'%}" alt="...">
 		    </a>
 		  </div>
@@ -176,12 +109,4 @@
 		  </div>
 		</div>
 	</div>
-	<footer class="footer">
-		<div class="container">
-			<p class="text-muted text-center">Copyright(c)2016 All rights reserved by Tomatina, Information System Department in HYU</p>
-		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-	</footer>
-</body>
-</html>
+{% endblock contents %}
