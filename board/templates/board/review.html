@@ -4,14 +4,14 @@
 <header class="jumbotron">
 	<div class="container">
 		<h1>Hyuis</h1><h3>정보시스템 커뮤니티</h3>
-		<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+		<p>Donec class elit non mi porta gravclassa at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
 	</div>
 </header>
 {% endblock header %}
 
 {% block contents %}
 <div class="container">
-	<ol id="breadcrumb" class="breadcrumb">
+	<ol class="breadcrumb" class="breadcrumb">
 		<li><a href="index.html">Home</a></li>
 		<li class="active">후기</a></li>
 	</ol>
@@ -21,12 +21,12 @@
 		<ul class="br-thumb">
 			<li>
 				<a href="/board/review/post" class="thumbnail">
-					<span class="thumbnail-title">
+					<div class="thumbnail-title">
 						<p class="text-center">2016-01-01</p>
 						<p class="text-center">새내기배움터</p>
-					</span>
+					</div>
 					{% load staticfiles %}
-					<img src="{% static 'images/dummy_image.jpg'%}" alt="...">
+					<img class="review-img" src="{% static 'images/dummy_image.jpg'%}" alt="...">
 				</a>
 			</li>
 			<li>
@@ -35,7 +35,7 @@
 						<p class="text-center">2016-01-01</p>
 						<p class="text-center">새내기배움터</p>
 					</div>
-					<img src="{% static 'images/dummy_image.jpg'%}" alt="...">
+					<img class="review-img" src="{% static 'images/dummy_image.jpg'%}" alt="...">
 				</a>
 			</li>
 			<li>
@@ -44,7 +44,7 @@
 						<p class="text-center">2016-01-01</p>
 						<p class="text-center">새내기배움터</p>
 					</div>
-					<img src="{% static 'images/dummy_image2.jpg'%}" alt="...">
+					<img  class="review-img" src="{% static 'images/dummy_image2.jpg'%}" alt="...">
 				</a>
 			</li>
 			<li>
@@ -53,7 +53,7 @@
 						<p class="text-center">2016-01-01</p>
 						<p class="text-center">새내기배움터</p>
 					</div>
-					<img src="{% static 'images/dummy_image.jpg'%}" alt="...">
+					<img class="review-img" src="{% static 'images/dummy_image.jpg'%}" alt="...">
 				</a>
 			</li>
 			<li>
@@ -62,7 +62,7 @@
 						<p class="text-center">2016-01-01</p>
 						<p class="text-center">새내기배움터</p>
 					</div>
-					<img src="{% static 'images/dummy_image.jpg'%}" alt="...">
+					<img class="review-img" src="{% static 'images/dummy_image.jpg'%}" alt="...">
 				</a>
 			</li>
 			<li>
@@ -71,7 +71,17 @@
 						<p class="text-center">2016-01-01</p>
 						<p class="text-center">새내기배움터</p>
 					</div>
-					<img src="{% static 'images/dummy_image.jpg'%}" alt="...">
+					<img class="review-img" src="{% static 'images/dummy_image.jpg'%}" alt="...">
+					<script type="text/javascript">
+					$(document).ready(function(e) {
+					    $(".thumbnail-title").each(function() {
+					        var img=$(this).parent('.thumbnail').children('img')
+							var imgHeight=img[0].clientHeight;
+					        $(this).outerHeight(imgHeight)
+					    });
+						//li의 height를 제일 큰 이미지에 맞추는 javascript짜기
+					});
+					</script>
 				</a>
 			</li>
 		</ul>
@@ -80,7 +90,7 @@
 		<ul class="pagination">
 			<li class="disabled">
 				<a href="/board/review_post/" aria-label="Previous">
-					<span aria-hidden="true">&laquo;</span>
+					<span aria-hclassden="true">&laquo;</span>
 				</a>
 			</li>
 			<li class="active"><a href="/board/review_post/">1<span class="sr-only">(current)</span></a></li>
@@ -90,10 +100,12 @@
 			<li><a href="/board/review_post/">5</a></li>
 			<li>
 				<a href="/board/review_post/" aria-label="Next">
-					<span aria-hidden="true">&raquo;</span>
+					<span aria-hclassden="true">&raquo;</span>
 				</a>
 			</li>
 		</ul>
 	</nav>
 </div>
+
 {% endblock contents %}
+
