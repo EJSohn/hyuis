@@ -204,6 +204,17 @@ ul{
 	padding:30px 0px;
 }
 
+.brand-name a{
+	color:#000;
+	
+}
+
+.brand-name a:hover,
+.brand-name a:focus{
+	color:#777;
+	text-decoration: none!important;
+}
+
 .form-reg li{
 	padding-top:10px;
 	padding-left:20%;
