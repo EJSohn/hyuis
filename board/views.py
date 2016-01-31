@@ -19,3 +19,6 @@ def post(request):
 
 def write(request):
 	return render(request, 'board/write.html')
+
+def mypage(request):
+    return render(request, 'board/mypage.html')

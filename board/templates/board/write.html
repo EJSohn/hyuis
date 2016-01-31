@@ -4,6 +4,16 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
 {% endblock staticfiles%}
 
+{% block header %}
+<header id="board_header" class="jumbotron">
+		<div class="container">
+			<h2><a href="post.html">글쓰기 페이지입니다. </a></h2>
+			<hr>
+			<p>Donec id elit non mi porta gravida at eget metus.(요약)
+		</div>
+</header>
+{% endblock header %}
+
 <!-- page contents location. -->
 {% block contents %}
 <div class="container">

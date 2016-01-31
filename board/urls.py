@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^review_post/', views.review_post, name='review_post'),
     url(r'^post/', views.post, name='post'),
     url(r'^write/', views.write, name='write'),
+    url(r'^mypage/', views.mypage, name='mypage'),
 ]
