@@ -276,8 +276,13 @@ ul{
 }
 
 a.btn-write{
-	color:#fff;
+	color:#fff!important;
 	background-color: #337ab7
+}
+
+a.btn-write:focus,
+a.btn-write:hover{
+	color:#337ab7!important;
 }
 
 /*post write*/
@@ -326,4 +331,31 @@ a.btn-write{
 .news-list li a:focus{
 	color:#888;
 	text-decoration: none;
+}
+
+/*mypage*/
+.container ul.mypage-nav-wrap{
+	padding-left: 43%;
+}
+
+.profile-wrap{
+	position: absolute;
+	margin-left: 50%;
+	left:-150px;
+}
+
+.myprofile{
+	margin-top: 20px;
+}
+
+.myprofile tbody tr{
+	height: 50px;
+}
+
+.myprofile tbody tr td{
+	width:200px;
+}
+
+.myposts-wrap{
+	margin:0 auto;
 }
