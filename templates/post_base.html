@@ -11,6 +11,7 @@
 {% endblock header %}
 
 {% block contents %}
+	<div class="container">
 		<ol id="breadcrumb" class="breadcrumb">
 		  <li><a href="index.html">Home</a></li>
 		  <li><a href="board.html">후기</a></li>
@@ -53,8 +54,8 @@
 	<div id="reply" class="container">
 		<hr>
 		<form method="post" action="#">
-			<p><textarea class="form-control" rows="3" placeholder="댓글을 남겨주세요"></textarea></p>
-			<p class="text-right"><button type="submit" class="btn btn-primary">Reply</button></p>
+			<textarea class="form-control" rows="3" placeholder="댓글을 남겨주세요" id="content"></textarea>
+			<button type="submit" class="btn btn-primary text-right">Reply</button>
 		</form>
 		<hr>
 		<div class="panel panel-default">
@@ -68,7 +69,8 @@
 			<div class="panel-body">
 				<p>차한솔</p>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam provident qui amet molestias sit possimus repellat labore deleniti aliquam laboriosam iusto corrupti quidem ullam commodi ex est, consequuntur quibusdam quae!</p>
-				<p class="gray-light">작성일:2016-01-05</p>
+				<span class="gray-light">작성일:2016-01-05</span>
+				<span><a href="#">댓글</a></span>
 			</div>
 		</div>
 		<div class="panel panel-default">

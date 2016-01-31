@@ -16,3 +16,6 @@ def review_post(request):
 
 def post(request):
     return render(request, 'board/post.html')
+
+def write(request):
+	return render(request, 'board/write.html')
