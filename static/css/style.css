@@ -10,6 +10,8 @@ body{
 
 ul{
 	list-style-type: none;
+	padding:0;
+	margin:0;
 }
 
 #login-menu{
@@ -46,15 +48,45 @@ ul{
 	color:#555;
 }
 
-.jumbotron{
-	background: url(../images/dummy_image.jpg) no-repeat center center fixed;
-	background-size: cover;
+.full-head{
+	width:100%;
+	height: 380px;
+	margin-bottom: 15px;
 }
 
-.jumbotron h1,.jumbotron h2, .jumbotron h3,.jumbotron p {color:#fff}
+.full-head .item img{
+	width:100%;
+	height:380px;
+	object-fit: cover;
+}
 
-.jumbotron a{
+.full-head h1,.full-head h2, .full-head h3,.full-head p {
+	color:#fff
+}
+
+.full-head a{
 	color:#fff;
+}
+
+.tit-head{
+	text-align: left;
+	top:80px;
+}
+
+.tit-head h1{
+	font-size: 63px
+}
+
+.tit-head h2{
+	font-size: 40px;
+}
+
+.tit-head h3{
+	font-size: 24px;
+}
+
+.tit-head p{
+	font-size: 21px;
 }
 
 .board_page{
@@ -124,6 +156,12 @@ ul{
 	padding:0;
 	/*opacity: 0.7;*/
 	margin:0;
+}
+
+.thumbnail img{
+	width:300px;
+	height:200px;
+	object-fit:cover;
 }
 
 .list-thumb{
@@ -256,12 +294,36 @@ a.btn-write{
 }
 
 .br-thumb li{
-	width:25%;
-	height: 300px;
+	width:290px;
 	float: left;
 	position: relative;
 }
 
 .br-thumb li .thumbnail-title{
 	border: 0;
+}
+
+/*news for member*/
+.news{
+	padding:0px 10px;
+	width:300px;
+}
+
+.news-list li{
+	border-bottom: 1px solid #555;
+	padding:10px 0;
+}
+
+.news-list li:last-child{
+	border:0;
+}
+
+.news-list li a{
+	color:#555;
+}
+
+.news-list li a:hover,
+.news-list li a:focus{
+	color:#888;
+	text-decoration: none;
 }
