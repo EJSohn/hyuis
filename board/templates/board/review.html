@@ -1,121 +1,99 @@
 {% extends 'base.html' %}
 
 {% block header %}
-	<header class="jumbotron">
-		<div class="container">
-			<h1>Hyuis</h1><h3>정보시스템 커뮤니티</h3>
-			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-		</div>
-	</header>
+<header class="jumbotron">
+	<div class="container">
+		<h1>Hyuis</h1><h3>정보시스템 커뮤니티</h3>
+		<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+	</div>
+</header>
 {% endblock header %}
 
 {% block contents %}
-	<!--
-	<div style="margin:25px;"></div> -->
-	{% load staticfiles %}
-	<div class="container">
-		<ol id="breadcrumb" class="breadcrumb">
-		    <li><a href="index.html">Home</a></li>
-		    <li class="active">후기</a></li>
-		</ol>
-	</div>
-	<div style="margin:40px;"></div>
-	<div class="container">
-		<div id="review-list" class="col-md-10">
-			<div class="row">
-			    <div class="col-md-4">
-			        <a href="/board/review_post/" class="thumbnail list-thumb">
-			        <img class="media-object" src="{% static 'images/dummy_image.jpg' %}" alt="...">
-			        </a>
-			    </div>
-		  		<div class="col-md-8 text-justify review-con"><a href="/board/review_post">
-				    <h4 class="media-heading">Middle aligned media <small>2016-01-05</small></h4>
-
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum saepe possimus, vero mollitia nulla ex placeat aspernatur veniam laborum nihil voluptatem exercitationem! Ratione voluptas non, fuga animi, adipisci sit?<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam facere incidunt delectus cum, eos! Molestias veniam possimus ex sunt qui minus neque a, repudiandae cupiditate dolore quod. Qui totam, asperiores.</span>
-				    <span>Dolor dolore quos excepturi facilis quae, possimus facere minus libero, dolores, eligendi eos repellat error! Reiciendis quod necessitatibus debitis libero tempore, voluptatum asperiores hic sit, nulla, provident magni impedit sed.</span>
-				    <span>Atque vitae nostrum iure, necessitatibus quae accusantium voluptat...</span></p></a>
-		  		</div>
-			</div>
-			<div style="margin:20px;"></div>
-			<div class="row">
-			    <div class="col-md-4">
-			        <a href="/board/review_post/" class="thumbnail list-thumb">
-			        <img class="media-object" src="{% static 'images/dummy_image.jpg' %}" alt="...">
-			        </a>
-			    </div>
-		  		<div class="col-md-8 text-justify review-con"><a href="/board/review_post">
-				    <h4 class="media-heading">Middle aligned media <small>2016-01-05</small></h4>
-
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum saepe possimus, vero mollitia nulla ex placeat aspernatur veniam laborum nihil voluptatem exercitationem! Ratione voluptas non, fuga animi, adipisci sit?<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam facere incidunt delectus cum, eos! Molestias veniam possimus ex sunt qui minus neque a, repudiandae cupiditate dolore quod. Qui totam, asperiores.</span>
-				    <span>Dolor dolore quos excepturi facilis quae, possimus facere minus libero, dolores, eligendi eos repellat error! Reiciendis quod necessitatibus debitis libero tempore, voluptatum asperiores hic sit, nulla, provident magni impedit sed.</span>
-				    <span>Atque vitae nostrum iure, necessitatibus quae accusantium voluptat...</span></p></a>
-		  		</div>
-			</div>
-			<div style="margin:20px;"></div>
-			<div class="row">
-			    <div class="col-md-4">
-			        <a href="/board/review_post/" class="thumbnail list-thumb">
-			        <img class="media-object" src="{% static 'images/dummy_image.jpg' %}" alt="...">
-			        </a>
-			    </div>
-		  		<div class="col-md-8 text-justify review-con"><a href="/board/review_post">
-				    <h4 class="media-heading">Middle aligned media <small>2016-01-05</small></h4>
-
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum saepe possimus, vero mollitia nulla ex placeat aspernatur veniam laborum nihil voluptatem exercitationem! Ratione voluptas non, fuga animi, adipisci sit?<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam facere incidunt delectus cum, eos! Molestias veniam possimus ex sunt qui minus neque a, repudiandae cupiditate dolore quod. Qui totam, asperiores.</span>
-				    <span>Dolor dolore quos excepturi facilis quae, possimus facere minus libero, dolores, eligendi eos repellat error! Reiciendis quod necessitatibus debitis libero tempore, voluptatum asperiores hic sit, nulla, provident magni impedit sed.</span>
-				    <span>Atque vitae nostrum iure, necessitatibus quae accusantium voluptat...</span></p></a>
-		  		</div>
-			</div>
-			<div style="margin:20px;"></div>
-			<div class="row">
-			    <div class="col-md-4">
-			        <a href="/board/review_post/" class="thumbnail list-thumb">
-			        <img class="media-object" src="{% static 'images/dummy_image.jpg' %}" alt="...">
-			        </a>
-			    </div>
-		  		<div class="col-md-8 text-justify review-con"><a href="/board/review_post">
-				    <h4 class="media-heading">Middle aligned media <small>2016-01-05</small></h4>
-
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum saepe possimus, vero mollitia nulla ex placeat aspernatur veniam laborum nihil voluptatem exercitationem! Ratione voluptas non, fuga animi, adipisci sit?<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam facere incidunt delectus cum, eos! Molestias veniam possimus ex sunt qui minus neque a, repudiandae cupiditate dolore quod. Qui totam, asperiores.</span>
-				    <span>Dolor dolore quos excepturi facilis quae, possimus facere minus libero, dolores, eligendi eos repellat error! Reiciendis quod necessitatibus debitis libero tempore, voluptatum asperiores hic sit, nulla, provident magni impedit sed.</span>
-				    <span>Atque vitae nostrum iure, necessitatibus quae accusantium voluptat...</span></p></a>
-		  		</div>
-			</div>
-			<div style="margin:20px;"></div>
-			<div class="row">
-			    <div class="col-md-4">
-			        <a href="/board/review_post/" class="thumbnail list-thumb">
-			        <img class="media-object" src="{% static 'images/dummy_image.jpg' %}" alt="...">
-			        </a>
-			    </div>
-		  		<div class="col-md-8 text-justify review-con"><a href="/board/review_post">
-				    <h4 class="media-heading">Middle aligned media <small>2016-01-05</small></h4>
-
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum saepe possimus, vero mollitia nulla ex placeat aspernatur veniam laborum nihil voluptatem exercitationem! Ratione voluptas non, fuga animi, adipisci sit?<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam facere incidunt delectus cum, eos! Molestias veniam possimus ex sunt qui minus neque a, repudiandae cupiditate dolore quod. Qui totam, asperiores.</span>
-				    <span>Dolor dolore quos excepturi facilis quae, possimus facere minus libero, dolores, eligendi eos repellat error! Reiciendis quod necessitatibus debitis libero tempore, voluptatum asperiores hic sit, nulla, provident magni impedit sed.</span>
-				    <span>Atque vitae nostrum iure, necessitatibus quae accusantium voluptat...</span></p></a>
-		  		</div>
-			</div>
-			<div style="margin:20px;"></div>
-			<nav class="board_page">
-			  <ul class="pagination">
-			    <li class="disabled">
-			      <a href="/board/review_post/" aria-label="Previous">
-			        <span aria-hidden="true">&laquo;</span>
-			      </a>
-			    </li>
-			    <li class="active"><a href="/board/review_post/">1<span class="sr-only">(current)</span></a></li>
-			    <li><a href="/board/review_post/">2</a></li>
-			    <li><a href="/board/review_post/">3</a></li>
-			    <li><a href="/board/review_post/">4</a></li>
-			    <li><a href="/board/review_post/">5</a></li>
-			    <li>
-			      <a href="/board/review_post/" aria-label="Next">
-			        <span aria-hidden="true">&raquo;</span>
-			      </a>
-			    </li>
-			  </ul>
-			</nav>
+<div class="container">
+	<ol id="breadcrumb" class="breadcrumb">
+		<li><a href="index.html">Home</a></li>
+		<li class="active">후기</a></li>
+	</ol>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 col-sm-6 thumb-group">
+			<a href="/board/review/post" class="thumbnail">
+				<div class="thumbnail-title">
+					<p class="text-center">2016-01-01</p>
+					<p class="text-center">새내기배움터</p>
+				</div>
+				{% load staticfiles %}
+				<img src="{% static 'images/dummy_image.jpg'%}" alt="...">
+			</a>
+		</div>
+		<div class="col-md-3 col-sm-6 thumb-group">
+			<a href="/board/review/post" class="thumbnail">
+				<div class="thumbnail-title">
+					<p class="text-center">2016-01-01</p>
+					<p class="text-center">새내기배움터</p>
+				</div>
+				<img src="{% static 'images/dummy_image.jpg'%}" alt="...">
+			</a>
+		</div>
+		<div class="col-md-3 col-sm-6 thumb-group">
+			<a href="/board/review/post" class="thumbnail">
+				<div class="thumbnail-title">
+					<p class="text-center">2016-01-01</p>
+					<p class="text-center">새내기배움터</p>
+				</div>
+				<img src="{% static 'images/dummy_image2.jpg'%}" alt="...">
+			</a>
+		</div>
+		<div class="col-md-3 col-sm-6 thumb-group">
+			<a href="/board/review/post" class="thumbnail">
+				<div class="thumbnail-title">
+					<p class="text-center">2016-01-01</p>
+					<p class="text-center">새내기배움터</p>
+				</div>
+				<img src="{% static 'images/dummy_image.jpg'%}" alt="...">
+			</a>
+		</div>
+		<div class="col-md-3 col-sm-6 thumb-group">
+			<a href="/board/review/post" class="thumbnail">
+				<div class="thumbnail-title">
+					<p class="text-center">2016-01-01</p>
+					<p class="text-center">새내기배움터</p>
+				</div>
+				{% load staticfiles %}
+				<img src="{% static 'images/dummy_image.jpg'%}" alt="...">
+			</a>
+		</div>
+		<div class="col-md-3 col-sm-6 thumb-group">
+			<a href="/board/review/post" class="thumbnail">
+				<div class="thumbnail-title">
+					<p class="text-center">2016-01-01</p>
+					<p class="text-center">새내기배움터</p>
+				</div>
+				{% load staticfiles %}
+				<img src="{% static 'images/dummy_image.jpg'%}" alt="...">
+			</a>
 		</div>
 	</div>
+	<nav class="board_page">
+		<ul class="pagination">
+			<li class="disabled">
+				<a href="/board/review_post/" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				</a>
+			</li>
+			<li class="active"><a href="/board/review_post/">1<span class="sr-only">(current)</span></a></li>
+			<li><a href="/board/review_post/">2</a></li>
+			<li><a href="/board/review_post/">3</a></li>
+			<li><a href="/board/review_post/">4</a></li>
+			<li><a href="/board/review_post/">5</a></li>
+			<li>
+				<a href="/board/review_post/" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</div>
 {% endblock contents %}
