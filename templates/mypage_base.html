@@ -1,0 +1,17 @@
+{% extends 'common.html' %}
+{% block base %}
+<div class="container">
+	<h1 class="brand-name">HYUIS</h1>
+	<div class="container">
+		<ul class="nav nav-tabs">
+			<li role="presentation"><a href="/board/free">정보수정</a></li>
+			<li role="presentation"><a href="/board/free">내가 쓴 글</a></li>
+			<li role="presentation"><a href="/board/free">알림</a></li>
+		</ul>
+	</div>
+
+	<!--contents-->
+	{% block mypage_contents%}
+	{% endblock mypage_contents%}
+</div>
+{% endblock base %}
