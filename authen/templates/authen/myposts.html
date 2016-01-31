@@ -1,3 +1,87 @@
 {% extends 'mypage_base.html' %}
-	{% block mypage_contents %}
-	{% endblock mypage_contents %}
+{% block mypage_contents %}
+<div class="container">
+<div class="col-md-12 myposts-wrap">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>글번호</th>
+					<th class="board_title">제목</th>
+					<th>작성자</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>10</td>
+					<td><a href="/board/post#post-contents">경영대학 선거관리 위원회 공고문</a></td>
+					<td>15 과대</td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
+					<td>15 과대</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
+					<td>15 과대</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
+					<td>15 과대</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
+					<td>15 과대</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
+					<td>15 과대</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
+					<td>15 과대</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
+					<td>15 과대</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
+					<td>15 과대</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
+					<td>15 과대</td>
+				</tr>
+			</tbody>
+		</table>
+		<nav class="board_page">
+			<ul class="pagination">
+				<li class="disabled">
+					<a href="#" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li>
+					<a href="#" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>
+{% endblock mypage_contents %}
