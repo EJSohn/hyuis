@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^authen/logout$', logout),
     url(r'^board/', include('board.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^mypage/', include('mypage.urls')),
 ]
