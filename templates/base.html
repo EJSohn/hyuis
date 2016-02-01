@@ -18,6 +18,7 @@
 				<div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						{% if not 'member' in request.session %}
+						
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">로그인{{ flag }}</a>
 						  <ul id="login-menu" class="dropdown-menu" role="menu">
@@ -40,8 +41,17 @@
 						<li>
 							<a href="/authen/logout">로그아웃</a>
 						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">알림 <span class="label label-danger">N</span></a>
+							<div class="dropdown-menu news" role="menu">
+								<ul class="news-list">
+									<li><a href="#">게시글[새내기 수련회]에 댓글 1개</a></li>
+									<li><a href="#">댓글[Lorem ipsum dolor sita...]에 댓글 1개</a></li>
+								</ul>
+							</div>
+						</li>
 						<li>
-							<a href="#">마이 페이지</a>
+							<a href="/authen/mypage">마이 페이지</a>
 						</li>
 
 						<!-- logout mark for logged user here.!  -->

@@ -10,6 +10,8 @@ body{
 
 ul{
 	list-style-type: none;
+	padding:0;
+	margin:0;
 }
 
 #login-menu{
@@ -46,15 +48,45 @@ ul{
 	color:#555;
 }
 
-.jumbotron{
-	background: url(../images/dummy_image.jpg) no-repeat center center fixed;
-	background-size: cover;
+.full-head{
+	width:100%;
+	height: 380px;
+	margin-bottom: 15px;
 }
 
-.jumbotron h1,.jumbotron h2, .jumbotron h3,.jumbotron p {color:#fff}
+.full-head .item img{
+	width:100%;
+	height:380px;
+	object-fit: cover;
+}
 
-.jumbotron a{
+.full-head h1,.full-head h2, .full-head h3,.full-head p {
+	color:#fff
+}
+
+.full-head a{
 	color:#fff;
+}
+
+.tit-head{
+	text-align: left;
+	top:80px;
+}
+
+.tit-head h1{
+	font-size: 63px
+}
+
+.tit-head h2{
+	font-size: 40px;
+}
+
+.tit-head h3{
+	font-size: 24px;
+}
+
+.tit-head p{
+	font-size: 21px;
 }
 
 .board_page{
@@ -126,6 +158,12 @@ ul{
 	margin:0;
 }
 
+.thumbnail img{
+	width:300px;
+	height:200px;
+	object-fit:cover;
+}
+
 .list-thumb{
 	margin-bottom: 20px
 }
@@ -145,8 +183,8 @@ ul{
 	position: absolute;
 	background-color: #000;
 	width: 100%;
-/*	height: 100%;
-*/	/*opacity: 0.2;*/
+	height: 100%;
+	/*opacity: 0.2;*/
 	opacity: 0;
 	border-right:30px solid #fff;
 	padding-top:20%;
@@ -204,6 +242,17 @@ ul{
 	padding:30px 0px;
 }
 
+.brand-name a{
+	color:#000;
+	
+}
+
+.brand-name a:hover,
+.brand-name a:focus{
+	color:#777;
+	text-decoration: none!important;
+}
+
 .form-reg li{
 	padding-top:10px;
 	padding-left:20%;
@@ -227,8 +276,13 @@ ul{
 }
 
 a.btn-write{
-	color:#fff;
+	color:#fff!important;
 	background-color: #337ab7
+}
+
+a.btn-write:focus,
+a.btn-write:hover{
+	color:#337ab7!important;
 }
 
 /*post write*/
@@ -245,10 +299,63 @@ a.btn-write{
 }
 
 .br-thumb li{
-	width:25%;
+	width:290px;
 	float: left;
+	position: relative;
 }
 
-span.thumbnail-title{
-	display: inline-block;
+.br-thumb li .thumbnail-title{
+	border: 0;
+}
+
+/*news for member*/
+.news{
+	padding:0px 10px;
+	width:300px;
+}
+
+.news-list li{
+	border-bottom: 1px solid #555;
+	padding:10px 0;
+}
+
+.news-list li:last-child{
+	border:0;
+}
+
+.news-list li a{
+	color:#555;
+}
+
+.news-list li a:hover,
+.news-list li a:focus{
+	color:#888;
+	text-decoration: none;
+}
+
+/*mypage*/
+.container ul.mypage-nav-wrap{
+	padding-left: 43%;
+}
+
+.profile-wrap{
+	position: absolute;
+	margin-left: 50%;
+	left:-150px;
+}
+
+.myprofile{
+	margin-top: 20px;
+}
+
+.myprofile tbody tr{
+	height: 50px;
+}
+
+.myprofile tbody tr td{
+	width:200px;
+}
+
+.myposts-wrap{
+	margin:0 auto;
 }

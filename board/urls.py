@@ -13,4 +13,4 @@ urlpatterns = [
     url(r'^write/$', views.write, name='write'),
     url(r'^write/writing$', views.writing, name='writing'),
     url(r'^mypage/', views.mypage, name='mypage'),
-]
+    ]

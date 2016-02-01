@@ -28,4 +28,13 @@ def register_user(request):
 
 
 def register_succeed(request):
-    return HttpResponse('register complete!')
+    return render(request, 'authen/register.html')
+
+def mypage(request):
+    return render(request, 'authen/mypage.html')
+
+def modify(request):
+    return render(request, 'authen/modify.html')
+
+def myposts(request):
+    return render(request, 'authen/myposts.html')
