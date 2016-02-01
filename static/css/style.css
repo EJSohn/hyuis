@@ -285,6 +285,10 @@ a.btn-write:hover{
 	color:#337ab7!important;
 }
 
+.errorText{
+	display:none
+}
+
 /*post write*/
 
 .form-write{
