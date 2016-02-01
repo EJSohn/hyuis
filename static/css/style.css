@@ -14,6 +14,11 @@ ul{
 	margin:0;
 }
 
+a.welcome:hover,
+a.welcome:focus{
+	color: #777777 !important;
+}
+
 #login-menu{
 	min-width:225px;
 }
@@ -147,7 +152,7 @@ ul{
 	font-family: "Nanum Gothic";}
 
 .reply2{
-	margin:0px 20px;
+	margin:10px 20px;
 }
 
 .gray-light{
