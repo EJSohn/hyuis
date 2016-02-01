@@ -94,12 +94,14 @@
 		</div>
 	</div>
 	<div id="reply" class="container">
-		<hr>
-		<form method="post" action="#">
+        <hr>
+		<form method="post" action="#" class="form-reply">
+
 			<textarea class="form-control" rows="3" placeholder="댓글을 남겨주세요" id="content"></textarea>
 			<button type="submit" class="btn btn-primary text-right">Reply</button>
+            <hr>
 		</form>
-		<hr>
+
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<p>차한솔</p>
@@ -113,8 +115,26 @@
 				<p>차한솔</p>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam provident qui amet molestias sit possimus repellat labore deleniti aliquam laboriosam iusto corrupti quidem ullam commodi ex est, consequuntur quibusdam quae!</p>
 				<span class="gray-light">작성일:2016-01-05</span>
-				<span><a href="#">댓글</a></span>
+				<span><a href="#" class="reply_2">댓글</a></span>
 			</div>
 		</div>
 	</div>
+    <script>
+    $(document).on("click",".panel-body span a", function(){//동적으로 버튼이 생긴 경우 처리 방식
+        //자기 부모의 tr을 알아낸다.
+        var parentElement = $(this).parent().parent();
+
+        $(this).attr("href","#parentElement")
+        //댓글달기 창을 없앤다.
+        $(".form-reply").remove();
+        //부모의 하단에 댓글달기 창을 삽입
+        var formReply = '<div class="reply2">'+'<form method="post" action="#" class="form-reply">'+
+			'<textarea class="form-control" rows="3" placeholder="댓글을 남겨주세요" id="content"></textarea>'+
+			'<button type="submit" class="btn btn-primary text-right">Reply</button>'+
+		'</form>'+'</div>';
+
+        parentElement.after(formReply);
+
+    });
+    </script>
 {% endblock contents %}

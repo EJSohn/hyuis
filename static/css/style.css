@@ -146,6 +146,10 @@ ul{
 #reply{
 	font-family: "Nanum Gothic";}
 
+.reply2{
+	margin:0px 20px;
+}
+
 .gray-light{
 	color: #777;
 }
