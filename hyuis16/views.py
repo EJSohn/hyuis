@@ -22,7 +22,7 @@ def login(request):
         return HttpResponse('not matching id')
 
     if m.password == pw:
-        username = m.user_name
+        username = m.user_id
         request.session['member'] = username
 
         return HttpResponseRedirect(reverse('home'))
