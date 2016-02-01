@@ -285,8 +285,11 @@ a.btn-write:hover{
 	color:#337ab7!important;
 }
 
-.errorText{
-	display:none
+label.error{
+	min-width:100%;
+	color:#737373;
+	font-weight: normal;
+	margin-left:5px;
 }
 
 /*post write*/
