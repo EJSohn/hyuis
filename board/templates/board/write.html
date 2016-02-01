@@ -1,21 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'mypage_base.html' %}
 {% block staticfiles%}
 <script src="//cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
 {% endblock staticfiles%}
 
-{% block header %}
-<header id="board_header" class="jumbotron">
-		<div class="container">
-			<h2>글쓰기 페이지입니다.</h2>
-			<hr>
-			<p>Donec id elit non mi porta gravida at eget metus.(요약)
-		</div>
-</header>
-{% endblock header %}
+{% block nav %}
+{% endblock nav %}
 
 <!-- page contents location. -->
-{% block contents %}
+{% block mypage_contents %}
 <div class="container">
 	<form class="form-inline" action="/board/write/writing" method="post">{% csrf_token %}
 		<div>
@@ -26,17 +19,19 @@
 				<option value="4" name="reivew">후기</option>
 			</select>
 		</div>
-		<div class="write-tit"><input type="text" name="title"/></div>
-		<!--<div class="editable form-write" id="content" name="content"></div>
-
 		<div class="write-tit">
 			<input type="text" id="title"/>
 		</div>
-		<div class="editable form-write" id="content"></div>
-		<script>var editor = new MediumEditor('.editable');</script>
-		<textarea name="content" form="content">Enter text here...</textarea>-->
-		<div class="write-tit"><input type="text" name="content"/></div>
+		<textarea class="editable form-write" name="content" form="content"></textarea>
+{#		<script>#}
+{#            var editor = new MediumEditor('.editable');#}
+{#            $(function () {#}
+{#                $('.editable').mediumInsert({#}
+{#                    editor: editor#}
+{#                });#}
+{#            });#}
+{#        </script>#}
 		<button type="submit" class="btn btn-default">등록</button>
 	</form>
 </div>
-{% endblock contents %}
+{% endblock mypage_contents %}

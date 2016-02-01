@@ -2,13 +2,14 @@
 {% block base %}
 <div class="container register-back">
 	<h1 class="brand-name"><a href="/">HYUIS</a></h1>
+{% block nav %}
 	<div class="container">
 		<ul class="nav nav-tabs mypage-nav-wrap">
 			<li role="presentation"><a href="/authen/modify">정보수정</a></li>
 			<li role="presentation"><a href="/authen/myposts">내가 쓴 글</a></li>
 		</ul>
 	</div>
-
+{% endblock nav %}
 	<!--contents-->
 	{% block mypage_contents%}
 	{% endblock mypage_contents%}
