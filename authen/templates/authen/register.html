@@ -1,22 +1,26 @@
 {% extends 'common.html' %}
+
 {% block base %}
+    {% load staticfiles %}
+
 <div class="register-back">
 	<div class="container">
 		<div class="register-wrap">
 			<h1 class="brand-name">HYUIS</h1>
-			<form class="form-inline" action="/authen/register/user" method="post">{% csrf_token %}
+			<form id="joinForm" class="form-inline" action="/authen/register/user" method="post">{% csrf_token %}
 				<ul class="form-reg">
+
 					<li>
 		                <label class="sr-only" for="user_id">아이디</label>
 						<input type="text" class="form-control" id="user_id" name="user_id" placeholder="아이디"/>
 					</li>
 					<li>
 		                <label class="sr-only" for="password">비밀번호</label>
-						<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호" />
+						<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호"/>
 					</li>
 					<li>
 		                <label class="sr-only" for="password2" >비밀번호 확인</label>
-						<input type="password" class="form-control" id="password2" name="password2" placeholder="비밀번호" />
+						<input type="password" class="form-control" id="password2" name="password2" placeholder="비밀번호"/>
 					</li>
 					<li>
 		                <label class="sr-only" for="user_name">이름</label>
@@ -32,7 +36,7 @@
 					</li>
 					<li>
 		                <label class="sr-only" for="phone_number">핸드폰 번호</label>
-						<input type="text" class="form-control" id="phone_number" name="phone_number"  placeholder="핸드폰번호" />
+						<input type="text" class="form-control" id="phone_number" name="phone_number"  placeholder="핸드폰번호"/>
 					</li>
 		            <li>
 		                <label class="sr-only" for="self_introduce">자기소개</label>
@@ -48,10 +52,68 @@
 </div>
 
 <script type="text/javascript">
+    $("#joinForm").validate({ // joinForm에 validate를 적용
+
+        rules:{
+            user_id:{required:true, rangelength:[5,10],placeholder: true},
+            // required는 필수, rangelength는 글자 개수(5~10개 사이)
+            password:{required:true, rangelength:[5,15]},
+            password2:{required:true, equalTo:"#password"},
+            // equalTo : id가 pwd인 값과 같아야함
+            user_name:{required:true}, // 검증값이 하나일 경우 이와 같이도 가능
+            admission_year:{required:true, digits:true},
+            // minlength : 최소 입력 개수, digits: 정수만 입력 가능
+            phone_number:{required:true, minlength:10, digits:true}
+        },
+        messages:{
+            user_id:{
+                required:"아이디를 입력해주세요",
+                minlength:"아이디는 5자 이상입력해주세요"
+            },password:{
+                required:"비밀번호를 입력해주세요",
+            }, password2:{
+                required:"비밀번호를 확인해주세요",
+            },
+            // equalTo : id가 pwd인 값과 같아야함
+            user_name:{
+                required:"이름을 입력해주세요"
+            }, // 검증값이 하나일 경우 이와 같이도 가능
+            admission_year:{
+                required:"입학년도를 입력해주세요",
+            },
+            // minlength : 최소 입력 개수, digits: 정수만 입력 가능
+            phone_number:{
+                required:"핸드폰번호를 입력해주세요",
+            }
+        },
+        errorPlacement: function(error, element) {
+            console.log(element)
+            var ele=element[0]
+            element.attr("placeholder",error.text());
+        }
+    });
+
 	$('body').css({
 		"paddingTop":0
 	})
-	$('.register-back').width($(window).width());
-	$('.register-back').height($(window).height()-100);
+
+     var delta = 300;
+     var timer = null;
+
+    $( window ).on( 'resize', function( ) {
+        clearTimeout( timer );
+        backImage();
+        timer = setTimeout( backImage, delta );
+    } );
+
+    function backImage() {
+
+        $('.register-back').width($(window).width());
+	    $('.register-back').height($(window).height()-100);
+
+    }
+
+    backImage();
+
 </script>
 {% endblock %}
