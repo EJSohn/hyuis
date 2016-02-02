@@ -14,11 +14,16 @@ ul{
 	margin:0;
 }
 
+a.welcome:hover,
+a.welcome:focus{
+	color: #777777 !important;
+}
+
 #login-menu{
 	min-width:225px;
 }
 
-#login-input{
+.login-input{
 	border:0;
 	border-bottom:1px solid #555;
 	display: block;
@@ -145,6 +150,10 @@ ul{
 
 #reply{
 	font-family: "Nanum Gothic";}
+
+.reply2{
+	margin:10px 20px;
+}
 
 .gray-light{
 	color: #777;
@@ -283,6 +292,13 @@ a.btn-write{
 a.btn-write:focus,
 a.btn-write:hover{
 	color:#337ab7!important;
+}
+
+label.error{
+	min-width:100%;
+	color:#737373;
+	font-weight: normal;
+	margin-left:5px;
 }
 
 /*post write*/

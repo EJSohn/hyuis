@@ -38,3 +38,6 @@ def modify(request):
 
 def myposts(request):
     return render(request, 'authen/myposts.html')
+
+def findmine(request):
+    return render(request, 'authen/findmine.html')

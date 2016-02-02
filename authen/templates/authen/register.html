@@ -17,7 +17,7 @@
 					<li>
 		                <label class="sr-only" for="password">비밀번호</label>
 						<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호"/>
-					</li>
+                    </li>
 					<li>
 		                <label class="sr-only" for="password2" >비밀번호 확인</label>
 						<input type="password" class="form-control" id="password2" name="password2" placeholder="비밀번호"/>
@@ -52,6 +52,13 @@
 </div>
 
 <script type="text/javascript">
+    $.validator.addMethod(
+        'mobilephone', function (value, element) {
+            return (value.substring(0, 1) == 0) ? true : false;
+        }, '휴대전화 번호는 0 으로 시작하여야 합니다.'
+    );
+
+
     $("#joinForm").validate({ // joinForm에 validate를 적용
 
         rules:{
@@ -63,35 +70,33 @@
             user_name:{required:true}, // 검증값이 하나일 경우 이와 같이도 가능
             admission_year:{required:true, digits:true},
             // minlength : 최소 입력 개수, digits: 정수만 입력 가능
-            phone_number:{required:true, minlength:10, digits:true}
+            phone_number:{required:true, minlength:10, digits:true, mobilephone: true}
         },
-        messages:{
-            user_id:{
-                required:"아이디를 입력해주세요",
-                minlength:"아이디는 5자 이상입력해주세요"
-            },password:{
-                required:"비밀번호를 입력해주세요",
-            }, password2:{
-                required:"비밀번호를 확인해주세요",
+        messages: {
+            user_id: {
+                required: "아이디를 입력해주세요",
+            }, password: {
+                required: "비밀번호를 입력해주세요",
+            }, password2: {
+                required: "비밀번호를 확인해주세요",
             },
             // equalTo : id가 pwd인 값과 같아야함
-            user_name:{
-                required:"이름을 입력해주세요"
+            user_name: {
+                required: "이름을 입력해주세요"
             }, // 검증값이 하나일 경우 이와 같이도 가능
-            admission_year:{
-                required:"입학년도를 입력해주세요",
+            admission_year: {
+                digits: "입학년도를 선택해주세요",
             },
             // minlength : 최소 입력 개수, digits: 정수만 입력 가능
-            phone_number:{
-                required:"핸드폰번호를 입력해주세요",
+            phone_number: {
+                required: "핸드폰번호를 입력해주세요",
+                mobilephone: "핸드폰번호는 0 으로 시작하여야 합니다."
             }
-        },
-        errorPlacement: function(error, element) {
-            console.log(element)
-            var ele=element[0]
-            element.attr("placeholder",error.text());
         }
     });
+
+
+
 
 	$('body').css({
 		"paddingTop":0
