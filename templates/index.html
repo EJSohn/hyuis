@@ -57,21 +57,36 @@
 			<table class="table table-hover">
 				{% for notice in notices %}
 				<tr>
-					<td><a href="/board/post/{{ notice.post_id }}">{{ notice.title }}</a> <span class="label label-danger">N</span></td>
-					<td>{{ notice.created_date }}</td>
+					<td class="tb-tit"><a href="/board/post/{{ notice.post_id }}">{{ notice.title }}</a> <span class="label label-danger">N</span></td>
+					<td class="li-small date">{{ notice.created_date }}</td>
+                    <td class="li-small">작성자</td>
 				</tr>
 				{% endfor %}
 			</table>
 		</div>
 		<div class="col-md-6">
 			<h3>자유게시판</h3>
-			<table class="table table-hover">
+			<table class="table table-hover tb-index">
 				{% for free in frees %}
 				<tr>
-					<td><a href="/board/post/{{ free.post_id }}">{{ free.title }}</a></td>
-					<td>{{ free.created_date }}</td>
+					<td class="tb-tit"><a href="/board/post/{{ free.post_id }}">{{ free.title }}</a></td>
+					<td class="li-small date">{{ free.created_date }}</td>
+
+                    <td class="li-small">작성자</td>
 				</tr>
+                    <script>
+{#                      $( document ).ready( function() {#}
+{#                          var txt=$('.date').text()#}
+{#                          $('.date').empty()#}
+{#                          $('.date').append(txt.substring( 0, 13 ))#}
+{##}
+{#                          var tit=$('.tb-index .tb-tit').text()#}
+{#                          $('.tb-index .tb-tit').empty()#}
+{#                          $('.tb-index .tb-tit').append(tit.substring( 0, 35 ))#}
+{#                      } );#}
+                    </script>
 				{% endfor %}
+
 			</table>
 		</div>
 	</div>
@@ -116,4 +131,5 @@
 		  </div>
 		</div>
 	</div>
+
 {% endblock contents %}
