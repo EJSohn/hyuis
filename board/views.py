@@ -6,7 +6,7 @@ from .models import board, category
 from authen.models import hyu_users
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import board
+from .models import board, comment
 
 # Create your views here.
 
@@ -50,8 +50,9 @@ def review_post(request):
     return render(request, 'board/review_post.html')
 
 #일반게시글
-def post(request):
-    return render(request, 'board/post.html')
+def post(request, post_id):
+    post = board.objects.get(post_id=post_id)
+    return render(request, 'board/post.html', {'post':post})
 
 #글쓰기
 def write(request):
@@ -81,3 +82,20 @@ def writing(request):
     post.save()
 
     return HttpResponseRedirect(reverse('board:entire_view'))
+
+def commenting(request):
+    user_id = request.session['member']
+    board_id = request.GET.get('post_id')
+    content = request.POST['content']
+
+    comme = comment(content=content)
+
+    user = hyu_users.objects.get(user_id=user_id)
+    boar = board.objects.get(post_id=board_id)
+    comme.user_id = user
+    comme.board_id = boar
+
+    comme.save()
+    print('succeed')
+
+    return HttpResponseRedirect(reverse('board:post', args=[board_id]))
