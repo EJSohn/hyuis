@@ -85,7 +85,7 @@
 				{% for free in posts %}
 				<tr>
 					<td>{{ free.post_id }}</td>
-					<td><a href="/board/post#post-contents">{{ free.title }}</a></td>
+					<td><a href="/board/post/{{ free.post_id }}">{{ free.title }}</a></td>
 					<td>{{ free.user_id }}</td>
 				</tr>
 				{% endfor %}
@@ -95,6 +95,11 @@
 			<ul class="pagination">
 				{% if posts.has_previous %}
 				<!-- if previous page exist -->
+				<li>
+					<a href="?page= {{ posts.previous_page_number }}" aria-label="Previouos">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
 				{% else %}
 				<li class="disabled">
 					<a href="#" aria-label="Previous">
@@ -110,7 +115,7 @@
 				<li><a href="#">Page {{ posts.number }} of {{ posts.paginator.num_pages }}</a></li>
 				{% if posts.has_next %}
 				<li>
-					<a href="#" aria-label="Next">
+					<a href="?page={{ posts.next_page_number }}" aria-label="Next">
 						<span aria-hidden="true">&raquo;</span>
 					</a>
 				</li>
