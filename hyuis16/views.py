@@ -5,10 +5,14 @@ from django.contrib.auth import authenticate
 from authen.models import hyu_users
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from board.models import board
 
 
 def index(request):
-    return render(request, 'index.html')
+    notice = board.objects.all().filter(category_id=1)[:6]
+    free_board = board.objects.all().filter(category_id=2)[:6]
+
+    return render(request, 'index.html', {'notices': notice, 'frees':free_board})
 
 
 @require_http_methods(["GET", "POST"])
@@ -35,5 +39,7 @@ def logout(request):
     except :
         return HttpResponse('logout fail')
     return HttpResponseRedirect(reverse('home'))
+
+
 
 

@@ -55,59 +55,23 @@
 		<div class="col-md-6">
 			<h3>공지사항</h3>
 			<table class="table table-hover">
+				{% for notice in notices %}
 				<tr>
-					<td><a href="/board/post#post-contents">경영대학 선거관리 위원회 공고문</a> <span class="label label-danger">N</span></td>
-					<td>날짜</td>
+					<td><a href="/board/post#post-contents">{{ notice.title }}</a> <span class="label label-danger">N</span></td>
+					<td>{{ notice.created_date }}</td>
 				</tr>
-				<tr>
-					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
-					<td>날짜</td>
-				</tr>
-				<tr>
-					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
-					<td>날짜</td>
-				</tr>
-				<tr>
-					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
-					<td>날짜</td>
-				</tr>
-				<tr>
-					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
-					<td>날짜</td>
-				</tr>
-				<tr>
-					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
-					<td>날짜</td>
-				</tr>
+				{% endfor %}
 			</table>
 		</div>
 		<div class="col-md-6">
 			<h3>자유게시판</h3>
 			<table class="table table-hover">
+				{% for free in frees %}
 				<tr>
-					<td><a href="/board/post/">경영대학 선거관리 위원회 공고문</a></td>
-					<td>날짜</td>
+					<td><a href="/board/post/">{{ free.title }}</a></td>
+					<td>{{ free.created_date }}</td>
 				</tr>
-				<tr>
-					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
-					<td>날짜</td>
-				</tr>
-				<tr>
-					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
-					<td>날짜</td>
-				</tr>
-				<tr>
-					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
-					<td>날짜</td>
-				</tr>
-				<tr>
-					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
-					<td>날짜</td>
-				</tr>
-				<tr>
-					<td><a href="#">경영대학 선거관리 위원회 공고문</a></td>
-					<td>날짜</td>
-				</tr>
+				{% endfor %}
 			</table>
 		</div>
 	</div>
