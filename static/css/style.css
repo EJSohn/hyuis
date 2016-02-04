@@ -377,8 +377,19 @@ label.error{
 }
 
 /*index list*/
+
 .li-small{
 	font-size: 12px;
+}
+
+.tit-index-li a{
+	color:#333;
+}
+
+.tit-index-li a:hover,
+.tit-index-li a:focus{
+	text-decoration: none;
+	color:#777;
 }
 
 /*post read*/

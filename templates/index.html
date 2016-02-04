@@ -53,11 +53,11 @@
 {% block contents %}
 	<div class="container">
 		<div class="col-md-6">
-			<h3>공지사항</h3>
+			<h3 class="tit-index-li"><a href="/board/notice/1?page=1">공지사항</a> </h3>
 			<table class="table table-hover">
 				{% for notice in notices %}
 				<tr>
-					<td class="tb-tit"><a href="/board/post/{{ notice.post_id }}">{{ notice.title }}</a> <span class="label label-danger">N</span></td>
+					<td class="li-tit"><a href="/board/post/{{ notice.post_id }}">{{ notice.title }}</a> <span class="label label-danger">N</span></td>
 					<td class="li-small date">{{ notice.created_date }}</td>
                     <td class="li-small">작성자</td>
 				</tr>
@@ -65,11 +65,11 @@
 			</table>
 		</div>
 		<div class="col-md-6">
-			<h3>자유게시판</h3>
-			<table class="table table-hover tb-index">
+			<h3 class="tit-index-li"><a href="/board/notice/2?page=1"> 자유게시판</a></h3>
+			<table class="table table-hover li-index">
 				{% for free in frees %}
 				<tr>
-					<td class="tb-tit"><a href="/board/post/{{ free.post_id }}">{{ free.title }}</a></td>
+					<td class="li-tit"><a href="/board/post/{{ free.post_id }}">{{ free.title }}</a></td>
 					<td class="li-small date">{{ free.created_date }}</td>
 
                     <td class="li-small">작성자</td>
@@ -80,13 +80,13 @@
 {#                          $('.date').empty()#}
 {#                          $('.date').append(txt.substring( 0, 13 ))#}
 {##}
-{#                          var tit=$('.tb-index .tb-tit').text()#}
-{#                          $('.tb-index .tb-tit').empty()#}
-{#                          $('.tb-index .tb-tit').append(tit.substring( 0, 35 ))#}
+{#                          var tit="{{ free.title }}".substring( 0,35 )#}
+{#                          $('.li-tit').append(tit)#}
+{#                          var tit=""#}
+{#                          #}
 {#                      } );#}
                     </script>
-				{% endfor %}
-
+                {% endfor %}
 			</table>
 		</div>
 	</div>
