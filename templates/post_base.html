@@ -74,29 +74,22 @@
 	</div>
 	<div id="reply" class="container">
         <hr>
-		<form method="post" action="/board/post/{{post.post_id}}/comment?post_id={{post.post_id}}" class="form-reply">{% csrf_token %}
+		<form method="post" action="/board/post/{{post.post_id}}/comment" class="form-reply">{% csrf_token %}
 
 			<textarea class="form-control" rows="3" placeholder="댓글을 남겨주세요" id="content" name="content"></textarea>
 			<button type="submit" class="btn btn-primary text-right">Reply</button>
             <hr>
 		</form>
-
+		{% for comment in comments %}
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<p>차한솔</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam provident qui amet molestias sit possimus repellat labore deleniti aliquam laboriosam iusto corrupti quidem ullam commodi ex est, consequuntur quibusdam quae!</p>
-				<span class="gray-light">작성일:2016-01-05</span>
+				<p>{{ comment.user_id }}</p>
+				<p>{{ comment.content }}</p>
+				<span class="gray-light">{{ comment.created_date }}</span>
 				<span><a href="#">댓글</a></span>
 			</div>
 		</div>
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<p>차한솔</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam provident qui amet molestias sit possimus repellat labore deleniti aliquam laboriosam iusto corrupti quidem ullam commodi ex est, consequuntur quibusdam quae!</p>
-				<span class="gray-light">작성일:2016-01-05</span>
-				<span><a href="#" class="reply_2">댓글</a></span>
-			</div>
-		</div>
+		{% endfor %}
 	</div>
     <script>
     $(document).on("click",".panel-body span a", function(){//동적으로 버튼이 생긴 경우 처리 방식

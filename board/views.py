@@ -12,7 +12,7 @@ from .models import board, comment
 
 #전체게시판
 def entire_board(request):
-    all_list = board.objects.all()
+    all_list = board.objects.all().order_by('-post_id')
     paginator = Paginator(all_list, 10)
 
     page = request.GET.get('page')
@@ -28,7 +28,7 @@ def entire_board(request):
 
 #게시판
 def some_board(request, category_id):
-    some_list = board.objects.all().filter(category_id=category_id)
+    some_list = board.objects.all().filter(category_id=category_id).order_by('-post_id')
     paginator = Paginator(some_list, 10)
 
     page = request.GET.get('page')
@@ -52,7 +52,9 @@ def review_post(request):
 #일반게시글
 def post(request, post_id):
     post = board.objects.get(post_id=post_id)
-    return render(request, 'board/post.html', {'post':post})
+
+    comme = comment.objects.all().filter(board_id=post_id)
+    return render(request, 'board/post.html', {'post':post, 'comments':comme})
 
 #글쓰기
 def write(request):
@@ -83,19 +85,21 @@ def writing(request):
 
     return HttpResponseRedirect(reverse('board:entire_view'))
 
-def commenting(request):
+def commenting(request, post_id):
+    today = datetime.today()
+    created_date = today
+
     user_id = request.session['member']
-    board_id = request.GET.get('post_id')
     content = request.POST['content']
 
-    comme = comment(content=content)
+    comme = comment(content=content, created_date=created_date)
 
     user = hyu_users.objects.get(user_id=user_id)
-    boar = board.objects.get(post_id=board_id)
+    boar = board.objects.get(post_id=post_id)
     comme.user_id = user
     comme.board_id = boar
 
     comme.save()
     print('succeed')
 
-    return HttpResponseRedirect(reverse('board:post', args=[board_id]))
+    return HttpResponseRedirect(reverse('board:post', args=[post_id]))
