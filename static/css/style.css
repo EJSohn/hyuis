@@ -375,3 +375,8 @@ label.error{
 .myposts-wrap{
 	margin:0 auto;
 }
+
+/*index list*/
+.li-small{
+	font-size: 12px;
+}
