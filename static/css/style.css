@@ -380,3 +380,10 @@ label.error{
 .li-small{
 	font-size: 12px;
 }
+
+/*post read*/
+.post-foot a,
+.post-foot button{
+	font-size: 14px;
+	width:60px;
+}
