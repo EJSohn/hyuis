@@ -5,7 +5,7 @@
 html {
     }
 body{
-	font-family: "Jeju Gothic","Nanum Gothic", sans-serif;
+	font-family: "Margun Gothic","Nanum Gothic", sans-serif;
 	padding-top: 50px;}
 
 ul{
@@ -14,9 +14,20 @@ ul{
 	margin:0;
 }
 
+h1, h2, h3, h4, h5, .nav, .navbar-header{
+	font-family: "Jeju Gothic", "Malgun Gothic", "Nanum Gothic", sans-serif;
+}
+
 a.welcome:hover,
 a.welcome:focus{
 	color: #777777 !important;
+}
+
+.form-inline input,
+.form-inline textarea,
+.form-inline select{
+	font-family: "Malgun Gothic","Nanum Gothic";
+	font-weight: 500;
 }
 
 #login-menu{
@@ -37,9 +48,6 @@ a.welcome:focus{
 	  background-image: none;
 	  margin:10px;
 	}
-#password{
-	font-family: "Nanum Gothic";
-}
 
 #login-btn{
 	margin-left: 10px;
