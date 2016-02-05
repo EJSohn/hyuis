@@ -37,6 +37,9 @@ a.welcome:focus{
 	  background-image: none;
 	  margin:10px;
 	}
+#password{
+	font-family: "Nanum Gothic";
+}
 
 #login-btn{
 	margin-left: 10px;
