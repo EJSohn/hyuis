@@ -27,7 +27,7 @@ def login(request):
 
     if m.password == pw:
         username = m.user_name
-        request.session['member'] = username
+        request.session['member'] = userid
 
 
         return HttpResponseRedirect(reverse('home'))

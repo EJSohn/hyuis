@@ -78,10 +78,16 @@ WSGI_APPLICATION = 'hyuis16.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'sqlite3.db'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'hyuis',
+        'USER': 'root',
+        'PASSWORD': '1234',
+        'HOST':'',
+        'POST':'',
     }
 }
+
+DATABASE_OPTIONS = {'charset':'utf8'}
 
 STATICFILES_DIRS = [
         os.path.join(BASE_DIR, "static"),
