@@ -6,6 +6,7 @@ html {
     }
 body{
 	font-family: "Margun Gothic","Nanum Gothic", sans-serif;
+	letter-spacing: -1px;
 	padding-top: 50px;}
 
 ul{
@@ -109,8 +110,13 @@ a.welcome:focus{
 	text-align: center;
 }
 
-.board_title{
+.board_title,
+.board_date{
 	text-align: center;
+}
+
+.board_date{
+	width:160px;
 }
 
 .footer{
@@ -388,6 +394,11 @@ label.error{
 }
 
 /*index list*/
+
+.li-tit{
+	width:375px;
+	text-align: justify;
+}
 
 .li-small{
 	font-size: 12px;
