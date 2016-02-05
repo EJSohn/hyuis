@@ -53,6 +53,23 @@ def review_post(request):
 def post(request, post_id):
     post = board.objects.get(post_id=post_id)
 
+    #category_id = post.category_id
+    #some_list = board.objects.all().filter(category_id=category_id).order_by('-post_id')
+    #some_real_list = some_list.values()
+
+    '''
+    index = 1
+    for post in some_real_list:
+        if post['post_id']==post_id :
+            break
+        else :
+            index += 1
+
+    current_page = (index/10) + 1
+    paginator = Paginator(some_list, 10)
+
+    some_post = paginator.page(current_page)
+    '''
     comme = comment.objects.all().filter(board_id=post_id)
     return render(request, 'board/post.html', {'post':post, 'comments':comme})
 
