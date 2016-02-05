@@ -70,6 +70,13 @@
 			<div id="post">
 				{{ post.content|safe }}
 			</div>
+            <div class="post-foot pull-right">
+                <div class="btn-group pull-left" role="group" aria-label="...">
+                    <a href="#" class="btn btn-default btn-sm">수정</a>
+                    <button type="button" class="btn btn-default btn-sm btn-one-delete" data-one-delete-url="#">삭제</button>
+                    <a href="#" class="btn btn-default btn-sm">목록</a>
+                </div>
+            </div>
 		</div>
 	</div>
 	<div id="reply" class="container">
@@ -87,6 +94,8 @@
 				<p>{{ comment.content }}</p>
 				<span class="gray-light">{{ comment.created_date }}</span>
 				<span><a href="#">댓글</a></span>
+                <span><a href="#">삭제</a></span>
+                <span><a href="#">수정</a></span>
 			</div>
 		</div>
 		{% endfor %}
