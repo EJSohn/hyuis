@@ -326,6 +326,15 @@ label.error{
 	border: 1px solid #333;
 }
 
+.write-tit{
+	padding:15px 0px;
+}
+
+.write-tit #title{
+	width:100%;
+	margin:0px;
+}
+
 /*board review*/
 .br-thumb{
 	float: left;

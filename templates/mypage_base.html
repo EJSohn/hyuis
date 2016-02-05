@@ -19,6 +19,10 @@
 		"paddingTop":0
 	})
 	$('.register-back').width($(window).width());
-	$('.register-back').height($(window).height()-100);
+    if($(document).height()<$(window).height()-100){
+	    $('.register-back').height($(window).height()-100);
+    }else{
+        $('.register-back').height($(window).height());
+    }
 </script>
 {% endblock base %}
