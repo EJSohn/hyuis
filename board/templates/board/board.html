@@ -5,17 +5,18 @@
 <div class="container">
 	<ol id="breadcrumb" class="breadcrumb">
 		<li><a href="index.html">Home</a></li>
-		<li class="active">공지</a></li>
+		<li class="active">{{ category }}</a></li>
 	</ol>
 	<div id="sidebar" class="col-md-3">
 		<div style="margin:32px;"></div>
+		{% if category == 'notice' %}
 		<div class="list-group">
 			<a href="#" class="list-group-item">
 				교내 공지
 			</a>
 			<a href="#" class="list-group-item">과내 공지</a>
 		</div>
-
+		{% endif %}
 		<div class="list-group">
 			<a href="/board/write" class="list-group-item btn-write">글쓰기</a>
 		</div>

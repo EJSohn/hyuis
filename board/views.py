@@ -23,12 +23,13 @@ def entire_board(request):
     except EmptyPage:
         all_post = paginator.page(paginator.num_pages)
 
-    return render(request, 'board/board.html', {'posts':all_post})
+    return render(request, 'board/board.html', {'posts':all_post, 'category':'전체'})
 
 
 #게시판
 def some_board(request, category_id):
     some_list = board.objects.all().filter(category_id=category_id).order_by('-post_id')
+    current_category = category.objects.get(category_id=category_id).category_name
     paginator = Paginator(some_list, 10)
 
     page = request.GET.get('page')
@@ -39,7 +40,7 @@ def some_board(request, category_id):
     except EmptyPage:
         some_post = paginator.page(paginator.num_pages)
 
-    return render(request, 'board/board.html', {'posts':some_post})
+    return render(request, 'board/board.html', {'posts':some_post, 'category':current_category})
 
 #후기게시판
 def review(request):
