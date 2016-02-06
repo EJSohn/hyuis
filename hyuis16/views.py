@@ -5,14 +5,15 @@ from django.contrib.auth import authenticate
 from authen.models import hyu_users
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from board.models import board
+from board.models import board, imghandler
 
 
 def index(request):
-    notice = board.objects.all().filter(category_id=1)[:6]
-    free_board = board.objects.all().filter(category_id=2)[:6]
+    notice = board.objects.all().filter(category_id=1).order_by('-post_id')[:6]
+    free_board = board.objects.all().filter(category_id=2).order_by('-post_id')[:6]
+    review = imghandler.objects.all().order_by('-post_id')[:4]
 
-    return render(request, 'index.html', {'notices': notice, 'frees':free_board})
+    return render(request, 'index.html', {'notices': notice, 'frees':free_board, 'reviews':review})
 
 
 @require_http_methods(["GET", "POST"])

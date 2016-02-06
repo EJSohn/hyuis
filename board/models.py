@@ -29,6 +29,10 @@ class comment(models.Model):
     created_date = models.DateTimeField(auto_created=True)
     content = models.CharField(max_length=300)
 
+class imghandler(models.Model):
+    img_url = models.CharField(max_length=300)
+    post_id = models.ForeignKey(board)
+
 
 
 
