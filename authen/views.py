@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from .models import hyu_users
+from board.models import board, comment
 from django.http import HttpResponse
 
 # Create your views here.
@@ -33,7 +34,12 @@ def register_succeed(request):
     return render(request, 'authen/register.html')
 
 def mypage(request):
-    return render(request, 'authen/mypage.html')
+    user_id = request.session['member']
+    user = hyu_users.objects.get(user_id=user_id)
+    user_post_number = board.objects.all().filter(user_id=user_id).count()
+    user_comment_number = comment.objects.all().filter(user_id=user_id).count()
+
+    return render(request, 'authen/mypage.html', {'user':user, 'pnum':user_post_number, 'cnum':user_comment_number})
 
 def modify(request):
     return render(request, 'authen/modify.html')

@@ -6,7 +6,7 @@ from .models import board, category
 from authen.models import hyu_users
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import board, comment, imghandler
+from .models import board, comment, imghandler, category
 from datetime import datetime
 
 # Create your views here.
@@ -36,6 +36,7 @@ def some_board(request, category_id):
     paginator = Paginator(some_list, 10)
 
     page = request.GET.get('page')
+    request.session['current_page'] = page
     try:
         some_post = paginator.page(page)
     except PageNotAnInteger:
@@ -85,6 +86,7 @@ def post(request, post_id):
 
     some_post = paginator.page(current_page)
     '''
+
     comme = comment.objects.all().filter(board_id=post_id)
     return render(request, 'board/post.html', {'post':post, 'comments':comme})
 
@@ -133,5 +135,26 @@ def commenting(request, post_id):
 
     comme.save()
     print('succeed')
+
+    return HttpResponseRedirect(reverse('board:post', args=[post_id]))
+
+def post_delete(request, post_id):
+    boar = board.objects.get(post_id=post_id)
+    category_id = boar.category_id.category_id
+    category_name = boar.category_id.category_name
+    boar.delete()
+
+    try:
+        page = request.session['current_page']
+    except:
+        page = 1
+
+    return HttpResponseRedirect('/board/{0}/{1}/?page={2}'.format(category_name, category_id, page))
+
+def comment_delete(request, post_id):
+    comment_id = request.GET.get('comment_id')
+    comm = comment.objects.get(comment_id=comment_id)
+
+    comm.delete()
 
     return HttpResponseRedirect(reverse('board:post', args=[post_id]))
