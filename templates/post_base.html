@@ -37,8 +37,8 @@
 		{% for comment in comments %}
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<p>{{ comment.user_id }}</p>
-				<p>{{ comment.content }}</p>
+				<span>{{ comment.user_id }}</span>
+				<p class="re-con">{{ comment.content }}</p>
 				<span class="gray-light">{{ comment.created_date }}</span>
 				<span class="re-reply"><a href="#">댓글</a></span>
                 <span class="re-delete"><a href="/board/post/{{ comment.board_id.post_id }}/comment/delete/?comment_id={{ comment.comment_id }}">삭제</a></span>
@@ -68,20 +68,47 @@
     $(document).on("click",".panel-body span.re-modify a", function(){//동적으로 버튼이 생긴 경우 처리 방식
         //자기 부모의 tr을 알아낸다.
         var parentElement = $(this).parent().parent();
-        var commentContent=parentElement.
+        var newParent=parentElement.parent();
+        var commentContent=parentElement.children(".re-con").text();
 
         $(this).attr("href","#parentElement")
         //댓글달기 창을 없앤다.
         $(".form-reply").remove();
-        $()
+        parentElement.remove();
         //부모의 하단에 댓글달기 창을 삽입
         var formReply = '<div class="reply2">'+'<form method="post" action="#" class="form-reply">'+
-			'<textarea class="form-control" rows="3" placeholder="댓글을 남겨주세요" id="content"></textarea>'+
-			'<button type="submit" class="btn btn-primary text-right">Reply</button>'+
+			'<textarea class="form-control" rows="3" placeholder="'+commentContent+'" id="content"></textarea>'+
+			'<button type="submit" class="btn btn-primary text-right">Reply</button><span class="re-unmodify"><a href="#">수정취소</a></span>'+
 		'</form>'+'</div>';
 
-        parentElement.after(formReply);
+        newParent.append(formReply);
 
     });
+
+    /*$(document).on("click",".reply2 span.re-unmodify a", function(){//동적으로 버튼이 생긴 경우 처리 방식
+  //       //자기 부모의 tr을 알아낸다.
+         var parentElement = $(this).parent().parent().parent();
+         var newParent=parentElement.parent();
+  //       var commentContent=$('.re-con').text();
+
+  //       $(this).attr("href","#parentElement")
+  //       //댓글달기 창을 없앤다.
+         $(".reply2").remove();
+  //       parentElement.remove();
+  //       //부모의 하단에 댓글달기 창을 삽입
+         var formReply = '<div class="panel-body">'+
+				'<span>{{ comment.user_id }}</span>'+
+				'<p class="re-con">{{ comment.content }}</p>'+
+				'<span class="gray-light">'+contentSave+'</span>'+
+				'<span class="re-reply"><a href="#">댓글</a></span>'+
+                '<span class="re-delete">'+
+                		'<a href="/board/post/{{ comment.board_id.post_id }}/comment/delete/?comment_id={{ comment.comment_id }}">삭제</a>'+
+                '</span>'+
+                '<span class="re-modify"><a href="#">수정</a></span>'+
+			'</div>';
+
+        newParent.append(formReply);
+
+    });*/
     </script>
 {% endblock contents %}
