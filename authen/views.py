@@ -42,7 +42,10 @@ def mypage(request):
     return render(request, 'authen/mypage.html', {'user':user, 'pnum':user_post_number, 'cnum':user_comment_number})
 
 def modify(request):
-    return render(request, 'authen/modify.html')
+    user_id = request.session['member']
+    user = hyu_users.objects.get(user_id=user_id)
+
+    return render(request, 'authen/modify.html',{'user':user})
 
 def myposts(request):
     return render(request, 'authen/myposts.html')

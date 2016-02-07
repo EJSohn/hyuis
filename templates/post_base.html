@@ -40,15 +40,15 @@
 				<p>{{ comment.user_id }}</p>
 				<p>{{ comment.content }}</p>
 				<span class="gray-light">{{ comment.created_date }}</span>
-				<span><a href="#">댓글</a></span>
-                <span><a href="/board/post/{{ comment.board_id.post_id }}/comment/delete/?comment_id={{ comment.comment_id }}">삭제</a></span>
-                <span><a href="#">수정</a></span>
+				<span class="re-reply"><a href="#">댓글</a></span>
+                <span class="re-delete"><a href="/board/post/{{ comment.board_id.post_id }}/comment/delete/?comment_id={{ comment.comment_id }}">삭제</a></span>
+                <span class="re-modify"><a href="#">수정</a></span>
 			</div>
 		</div>
 		{% endfor %}
 	</div>
     <script>
-    $(document).on("click",".panel-body span a", function(){//동적으로 버튼이 생긴 경우 처리 방식
+    $(document).on("click",".panel-body span.re-reply a", function(){//동적으로 버튼이 생긴 경우 처리 방식
         //자기 부모의 tr을 알아낸다.
         var parentElement = $(this).parent().parent();
 
