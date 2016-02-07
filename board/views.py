@@ -6,12 +6,14 @@ from .models import board, category
 from authen.models import hyu_users
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import board, comment
+from .models import board, comment, imghandler
+from datetime import datetime
 
 # Create your views here.
 
 #전체게시판
 def entire_board(request):
+    today = datetime.today().date()
     all_list = board.objects.all().order_by('-post_id')
     paginator = Paginator(all_list, 10)
 
@@ -23,11 +25,12 @@ def entire_board(request):
     except EmptyPage:
         all_post = paginator.page(paginator.num_pages)
 
-    return render(request, 'board/board.html', {'posts':all_post, 'category':'전체'})
+    return render(request, 'board/board.html', {'posts':all_post, 'category':'전체', 'today':today})
 
 
 #게시판
 def some_board(request, category_id):
+    today = datetime.today().date()
     some_list = board.objects.all().filter(category_id=category_id).order_by('-post_id')
     current_category = category.objects.get(category_id=category_id).category_name
     paginator = Paginator(some_list, 10)
@@ -40,11 +43,22 @@ def some_board(request, category_id):
     except EmptyPage:
         some_post = paginator.page(paginator.num_pages)
 
-    return render(request, 'board/board.html', {'posts':some_post, 'category':current_category})
+    return render(request, 'board/board.html', {'posts':some_post, 'category':current_category, 'today':today})
 
 #후기게시판
 def review(request):
-    return render(request, 'board/review.html')
+    review_list = imghandler.objects.all().order_by('-post_id')
+    paginator = Paginator(review_list, 8)
+
+    page = request.GET.get('page')
+    try:
+        review_list = paginator.page(page)
+    except PageNotAnInteger:
+        review_list = paginator.page(1)
+    except EmptyPage:
+        review_list = paginator.page(paginator.num_pages)
+
+    return render(request, 'board/review.html', {'reviews':review_list})
 
 #후기게시글
 def review_post(request):

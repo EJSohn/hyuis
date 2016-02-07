@@ -35,7 +35,11 @@
 				{% for free in posts %}
 				<tr>
 					<td>{{ free.post_id }}</td>
-					<td><a href="/board/post/{{ free.post_id }}#post-contents">{{ free.title }}</a></td>
+					<td><a href="/board/post/{{ free.post_id }}#post-contents">{{ free.title }}</a>
+						{% if free.created_date.date == today %}
+						<span class="label label-danger">N</span>
+						{% endif %}
+					</td>
                     <td class="board_date">{{ free.created_date }}</td>
 					<td>{{ free.user_id }}</td>
 				</tr>

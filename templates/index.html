@@ -7,7 +7,10 @@
 			<table class="table table-hover">
 				{% for notice in notices %}
 				<tr>
-					<td class="li-tit"><a href="/board/post/{{ notice.post_id }}#post-contents">{{ notice.title }}</a> <span class="label label-danger">N</span></td>
+					<td class="li-tit"><a href="/board/post/{{ notice.post_id }}#post-contents">{{ notice.title }}</a>
+						{% if notice.created_date.date == today %}
+						<span class="label label-danger">N</span></td>
+						{% endif %}
                     <td class="li-small">{{ notice.user_id }}</td>
 				</tr>
 				{% endfor %}
@@ -18,7 +21,10 @@
 			<table class="table table-hover li-index">
 				{% for free in frees %}
 				<tr>
-					<td class="li-tit"><a href="/board/post/{{ free.post_id }}#post-contents">{{ free.title }}</a></td>
+					<td class="li-tit"><a href="/board/post/{{ free.post_id }}#post-contents">{{ free.title }}</a>
+						{% if free.created_date.date == today %}
+						<span class="label label-danger">N</span></td>
+						{% endif %}
                     <td class="li-small">{{ free.user_id }}</td>
 				</tr>
                 {% endfor %}

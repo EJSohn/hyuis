@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from .models import hyu_users
 from django.http import HttpResponse
 
@@ -24,7 +26,7 @@ def register_user(request):
 
 
     user.save()
-    return redirect('register_succeed')
+    return HttpResponseRedirect(reverse('home'))
 
 
 def register_succeed(request):
