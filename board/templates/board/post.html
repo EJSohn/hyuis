@@ -1,6 +1,7 @@
 {% extends 'post_base.html' %}
 
 {% block preview %}
+<!--
 	<div class="container">
 		<hr>
 		<div>
@@ -12,77 +13,47 @@
 					<th>작성자</th>
 				</tr></thead>
 				<tbody>
+				{% for under_post in under_posts %}
 				<tr class="active">
-					<td>10</td>
-					<td><a href="post.html">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
+					<td>{{ under_post.post_id }}</td>
+					<td><a href="/board/post/{{ under_post.post_id }}">{{ under_post.title }}</a></td>
+					<td>{{ under_post.user_id }}</td>
 				</tr>
-				<tr>
-					<td>9</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
-				<tr>
-					<td>8</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
-				<tr>
-					<td>7</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td><a href="">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
+				{% endfor %}
 				</tbody>
 			</table>
 			<nav class="board_page">
 			  <ul class="pagination">
+				{% if under_posts.has_previous %}
+				<li>
+					<a href="?page= {{ under_posts.previous_page_number }}" aria-label="Previouos">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				{% else %}
 			    <li class="disabled">
 			      <a href="#" aria-label="Previous">
 			        <span aria-hidden="true">&laquo;</span>
 			      </a>
 			    </li>
-			    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
+				{% endif %}
+			    <!--<li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
 			    <li><a href="#">2</a></li>
 			    <li><a href="#">3</a></li>
 			    <li><a href="#">4</a></li>
-			    <li><a href="#">5</a></li>
-			    <li>
-			      <a href="#" aria-label="Next">
-			        <span aria-hidden="true">&raquo;</span>
-			      </a>
-			    </li>
+			    <li><a href="#">Page {{ under_posts.number }} of {{ under_posts.paginator.num_pages }}</a></li>
+				{% if under_posts.has_next %}
+				<li>
+					<a href="?page={{ under_posts.next_page_number }}" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+				{% else %}
+				<!-- if next page doesn't exist
+				{% endif %}
+
 			  </ul>
 			</nav>
 		</div>
-	</div>
+	</div>-->
 {% endblock preview %}

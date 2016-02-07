@@ -23,6 +23,6 @@ urlpatterns = [
     url(r'^authen/', include('authen.urls')),
     url(r'^authen/login$', login),
     url(r'^authen/logout$', logout),
-    url(r'^board/', include('board.urls')),
+    url(r'^board/', include('board.urls', namespace='board')),
     url(r'^admin/', include(admin.site.urls)),
 ]

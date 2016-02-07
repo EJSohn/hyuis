@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^mypage/', views.mypage, name='mypage'),
     url(r'^modify/', views.modify, name='modify'),
     url(r'^myposts/', views.myposts, name='myposts'),
+    url(r'^findmine/', views.findmine, name='findmine'),
 ]

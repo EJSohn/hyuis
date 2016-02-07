@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from .models import hyu_users
+from board.models import board, comment
 from django.http import HttpResponse
 
 # Create your views here.
@@ -24,17 +27,52 @@ def register_user(request):
 
 
     user.save()
-    return redirect('register_succeed')
+    return HttpResponseRedirect(reverse('home'))
 
 
 def register_succeed(request):
-    return HttpResponse('register complete!')
+    return render(request, 'authen/register.html')
 
 def mypage(request):
-    return render(request, 'authen/mypage.html')
+    user_id = request.session['member']
+    user = hyu_users.objects.get(user_id=user_id)
+    user_post_number = board.objects.all().filter(user_id=user_id).count()
+    user_comment_number = comment.objects.all().filter(user_id=user_id).count()
+
+    return render(request, 'authen/mypage.html', {'user':user, 'pnum':user_post_number, 'cnum':user_comment_number})
 
 def modify(request):
-    return render(request, 'authen/modify.html')
+    user_id = request.session['member']
+    user = hyu_users.objects.get(user_id=user_id)
+
+    return render(request, 'authen/modify.html',{'user':user})
 
 def myposts(request):
     return render(request, 'authen/myposts.html')
+
+def findmine(request):
+    return render(request, 'authen/findmine.html')
+
+# def register_user(request):
+#     if request.method == 'POST':
+#         post_text = request.POST.get('the_post')
+#         response_data = {}
+#
+#         post = Post(text=post_text, author=request.user)
+#         post.save()
+#
+#         response_data['result'] = 'Create post successful!'
+#         response_data['postpk'] = post.pk
+#         response_data['text'] = post.text
+#         response_data['created'] = post.created.strftime('%B %d, %Y %I:%M %p')
+#         response_data['author'] = post.author.username
+#
+#         return HttpResponse(
+#             json.dumps(response_data),
+#             content_type="application/json"
+#         )
+#     else:
+#         return HttpResponse(
+#             json.dumps({"nothing to see": "this isn't happening"}),
+#             content_type="application/json"
+#         )
