@@ -3,8 +3,8 @@
 {% block contents %}
 	<div id="post-contents" class="container">
 		<ol id="breadcrumb" class="breadcrumb">
-		  <li><a href="index.html">Home</a></li>
-		  <li><a href="board.html">후기</a></li>
+		  <li><a href="/">Home</a></li>
+		  <li><a href="/board/{{ post.category_id.category_name }}/{{ post.category_id.category_id }}/?page=1">{{ post.category_id.category_name }}</a></li>
 		  <li class="active">{{ post.title }}</li>
 		</ol>
 	</div>
