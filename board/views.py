@@ -158,3 +158,14 @@ def comment_delete(request, post_id):
     comm.delete()
 
     return HttpResponseRedirect(reverse('board:post', args=[post_id]))
+
+def comment_update(request, post_id):
+    comment_id = request.GET.get('comment_id')
+    content = request.POST['content']
+
+    comm = comment.objects.get(comment_id=comment_id)
+    comm.content = content
+
+    comm.save()
+
+    return HttpResponseRedirect(reverse('board:post', args=[post_id]))
