@@ -367,6 +367,7 @@ label.error{
 
 .news-list li a{
 	color:#555;
+	text-align=center;
 }
 
 .news-list li a:hover,

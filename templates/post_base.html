@@ -72,6 +72,7 @@
         var parentElement = $(this).parent().parent();
         var newParent=parentElement.parent();
         var commentContent=parentElement.children(".re-con").text();
+
         // 수동으로 csrf_token 생성
         function getCookie(name) {
     		var cookieValue = null;
@@ -101,7 +102,8 @@
 			'<textarea class="form-control" rows="3" id="content" name="content">'+commentContent+'</textarea>'+
 			'<button type="submit" class="btn btn-primary text-right">Reply</button><span class="re-unmodify"><a href="#">수정취소</a></span>'+
 		'</form>'+'</div>';
-
+		var commenthref = $(this).attr("href")
+		alert(commenthref)
         newParent.append(formReply);
 
     });
