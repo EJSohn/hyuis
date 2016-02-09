@@ -19,10 +19,10 @@ from django.contrib import admin
 from hyuis16.views import index, login, logout
 
 urlpatterns = [
-    url(r'^$', index),
+    url(r'^$', index, name='home'),
     url(r'^authen/', include('authen.urls')),
     url(r'^authen/login$', login),
     url(r'^authen/logout$', logout),
-    url(r'^board/', include('board.urls')),
+    url(r'^board/', include('board.urls', namespace='board')),
     url(r'^admin/', include(admin.site.urls)),
 ]

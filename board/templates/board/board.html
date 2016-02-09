@@ -1,115 +1,86 @@
 {% extends 'base.html' %}
 
-{% block header %}
-<header id="board_header" class="jumbotron">
-		<div class="container">
-			<h2><a href="post.html">경영대학 선거관리 위원회 공고문</a></h2>
-			<hr>
-			<p>Donec id elit non mi porta gravida at eget metus.(요약)
-		</div>
-</header>
-{% endblock header %}
-
 {% block contents %}
-	<!-- <div style="margin:25px;"></div> -->
-	<div class="container">
-		<ol id="breadcrumb" class="breadcrumb">
-		  <li><a href="index.html">Home</a></li>
-		  <li class="active">공지</a></li>
-		</ol>
-		<div id="sidebar" class="col-md-3">
-			<div style="margin:32px;"></div>
-			<div class="list-group">
-			  <a href="#" class="list-group-item">
-			    교내 공지
-			  </a>
-			  <a href="#" class="list-group-item">과내 공지</a>
-			</div>
-
-			<div class="list-group">
-				<a href="/board/write" class="list-group-item btn-write">글쓰기</a>
-			</div>
+<!-- <div style="margin:25px;"></div> -->
+<div class="container">
+	<ol id="breadcrumb" class="breadcrumb">
+		<li><a href="index.html">Home</a></li>
+		<li class="active">{{ category }}</a></li>
+	</ol>
+	<div id="sidebar" class="col-md-3">
+		<div style="margin:32px;"></div>
+		{% if category == 'notice' %}
+		<div class="list-group">
+			<a href="#" class="list-group-item">
+				교내 공지
+			</a>
+			<a href="#" class="list-group-item">과내 공지</a>
 		</div>
-		<div class="col-md-9">
-			<table class="table table-hover">
+		{% endif %}
+		{% if 'member' in request.session%}
+		<div class="list-group">
+			<a href="/board/write" class="list-group-item btn-write">글쓰기</a>
+		</div>
+		{% endif %}
+	</div>
+	<div class="col-md-9">
+		<table class="table table-hover">
 			<thead>
 				<tr>
-				<th>글번호</th>
+					<th>글번호</th>
 					<th class="board_title">제목</th>
+                    <th class="board_date">날짜</th>
 					<th>작성자</th>
-				</tr></thead>
-				<tbody>
-				<tr>
-					<td>10</td>
-					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
 				</tr>
+			</thead>
+			<tbody>
+				{% for free in posts %}
 				<tr>
-					<td>9</td>
-					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
+					<td>{{ free.post_id }}</td>
+					<td><a href="/board/post/{{ free.post_id }}#post-contents">{{ free.title }}</a>
+						{% if free.created_date.date == today %}
+						<span class="label label-danger">N</span>
+						{% endif %}
+					</td>
+                    <td class="board_date">{{ free.created_date }}</td>
+					<td>{{ free.user_id }}</td>
 				</tr>
-				<tr>
-					<td>8</td>
-					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
-				<tr>
-					<td>7</td>
-					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td><a href="/board/post">경영대학 선거관리 위원회 공고문</a></td>
-					<td>15 과대</td>
-				</tr>
-				</tbody>
-			</table>
-			<nav class="board_page">
-			  <ul class="pagination">
-			    <li class="disabled">
-			      <a href="#" aria-label="Previous">
-			        <span aria-hidden="true">&laquo;</span>
-			      </a>
-			    </li>
-			    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
-			    <li><a href="#">2</a></li>
-			    <li><a href="#">3</a></li>
-			    <li><a href="#">4</a></li>
-			    <li><a href="#">5</a></li>
-			    <li>
-			      <a href="#" aria-label="Next">
-			        <span aria-hidden="true">&raquo;</span>
-			      </a>
-			    </li>
-			  </ul>
-			</nav>
-		</div>
+				{% endfor %}
+			</tbody>
+		</table>
+		<nav class="board_page">
+			<ul class="pagination">
+				{% if posts.has_previous %}
+				<!-- if previous page exist -->
+				<li>
+					<a href="?page= {{ posts.previous_page_number }}" aria-label="Previouos">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				{% else %}
+				<li class="disabled">
+					<a href="#" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				{% endif %}
+				<!--<li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>-->
+
+				<li><a href="#">Page {{ posts.number }} of {{ posts.paginator.num_pages }}</a></li>
+				{% if posts.has_next %}
+				<li>
+					<a href="?page={{ posts.next_page_number }}" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+				{% else %}
+				<!-- if next page doesn't exist -->
+				{% endif %}
+			</ul>
+		</nav>
 	</div>
+</div>
 {% endblock contents %}

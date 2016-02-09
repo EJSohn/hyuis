@@ -1,121 +1,73 @@
 {% extends 'base.html' %}
 
-{% block header %}
-	<header class="jumbotron">
-		<div class="container">
-			<h1>Hyuis</h1><h3>정보시스템 커뮤니티</h3>
-			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-		</div>
-	</header>
-{% endblock header %}
-
 {% block contents %}
-	<!--
-	<div style="margin:25px;"></div> -->
-	{% load staticfiles %}
-	<div class="container">
-		<ol id="breadcrumb" class="breadcrumb">
-		    <li><a href="index.html">Home</a></li>
-		    <li class="active">후기</a></li>
-		</ol>
+<div class="container">
+	<ol class="breadcrumb" class="breadcrumb">
+		<li><a href="index.html">Home</a></li>
+		<li class="active">후기</a></li>
+	</ol>
+</div>
+<div class="container">
+	<div class="row clearfix">
+		<ul class="br-thumb">
+		{% load staticfiles %}
+			{% for review in reviews %}
+			<li>
+				<a href="/board/post/{{ review.post_id }}" class="thumbnail">
+					<div class="thumbnail-title">
+						<p class="text-center">{{ review.post_id.created_date }}</p>
+						<p class="text-center">{{ review.post_id.title }}</p>
+					</div>
+					<img class="review-img" src="{{ review.img_url }}" alt="...">
+				</a>
+			</li>
+			{% endfor %}
+			<script type="text/javascript">
+			$(document).ready(function(e) {
+			    $(".thumbnail-title").each(function() {
+			        var img=$(this).parent('.thumbnail').children('img')
+					var imgHeight=img[0].clientHeight;
+			        $(this).outerHeight(imgHeight)
+			    });
+				//li의 height를 제일 큰 이미지에 맞추는 javascript짜기
+			});
+			</script>
+		</ul>
 	</div>
-	<div style="margin:40px;"></div>
-	<div class="container">
-		<div id="review-list" class="col-md-10">
-			<div class="row">
-			    <div class="col-md-4">
-			        <a href="/board/review_post/" class="thumbnail list-thumb">
-			        <img class="media-object" src="{% static 'images/dummy_image.jpg' %}" alt="...">
-			        </a>
-			    </div>
-		  		<div class="col-md-8 text-justify review-con"><a href="/board/review_post">
-				    <h4 class="media-heading">Middle aligned media <small>2016-01-05</small></h4>
+	<nav class="board_page">
+		<ul class="pagination">
+			{% if reviews.has_previous %}
+			<!-- if previous page exist -->
+			<li>
+				<a href="?page= {{ reviews.previous_page_number }}" aria-label="Previouos">
+					<span aria-hidden="true">&laquo;</span>
+				</a>
+			</li>
+			{% else %}
+			<li class="disabled">
+				<a href="#" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				</a>
+			</li>
+			{% endif %}
+			<!--<li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>-->
 
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum saepe possimus, vero mollitia nulla ex placeat aspernatur veniam laborum nihil voluptatem exercitationem! Ratione voluptas non, fuga animi, adipisci sit?<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam facere incidunt delectus cum, eos! Molestias veniam possimus ex sunt qui minus neque a, repudiandae cupiditate dolore quod. Qui totam, asperiores.</span>
-				    <span>Dolor dolore quos excepturi facilis quae, possimus facere minus libero, dolores, eligendi eos repellat error! Reiciendis quod necessitatibus debitis libero tempore, voluptatum asperiores hic sit, nulla, provident magni impedit sed.</span>
-				    <span>Atque vitae nostrum iure, necessitatibus quae accusantium voluptat...</span></p></a>
-		  		</div>
-			</div>
-			<div style="margin:20px;"></div>
-			<div class="row">
-			    <div class="col-md-4">
-			        <a href="/board/review_post/" class="thumbnail list-thumb">
-			        <img class="media-object" src="{% static 'images/dummy_image.jpg' %}" alt="...">
-			        </a>
-			    </div>
-		  		<div class="col-md-8 text-justify review-con"><a href="/board/review_post">
-				    <h4 class="media-heading">Middle aligned media <small>2016-01-05</small></h4>
+			<li><a href="#">Page {{ reviews.number }} of {{ reviews.paginator.num_pages }}</a></li>
+			{% if reviews.has_next %}
+			<li>
+				<a href="?page={{ reviews.next_page_number }}" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				</a>
+			</li>
+			{% else %}
+			<!-- if next page doesn't exist -->
+			{% endif %}
+		</ul>
+	</nav>
+</div>
 
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum saepe possimus, vero mollitia nulla ex placeat aspernatur veniam laborum nihil voluptatem exercitationem! Ratione voluptas non, fuga animi, adipisci sit?<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam facere incidunt delectus cum, eos! Molestias veniam possimus ex sunt qui minus neque a, repudiandae cupiditate dolore quod. Qui totam, asperiores.</span>
-				    <span>Dolor dolore quos excepturi facilis quae, possimus facere minus libero, dolores, eligendi eos repellat error! Reiciendis quod necessitatibus debitis libero tempore, voluptatum asperiores hic sit, nulla, provident magni impedit sed.</span>
-				    <span>Atque vitae nostrum iure, necessitatibus quae accusantium voluptat...</span></p></a>
-		  		</div>
-			</div>
-			<div style="margin:20px;"></div>
-			<div class="row">
-			    <div class="col-md-4">
-			        <a href="/board/review_post/" class="thumbnail list-thumb">
-			        <img class="media-object" src="{% static 'images/dummy_image.jpg' %}" alt="...">
-			        </a>
-			    </div>
-		  		<div class="col-md-8 text-justify review-con"><a href="/board/review_post">
-				    <h4 class="media-heading">Middle aligned media <small>2016-01-05</small></h4>
-
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum saepe possimus, vero mollitia nulla ex placeat aspernatur veniam laborum nihil voluptatem exercitationem! Ratione voluptas non, fuga animi, adipisci sit?<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam facere incidunt delectus cum, eos! Molestias veniam possimus ex sunt qui minus neque a, repudiandae cupiditate dolore quod. Qui totam, asperiores.</span>
-				    <span>Dolor dolore quos excepturi facilis quae, possimus facere minus libero, dolores, eligendi eos repellat error! Reiciendis quod necessitatibus debitis libero tempore, voluptatum asperiores hic sit, nulla, provident magni impedit sed.</span>
-				    <span>Atque vitae nostrum iure, necessitatibus quae accusantium voluptat...</span></p></a>
-		  		</div>
-			</div>
-			<div style="margin:20px;"></div>
-			<div class="row">
-			    <div class="col-md-4">
-			        <a href="/board/review_post/" class="thumbnail list-thumb">
-			        <img class="media-object" src="{% static 'images/dummy_image.jpg' %}" alt="...">
-			        </a>
-			    </div>
-		  		<div class="col-md-8 text-justify review-con"><a href="/board/review_post">
-				    <h4 class="media-heading">Middle aligned media <small>2016-01-05</small></h4>
-
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum saepe possimus, vero mollitia nulla ex placeat aspernatur veniam laborum nihil voluptatem exercitationem! Ratione voluptas non, fuga animi, adipisci sit?<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam facere incidunt delectus cum, eos! Molestias veniam possimus ex sunt qui minus neque a, repudiandae cupiditate dolore quod. Qui totam, asperiores.</span>
-				    <span>Dolor dolore quos excepturi facilis quae, possimus facere minus libero, dolores, eligendi eos repellat error! Reiciendis quod necessitatibus debitis libero tempore, voluptatum asperiores hic sit, nulla, provident magni impedit sed.</span>
-				    <span>Atque vitae nostrum iure, necessitatibus quae accusantium voluptat...</span></p></a>
-		  		</div>
-			</div>
-			<div style="margin:20px;"></div>
-			<div class="row">
-			    <div class="col-md-4">
-			        <a href="/board/review_post/" class="thumbnail list-thumb">
-			        <img class="media-object" src="{% static 'images/dummy_image.jpg' %}" alt="...">
-			        </a>
-			    </div>
-		  		<div class="col-md-8 text-justify review-con"><a href="/board/review_post">
-				    <h4 class="media-heading">Middle aligned media <small>2016-01-05</small></h4>
-
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed cum saepe possimus, vero mollitia nulla ex placeat aspernatur veniam laborum nihil voluptatem exercitationem! Ratione voluptas non, fuga animi, adipisci sit?<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam facere incidunt delectus cum, eos! Molestias veniam possimus ex sunt qui minus neque a, repudiandae cupiditate dolore quod. Qui totam, asperiores.</span>
-				    <span>Dolor dolore quos excepturi facilis quae, possimus facere minus libero, dolores, eligendi eos repellat error! Reiciendis quod necessitatibus debitis libero tempore, voluptatum asperiores hic sit, nulla, provident magni impedit sed.</span>
-				    <span>Atque vitae nostrum iure, necessitatibus quae accusantium voluptat...</span></p></a>
-		  		</div>
-			</div>
-			<div style="margin:20px;"></div>
-			<nav class="board_page">
-			  <ul class="pagination">
-			    <li class="disabled">
-			      <a href="/board/review_post/" aria-label="Previous">
-			        <span aria-hidden="true">&laquo;</span>
-			      </a>
-			    </li>
-			    <li class="active"><a href="/board/review_post/">1<span class="sr-only">(current)</span></a></li>
-			    <li><a href="/board/review_post/">2</a></li>
-			    <li><a href="/board/review_post/">3</a></li>
-			    <li><a href="/board/review_post/">4</a></li>
-			    <li><a href="/board/review_post/">5</a></li>
-			    <li>
-			      <a href="/board/review_post/" aria-label="Next">
-			        <span aria-hidden="true">&raquo;</span>
-			      </a>
-			    </li>
-			  </ul>
-			</nav>
-		</div>
-	</div>
 {% endblock contents %}
+

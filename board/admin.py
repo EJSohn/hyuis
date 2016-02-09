@@ -1,3 +1,22 @@
-from django.contrib import admin
+
 
 # Register your models here.
+from django.contrib import admin
+from .models import category, board, comment, imghandler
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('category_id', 'category_name')
+
+class BoardAdmin(admin.ModelAdmin):
+    list_display = ('post_id','category_id', 'user_id', 'title', 'content', 'created_date')
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('comment_id', 'user_id', 'board_id', 'created_date', 'content')
+
+class ImgAdmin(admin.ModelAdmin):
+    list_display = ('post_id', 'img_url')
+
+admin.site.register(category, CategoryAdmin)
+admin.site.register(board, BoardAdmin)
+admin.site.register(comment, CommentAdmin)
+admin.site.register(imghandler, ImgAdmin)

@@ -1,0 +1,30 @@
+{% extends 'mypage_base.html' %}
+	{% block mypage_contents%}
+	<div class="container">
+		<div class="profile-wrap">
+			<table class="myprofile">
+				<tbody>
+					<tr>
+						<td>본인이름</td>
+						<td>{{ user.user_name }}</td>
+					</tr>
+					<tr>
+						<td>입학년도</td>
+						<td>{{ user.admission_year }}</td>
+					</tr>
+					<tr>
+						<td>총 게시글 수</td>
+						<td>{{ pnum }}</td>
+					</tr>
+					<tr>
+						<td>총 댓글 수</td>
+						<td>{{ cnum }}</td>
+					</tr>
+					<tr>
+						<td colspan="2"><a href="/authen/modify" class="list-group-item btn-write">회원정보 수정</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	{% endblock mypage_contents%}

@@ -78,10 +78,16 @@ WSGI_APPLICATION = 'hyuis16.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'hyuis',
+        'USER': 'root',
+        'PASSWORD': '1234',
+        'HOST':'',
+        'POST':'',
     }
 }
+
+DATABASE_OPTIONS = {'charset':'utf8'}
 
 STATICFILES_DIRS = [
         os.path.join(BASE_DIR, "static"),
@@ -93,7 +99,7 @@ STATICFILES_DIRS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -106,3 +112,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+

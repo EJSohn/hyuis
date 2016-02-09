@@ -1,91 +1,139 @@
 {% extends 'base.html' %}
 
-{% block header %}
-<header id="board_header" class="jumbotron">
-		<div class="container">
-			<h2><a href="post.html">경영대학 선거관리 위원회 공고문</a></h2>
-			<hr>
-			<p>Donec id elit non mi porta gravida at eget metus.(요약)
-		</div>
-</header>
-{% endblock header %}
-
 {% block contents %}
-	<div class="container">
+	<div id="post-contents" class="container">
 		<ol id="breadcrumb" class="breadcrumb">
-		  <li><a href="index.html">Home</a></li>
-		  <li><a href="board.html">후기</a></li>
-		  <li class="active">일반대학원 2016학년도 1학기 재입학 안내 (확정)</li>
+		  <li><a href="/">Home</a></li>
+		  <li><a href="/board/{{ post.category_id.category_name }}/{{ post.category_id.category_id }}/?page=1">{{ post.category_id.category_name }}</a></li>
+		  <li class="active">{{ post.title }}</li>
 		</ol>
 	</div>
 	<div class="container">
 		<div class="col-md-8 col-md-offset-2">
 			<div id="title" class="page-header">
-				<h2>일반대학원 2016학년도 1학기 재입학 안내 (확정)<br><small>2016-01-05 post by 서울 교학부총장 대학원팀 / 조영주</small>
+				<h2>{{ post.title }}<br><small>{{ post.created_date }} post by {{ post.user_id }}</small>
 			</h2>
 			</div>
 			<div style="margin:25px;"></div>
 			<div id="post">
-				<h3>신청 및 서류제출기간 <small>2016. 1. 11(월) ~ 1. 15(금) 17:00 까지</small></h3>
-				<p>신청기간 외에는 절대 추가신청 및 서류제출 불가</p>
-				<h4>신청방법</h4>
-				<ol>
-					<li>한양인 (HY-in) 로그인</li>
-					<li>로그인 후 상단메뉴 [신청] ➜ [학적변동] ➜ [재입학신청] 선택</li>
-					<li>해당화면에서 “재입학사유” 상세입력 및 저장</li>
-					<li>“출력” 버튼을 클릭하여 재입학원서 출력</li>
-					<li>출력한 ”재입학원서” 및 추가 제출서류를 대학원팀으로 제출</li>
-				</ol>
-
-				<h4>서류 제출방법</h4>
-				<dl>
-					<dt>제출장소</dt>
-					<dd>일반대학원 대학원팀 (신본관 3층 314호) T. 02-2220-0223</dd>
-				</dl>
-				<dl><dt>제출시간</dt><dd>월-금 10:00 – 17:00</dd></dl>
-				<br>
-				<h3>재입학 합격자 발표</h3>
-				<dl class="dl-horizontal"><dt>재입학 합격발표</dt><dd> 2016. 2. 1(월) 예정</dd></dl>
-				<dl class="dl-horizontal"><dt>재입학 합격확인</dt>
-				<dd>한양대학교 웹사이트 ➜ 한양인(HY-in) 로그인 ➜ 상단 ‘신청’ 메뉴 ➜ 학적변동 ➜ 재입학신청 ➜ 화면하단 ‘변동내역확인’ 중 ‘재입학’ 결재결과 확인 ➜ 재입학 합격자는 결재결과란에 ‘결재’ 표시</dd>
+				{{ post.content|safe }}
 			</div>
+            <div class="post-foot pull-right">
+                <div class="btn-group pull-left" role="group" aria-label="...">
+                    <a href="#" class="btn btn-default btn-sm">수정</a>
+                    <a href="/board/post/{{ post.post_id }}/delete" class="btn btn-default btn-sm">삭제</a>
+                </div>
+            </div>
 		</div>
 	</div>
 	<div id="reply" class="container">
-		<hr>
-		<form method="post" action="#">
-			<textarea class="form-control" rows="3" placeholder="댓글을 남겨주세요" id="content"></textarea>
+        <hr>
+		<form method="post" action="/board/post/{{post.post_id}}/comment" class="form-reply">{% csrf_token %}
+
+			<textarea class="form-control" rows="3" placeholder="댓글을 남겨주세요" id="content" name="content"></textarea>
 			<button type="submit" class="btn btn-primary text-right">Reply</button>
+            <hr>
 		</form>
-		<hr>
+		{% for comment in comments %}
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<p>차한솔</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam provident qui amet molestias sit possimus repellat labore deleniti aliquam laboriosam iusto corrupti quidem ullam commodi ex est, consequuntur quibusdam quae!</p>
-				<p class="gray-light">작성일:2016-01-05</p>
+				<span>{{ comment.user_id }}</span>
+				<p class="re-con">{{ comment.content }}</p>
+				<span class="gray-light">{{ comment.created_date }}</span>
+				<span class="re-reply"><a href="#">댓글</a></span>
+                <span class="re-delete"><a href="/board/post/{{ comment.board_id.post_id }}/comment/delete/?comment_id={{ comment.comment_id }}">삭제</a></span>
+                <span class="re-modify"><a href="#" name="/board/post/{{ comment.board_id.post_id }}/comment/update/?comment_id={{ comment.comment_id }}">수정</a></span>
 			</div>
 		</div>
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<p>차한솔</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam provident qui amet molestias sit possimus repellat labore deleniti aliquam laboriosam iusto corrupti quidem ullam commodi ex est, consequuntur quibusdam quae!</p>
-				<span class="gray-light">작성일:2016-01-05</span>
-				<span><a href="#">댓글</a></span>
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<p>차한솔</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam provident qui amet molestias sit possimus repellat labore deleniti aliquam laboriosam iusto corrupti quidem ullam commodi ex est, consequuntur quibusdam quae!</p>
-				<p class="gray-light">작성일:2016-01-05</p>
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<p>차한솔</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam provident qui amet molestias sit possimus repellat labore deleniti aliquam laboriosam iusto corrupti quidem ullam commodi ex est, consequuntur quibusdam quae!</p>
-				<p class="gray-light">작성일:2016-01-05</p>
-			</div>
-		</div>
+		<script>
+
+	    // 대댓글
+	    $(document).on("click",".panel-body span.re-reply a", function(){//동적으로 버튼이 생긴 경우 처리 방식
+	        //자기 부모의 tr을 알아낸다.
+	        var parentElement = $(this).parent().parent();
+
+	        $(this).attr("href","#parentElement")
+	        //댓글달기 창을 없앤다.
+	        $(".form-reply").remove();
+	        //부모의 하단에 댓글달기 창을 삽입
+	        var formReply = '<div class="reply2">'+'<form method="post" action="#" class="form-reply">'+
+				'<textarea class="form-control" rows="3" placeholder="댓글을 남겨주세요" id="content"></textarea>'+
+				'<button type="submit" class="btn btn-primary text-right">Reply</button>'+
+			'</form>'+'</div>';
+
+	        parentElement.after(formReply);
+
+	    });
+
+		// 댓글수정
+	    $(document).on("click",".panel-body span.re-modify a", function(){//동적으로 버튼이 생긴 경우 처리 방식
+	        //자기 부모의 tr을 알아낸다.
+	        var parentElement = $(this).parent().parent();
+	        var newParent=parentElement.parent();
+	        var commentContent=parentElement.children(".re-con").text();
+
+	        // 수동으로 csrf_token 생성
+	        function getCookie(name) {
+	    		var cookieValue = null;
+	   			if (document.cookie && document.cookie != '') {
+	        		var cookies = document.cookie.split(';');
+	        		for (var i = 0; i < cookies.length; i++) {
+	            		var cookie = jQuery.trim(cookies[i]);
+	            // Does this cookie string begin with the name we want?
+	            		if (cookie.substring(0, name.length + 1) == (name + '=')) {
+	                		cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+	                		break;
+	            		}
+	        		}
+	    		}
+	    		return cookieValue;
+	    	}
+
+	        var csrftoken = getCookie('csrftoken');
+	        var actionUrl = $(this).attr("name");
+	        $(this).attr("href","#parentElement")
+
+	        //댓글달기 창을 없앤다.
+	        $(".form-reply").remove();
+	        parentElement.remove();
+	        //부모의 하단에 댓글달기 창을 삽입
+	        var formReply = '<div class="reply2">'+'<form method="post" action="'+actionUrl+'" class="form-reply">'+
+	        	'<input type="hidden" name="csrfmiddlewaretoken" value="'+csrftoken+'">'+
+				'<textarea class="form-control" rows="3" id="content" name="content">'+commentContent+'</textarea>'+
+				'<button type="submit" class="btn btn-primary text-right">Reply</button><span class="re-unmodify"><a href="#">수정취소</a></span>'+
+			'</form>'+'</div>';
+	        newParent.append(formReply);
+
+	    });
+
+	    /*$(document).on("click",".reply2 span.re-unmodify a", function(){//동적으로 버튼이 생긴 경우 처리 방식
+	  //       //자기 부모의 tr을 알아낸다.
+	         var parentElement = $(this).parent().parent().parent();
+	         var newParent=parentElement.parent();
+	  //       var commentContent=$('.re-con').text();
+
+	  //       $(this).attr("href","#parentElement")
+	  //       //댓글달기 창을 없앤다.
+	         $(".reply2").remove();
+	  //       parentElement.remove();
+	  //       //부모의 하단에 댓글달기 창을 삽입
+
+	         var formReply = '<div class="panel-body">'+
+					'<span>{{ comment.user_id }}</span>'+
+					'<p class="re-con">{{ comment.content }}</p>'+
+					'<span class="gray-light">'+contentSave+'</span>'+
+					'<span class="re-reply"><a href="#">댓글</a></span>'+
+	                '<span class="re-delete">'+
+	                		'<a href="/board/post/{{ comment.board_id.post_id }}/comment/delete/?comment_id={{ comment.comment_id }}">삭제</a>'+
+	                '</span>'+
+	                '<span class="re-modify"><a href="#">수정</a></span>'+
+				'</div>';
+
+	        newParent.append(formReply);
+
+	    });*/
+    </script>
+	{% endfor %}
 	</div>
+    
 {% endblock contents %}
