@@ -7,7 +7,8 @@ html {
 body{
 	font-family: "Margun Gothic","Nanum Gothic", sans-serif;
 	letter-spacing: -1px;
-	padding-top: 50px;}
+	padding-top: 50px;
+}
 
 ul{
 	list-style-type: none;
@@ -170,6 +171,10 @@ a.welcome:focus{
 
 .reply2{
 	margin:10px 20px;
+}
+
+.form-reply{
+	display:block;
 }
 
 .gray-light{
@@ -430,4 +435,8 @@ label.error{
 .post-foot button{
 	font-size: 14px;
 	width:60px;
+}
+
+.panel-body{
+	display:block;
 }

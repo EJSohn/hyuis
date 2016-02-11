@@ -18,11 +18,28 @@
 	$('body').css({
 		"paddingTop":0
 	})
-	$('.register-back').width($(window).width());
-    if($(document).height()<$(window).height()-100){
-	    $('.register-back').height($(window).height()-100);
-    }else{
-        $('.register-back').height($(window).height());
+
+    var delta = 300;
+     var timer = null;
+
+    $( window ).on( 'resize', function( ) {
+        clearTimeout( timer );
+        backImage();
+        timer = setTimeout( backImage, delta );
+    } );
+
+    function backImage() {
+
+        $('.register-back').width($(window).width());
+        if($(document).height()<$(window).height()-100){
+            $('.register-back').height($(window).height()-100);
+        }else{
+            $('.register-back').height($(window).height());
+        }
+
     }
+
+    backImage();
+
 </script>
 {% endblock base %}
