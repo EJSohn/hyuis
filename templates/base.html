@@ -13,13 +13,11 @@ $(document).ready(function() {
 			is_ajax: 1,
 			csrfmiddlewaretoken: "{{ csrf_token }}"
 		};
-		console.log("did click");
 		$.ajax({
 			type: "POST",
 			url: action,
 			data: form_data,
 			success: function(response) {
-				console.log(response);
 				if(response == 'success') {
 					location.reload();
 				}
