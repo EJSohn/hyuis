@@ -13,10 +13,10 @@ class BoardAdmin(admin.ModelAdmin):
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('comment_id', 'user_id', 'board_id', 'created_date', 'content')
 
-class ImgAdmin(admin.ModelAdmin):
-    list_display = ('post_id', 'img_url')
+class imgAdmin(admin.ModelAdmin):
+    list_display = ('image', 'post_id')
 
 admin.site.register(category, CategoryAdmin)
 admin.site.register(board, BoardAdmin)
 admin.site.register(comment, CommentAdmin)
-admin.site.register(imghandler, ImgAdmin)
+admin.site.register(imghandler, imgAdmin)

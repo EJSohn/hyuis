@@ -30,8 +30,24 @@ class comment(models.Model):
     content = models.CharField(max_length=300)
 
 class imghandler(models.Model):
-    img_url = models.CharField(max_length=300)
+
+    upload_path = 'static/images'
+    image = models.ImageField(upload_to=upload_path, null=True, blank=True)
+    image_url = models.URLField(null=True, blank=True)
     post_id = models.ForeignKey(board, on_delete=models.CASCADE)
+
+    def save(self, *args, **kwargs):
+        if self.image_url:
+            import urllib, os
+            from urlparse import urlparse
+
+            file_save_dir = self.upload_path
+            filename = urlparse(self.image_url).path.split('/')[-1]
+            urllib.urlretrieve(self.image_url, os.path.join(file_save_dir, filename))
+            self.image = os.path.join(file_save_dir, filename)
+            self.image_url = ''
+        super(imghandler, self).save()
+
 
 
 
