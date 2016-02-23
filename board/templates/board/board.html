@@ -18,10 +18,24 @@
 		</div>
 		{% endif %}
 		{% if 'member' in request.session%}
-		<div class="list-group">
-			<a href="/board/write" class="list-group-item btn-write">글쓰기</a>
-		</div>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			 $('#board-write').attr('href','/board/write?category_id={{categoryid}}');
+			 console.log('member');
+		});
+		 </script>
+		{%else%}
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$('#board-write').click(function(){
+				alert("ss");
+			});
+		});
+		</script>
 		{% endif %}
+		<div class="list-group">
+			<a href="" id="board-write" class="list-group-item btn-write">글쓰기</a>
+		</div>
 	</div>
 	<div class="col-md-9">
 		<table class="table table-hover">

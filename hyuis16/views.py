@@ -20,22 +20,22 @@ def index(request):
 
 @require_http_methods(["GET", "POST"])
 def login(request):
-    userid = request.POST['user_id']
-    pw = request.POST['password']
+    userid = request.POST.get('user_id',False)
+    pw = request.POST.get('user_pw',False)
 
     try:
         m = hyu_users.objects.get(user_id=userid)
     except:
-        return HttpResponse('not matching id')
+        return HttpResponse('Wrong ID')
 
     if m.password == pw:
         username = m.user_name
         request.session['member'] = userid
 
 
-        return HttpResponseRedirect(reverse('home'))
+        return HttpResponse('success')
     else :
-        return HttpResponse('not matching pw')
+        return HttpResponse('Wrong PW')
 
 def logout(request):
     try:

@@ -9,12 +9,17 @@
 
 <!-- page contents location. -->
 {% block mypage_contents %}
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#{{category}}").attr("selected","");
+	})
+</script>
 <div class="container">
 	<form class="form-inline" action="/board/write/writing" method="post">{% csrf_token %}
 		<div>
 			<select id="" name="category_id">카테고리 선택
-				<option value="1" name="notice">공지</option>
-				<option value="2" name="freeboard">자유</option>
+				<option value="1" id="1" name="notice">공지</option>
+				<option value="2" id="2" name="freeboard">자유</option>
 				<option value="3" name="newGuys">새내기</option>
 				<option value="4" name="reivew">후기</option>
 			</select>
