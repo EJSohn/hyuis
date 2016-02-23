@@ -118,6 +118,7 @@ def writing(request):
     post.user_id = user
     post.save()
 
+
     #글 속의 이미지 등록
     class ImageParser(HTMLParser):
         def handle_starttag(self, tag, attrs):
@@ -130,14 +131,17 @@ def writing(request):
                     self.result.append(value)
 
     parser = ImageParser()
-    parser.feed(content)
-    resultSet = set(x for x in parser.result)
+    try:
+        parser.feed(content)
+        resultSet = set(x for x in parser.result)
 
-    for x in sorted(resultSet):
-        img = imghandler(image_url=x)
-        pst = board.objects.get(post_id=post.post_id)
-        img.post_id = pst
-        img.save()
+        for x in sorted(resultSet):
+            img = imghandler(image_url=x)
+            pst = board.objects.get(post_id=post.post_id)
+            img.post_id = pst
+            img.save()
+    except AttributeError:
+        pass
 
 
     return HttpResponseRedirect(reverse('board:entire_view'))
