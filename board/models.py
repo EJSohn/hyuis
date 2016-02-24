@@ -24,6 +24,7 @@ class board(models.Model):
 
 class comment(models.Model):
     comment_id = models.AutoField(primary_key=True)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
     user_id = models.ForeignKey(hyu_users, on_delete=models.CASCADE,)
     board_id = models.ForeignKey(board, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_created=True)
@@ -32,7 +33,7 @@ class comment(models.Model):
 class imghandler(models.Model):
 
     upload_path = '/home/sonenju/Hyuis/deploy_static/media/image'
-    image = models.ImageField(upload_to='static/media/image', null=True, blank=True)
+    image = models.ImageField(upload_to='/static/media/image', null=True, blank=True)
     image_url = models.URLField(null=True, blank=True)
     post_id = models.ForeignKey(board, on_delete=models.CASCADE)
 
@@ -44,7 +45,7 @@ class imghandler(models.Model):
             file_save_dir = self.upload_path
             filename = urlparse(self.image_url).path.split('/')[-1]
             urllib.urlretrieve(self.image_url, os.path.join(file_save_dir, filename))
-            self.image = os.path.join('static/media/image', filename)
+            self.image = os.path.join('/static/media/image', filename)
             self.image_url = ''
         super(imghandler, self).save()
 

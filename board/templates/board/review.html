@@ -10,15 +10,15 @@
 <div class="container">
 	<div class="row clearfix">
 		<ul class="br-thumb">
-		{% load staticfiles %}
 			{% for review in reviews %}
+			{% load staticfiles %}
 			<li>
 				<a href="/board/post/{{ review.post_id }}" class="thumbnail">
 					<div class="thumbnail-title">
 						<p class="text-center">{{ review.post_id.created_date }}</p>
 						<p class="text-center">{{ review.post_id.title }}</p>
 					</div>
-					<img class="review-img" src="{{ review.img_url }}" alt="...">
+					<img class="review-img" src="{{ review.image }}" alt="...">
 				</a>
 			</li>
 			{% endfor %}

@@ -49,7 +49,7 @@ $(document).ready(function() {
 						
 						
 						<li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">로그인{{ flag }}</a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">로그인</a>
                           <ul id="login-menu" class="dropdown-menu" role="menu">
                             <li>
                                 <form id="form-login" class="form-inline" action="/authen/login" method="POST">{% csrf_token %}
@@ -64,7 +64,7 @@ $(document).ready(function() {
                                     <button type="submit" id="login-btn" class="btn btn-default">Sign in</button>
                                 </form>
                                 <div id="message"></div>
-                                <p class="login-alpa"><a href="/authen/findmine">아이디/비밀번호 찾기</a> | <a href="/authen/register">회원가입</a></p></li>
+                                <p class="login-alpa"><a href="/authen/findmine">아이디/비밀번호 찾기</a> | <a href="/authen/register"><i class="fa fa-user-plus fa-fw"></i>&nbsp; 회원가입</a></p></li>
                           </ul>
 						</li>
 						{% else %}
@@ -91,7 +91,7 @@ $(document).ready(function() {
 
 						{% endif %}
 						<li class="dropdown">
-						  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">연관사이트 <span class="caret"></span></a>
+						  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-home fa-fw"></i>&nbsp;연관사이트 <span class="caret"></span></a>
 						  <ul class="dropdown-menu" role="menu">
 							<li><a href="http://www.hanyang.ac.kr/">한양대학교</a></li>
 							<li><a href="https://portal.hanyang.ac.kr/sso/lgin.do">Hy-in</a></li>
@@ -156,7 +156,7 @@ $(document).ready(function() {
 {% block sub_menu %}
 	<div class="container">
 		<ul class="nav nav-tabs">
-			<li role="presentation"><a href="/board/entire_view?page=1">전체</a></li>
+			<li role="presentation"><a href="/board/entire_view?page=1"><i class="fa fa-bars fa-fw"></i>&nbsp; 전체</a></li>
 			<li role="presentation"><a href="/board/notice/1?page=1">공지</a></li>
 			<li role="presentation"><a href="/board/freeboard/2?page=1">자유</a></li>
 {#			<li role="presentation"><a href="/board/free?page=1">새내기</a></li>#}
