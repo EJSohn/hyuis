@@ -1,13 +1,13 @@
 # -*- coding: utf-8  -*-
 from django.shortcuts import render ,redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from datetime import datetime
-from .models import board, category
 from authen.models import hyu_users
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import board, comment, imghandler, category
 from datetime import datetime
+from HTMLParser import HTMLParser
+from bs4 import BeautifulSoup
 
 # Create your views here.
 
@@ -111,6 +111,7 @@ def writing(request):
     content = request.POST['content']
     created_date = today
 
+    #글 등록
     post = board(title=title, content=content, created_date=created_date)
 
     cate = category.objects.get(category_id=category_id)
@@ -119,7 +120,34 @@ def writing(request):
     post.user_id = user
     post.save()
 
+
+    #글 속의 이미지 등록
+    class ImageParser(HTMLParser):
+        def handle_starttag(self, tag, attrs):
+            if tag != 'img':
+                return
+            if not hasattr(self, 'result'):
+                self.result = []
+            for name, value in attrs:
+                if name == 'src':
+                    self.result.append(value)
+
+    parser = ImageParser()
+    try:
+        parser.feed(content)
+        resultSet = set(x for x in parser.result)
+
+        for x in sorted(resultSet):
+            img = imghandler(image_url=x)
+            pst = board.objects.get(post_id=post.post_id)
+            img.post_id = pst
+            img.save()
+    except AttributeError:
+        pass
+
+
     return HttpResponseRedirect(reverse('board:entire_view'))
+
 
 def commenting(request, post_id):
     today = datetime.today()

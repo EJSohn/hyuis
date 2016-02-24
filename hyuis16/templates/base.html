@@ -1,0 +1,180 @@
+{% extends 'common.html' %}
+
+{% block base %}
+<!-- page header. not changed -->
+{% block menu_banner %}
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#login-btn").click(function() {
+		var action = $("#form-login").attr('action');
+		var form_data = {
+			user_id: $("#user_id").val(),
+			user_pw: $("#password").val(),
+			is_ajax: 1,
+			csrfmiddlewaretoken: "{{ csrf_token }}"
+		};
+		$.ajax({
+			type: "POST",
+			url: action,
+			data: form_data,
+			success: function(response) {
+				if(response == 'success') {
+					location.reload();
+				}
+				else {
+					alert(response);	
+				}
+			}
+			,error:function(request,status,error){
+    			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);}
+		});
+		return false;
+	});
+});
+</script>
+	<nav id="gnb" class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">HYUIS</a>
+				</div>
+				<div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right base-nav">
+						{% if not 'member' in request.session %}
+						
+						
+						<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">로그인{{ flag }}</a>
+                          <ul id="login-menu" class="dropdown-menu" role="menu">
+                            <li>
+                                <form id="form-login" class="form-inline" action="/authen/login" method="POST">{% csrf_token %}
+                                  <div class="form-group">
+                                    <label class="sr-only">ID</label>
+                                    <input type="text" class="login-input" id="user_id" name="user_id" placeholder="ID" />
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="sr-only">Password</label>
+                                    <input type="password" class="login-input"  id="password" name="password" placeholder="Password" />
+                                  </div>
+                                    <button type="submit" id="login-btn" class="btn btn-default">Sign in</button>
+                                </form>
+                                <div id="message"></div>
+                                <p class="login-alpa"><a href="/authen/findmine">아이디/비밀번호 찾기</a> | <a href="/authen/register">회원가입</a></p></li>
+                          </ul>
+						</li>
+						{% else %}
+						<li>
+							<a class="welcome">{{ request.session.member }} 님 안녕하세요! </a>
+
+						</li>
+						<li>
+							<a href="/authen/logout">로그아웃</a>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">알림 <span class="label label-danger">N</span></a>
+							<div class="dropdown-menu news" role="menu">
+								<ul class="news-list">
+									<li><a href="#">Hyuis에 가입하신것을 축하드립니다!</a></li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<a href="/authen/mypage">마이 페이지</a>
+						</li>
+
+						<!-- logout mark for logged user here.!  -->
+
+						{% endif %}
+						<li class="dropdown">
+						  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">연관사이트 <span class="caret"></span></a>
+						  <ul class="dropdown-menu" role="menu">
+							<li><a href="http://www.hanyang.ac.kr/">한양대학교</a></li>
+							<li><a href="https://portal.hanyang.ac.kr/sso/lgin.do">Hy-in</a></li>
+							<li><a href="http://www.hanyang.ac.kr/code_html/H3HADE/">정보시스템학과</a></li>
+							<li class="divider"></li>
+							<li><a href="http://ak.hanyang.ac.kr/">site of prof. Arne Kutzner</a></li>
+						  </ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+	</nav>
+{% endblock menu_banner %}
+
+<!-- place for header. -->
+{% block header %}
+	<header>
+		<div id="carousel-example-generic" class="carousel slide full-head" data-ride="carousel">
+		  <!-- Indicators -->
+		  <ol class="carousel-indicators">
+		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		  </ol>
+
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner" role="listbox">
+		    <div class="item active">
+		    {% load staticfiles %}
+		      <img src="{% static 'images/univ_main.jpg'%}" alt="...">
+		      <div class="carousel-caption tit-head">
+		        <h1>Hyuis</h1><h3>-정보시스템 커뮤니티 HYUIS</h3>
+		        <p>정보시스템은 경영학과 전산학의 접목으로 이루어진 미래지향적인 학문으로서, 인문· 사회적 지식을 근간으로 경영·컴퓨터·정보시스템 세 분야를 복합적으로 다루는 차별화된 공학입니다.</p>
+		      </div>
+		    </div>
+		    <div class="item">
+		      <img src="{% static 'images/hyuis_main.jpg'%}" alt="...">
+		      <div class="carousel-caption tit-head">
+				  <h2><a href="#">정보시스템 커뮤니티 HYUIS</a></h2>
+				  <hr>
+				<p></p>
+		      </div>
+		    </div>
+		  </div>
+
+		  <!-- Controls -->
+		  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		  </a>
+		  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+		    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		  </a>
+		</div>
+	</header>
+
+{% endblock header %}
+
+
+<!-- submenu -->
+{% block sub_menu %}
+	<div class="container">
+		<ul class="nav nav-tabs">
+			<li role="presentation"><a href="/board/entire_view?page=1"><<i class="fa fa-home fa-fw"></i>&nbsp; 전체</a></li>
+			<li role="presentation"><a href="/board/notice/1?page=1">공지</a></li>
+			<li role="presentation"><a href="/board/freeboard/2?page=1">자유</a></li>
+{#			<li role="presentation"><a href="/board/free?page=1">새내기</a></li>#}
+			<li role="presentation"><a href="/board/review?page=1">후기</a></li>
+            <li role="presentation"><a href="/board/tip/5?page=1">TIP</a></li>
+		</ul>
+	</div>
+	<br />
+	<br />
+{% endblock sub_menu %}
+
+<!-- page contents location. -->
+{% block contents %}
+{% endblock contents %}
+
+<!-- preview location -->
+{% block preview %}
+{% endblock preview %}
+
+
+{% endblock base%}

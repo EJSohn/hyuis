@@ -12,7 +12,7 @@ from datetime import datetime
 def index(request):
     notice = board.objects.all().filter(category_id=1).order_by('-post_id')[:6]
     free_board = board.objects.all().filter(category_id=2).order_by('-post_id')[:6]
-    review = imghandler.objects.all().order_by('-post_id')[:4]
+    review = imghandler.objects.all().filter(post_id__category_id=4).order_by('-post_id')[:4]
     today = datetime.today().date()
 
     return render(request, 'index.html', {'notices': notice, 'frees':free_board, 'reviews':review, 'today':today})

@@ -1,0 +1,442 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+
+html {
+    }
+body{
+	font-family: "Margun Gothic","Nanum Gothic", sans-serif;
+	letter-spacing: -1px;
+	padding-top: 50px;
+}
+
+ul{
+	list-style-type: none;
+	padding:0;
+	margin:0;
+}
+
+h1, h2, h3, h4, h5, .nav, .navbar-header{
+	font-family: "Jeju Gothic", "Malgun Gothic", "Nanum Gothic", sans-serif;
+}
+
+a.welcome:hover,
+a.welcome:focus{
+	color: #777777 !important;
+}
+
+.form-inline input,
+.form-inline textarea,
+.form-inline select{
+	font-family: "Malgun Gothic","Nanum Gothic";
+	font-weight: 500;
+}
+
+#login-menu{
+	min-width:225px;
+}
+
+.login-input{
+	border:0;
+	border-bottom:1px solid #555;
+	display: block;
+	  width: 100%;
+	  height: 34px;
+	  padding: 6px 12px;
+	  font-size: 14px;
+	  line-height: 1.42857143;
+	  color: #555;
+	  background-color: #fff;
+	  background-image: none;
+	  margin:10px;
+	}
+
+#login-btn{
+	margin-left: 10px;
+	width:85%;
+	border-radius: 0;
+}
+
+.login-alpa{
+	margin:10px;
+}
+
+.login-alpa a:link,
+.login-alpa a:visited{
+	color:#555;
+}
+
+.full-head{
+	width:100%;
+	height: 380px;
+	margin-bottom: 15px;
+}
+
+.full-head .item img{
+	width:100%;
+	height:380px;
+	object-fit: cover;
+}
+
+.full-head h1,.full-head h2, .full-head h3,.full-head p {
+	color:#fff
+}
+
+.full-head a{
+	color:#fff;
+}
+
+.tit-head{
+	text-align: left;
+	top:80px;
+}
+
+.tit-head h1{
+	font-size: 63px
+}
+
+.tit-head h2{
+	font-size: 40px;
+}
+
+.tit-head h3{
+	font-size: 24px;
+}
+
+.tit-head p{
+	font-size: 21px;
+}
+
+.board_page{
+	text-align: center;
+}
+
+.board_title,
+.board_date{
+	text-align: center;
+}
+
+.board_date{
+	width:160px;
+}
+
+.footer{
+	width:100%;
+	height:100px;
+	background-color:#f5f5f5; 
+}
+
+.container>.text-muted{
+	margin-top:20px;
+}
+
+.container td>a{
+	color:#333;
+}
+
+#board_header{
+	text-align: center
+}
+
+.main_image{
+	margin-bottom: 25px
+}
+
+#breadcrumb{
+	background-color: #fff;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+#sidebar{
+	padding-left: 0
+}
+
+#title{
+	font-family: "Noto Sans KR";
+	margin-top: 30px;
+}
+
+#post{
+	/*font-family: 'Noto Sans Korea', sans-serif;*/
+	/*font-weight: 500;*/
+	font-family: "Nanum Gothic";
+	font-size: 16px;
+	font-weight:500;
+}
+
+
+#reply{
+	font-family: "Nanum Gothic";}
+
+.reply2{
+	margin:10px 20px;
+}
+
+.form-reply{
+	display:block;
+}
+
+.gray-light{
+	color: #777;
+}
+
+.thumbnail{
+	/*position: absolute;*/
+	border:0;
+	padding:0;
+	/*opacity: 0.7;*/
+	margin:0;
+}
+
+.thumbnail img{
+	width:300px;
+	height:200px;
+	object-fit:cover;
+}
+
+.list-thumb{
+	margin-bottom: 20px
+}
+
+.list-thumb:hover,
+.list-thumb:focus{
+	opacity:0.7;
+}
+/*
+.main_thumb{
+	background-color: #000;
+	padding:0;
+	z-index: 5;
+}*/
+
+.thumbnail-title{
+	position: absolute;
+	background-color: #000;
+	width: 100%;
+	height: 100%;
+	/*opacity: 0.2;*/
+	opacity: 0;
+	border-right:30px solid #fff;
+	padding-top:20%;
+}
+
+.thumbnail-title p{
+	color:#fff;
+	opacity: 1;
+}
+
+.thumbnail-title:hover,
+.thumbnail-title:focus{
+	opacity: 0.5;
+}
+
+.thumb-group{
+	margin-bottom: 30px;
+}
+
+.review-con a,
+.review-con a:link,
+.review-con a:visited{
+	color:#444;
+}
+
+.review-con a:hover,
+.review-con a:focus{
+	color:#999;
+	text-decoration: none;
+}
+
+#review-list{
+	margin-left: 8%;
+}
+
+.rg-bg{
+	margin-top: 500px;
+	width:100%;
+	background: url(../images/dummy_image.jpg) no-repeat fixed center center/100% 100%;
+}
+
+/*register*/
+
+.register-back{
+	background-color: #f8f8f8;
+}
+
+.register-wrap{
+	margin:0 auto;
+}
+
+.brand-name{
+	font-weight: bold;
+	text-align: center;
+	padding:30px 0px;
+}
+
+.brand-name a{
+	color:#000;
+	
+}
+
+.brand-name a:hover,
+.brand-name a:focus{
+	color:#777;
+	text-decoration: none!important;
+}
+
+.form-reg li{
+	padding-top:10px;
+	padding-left:20%;
+}
+
+.form-reg li .form-control{
+	width:70%;
+	padding-left:15px;
+	height:  40px;
+	font-size: 15px;
+}
+
+.form-reg li textarea.form-control{
+	height: 200px;
+}
+
+.form-reg li button{
+	margin-left:30%;
+	height:50px;
+	width:100px;
+}
+
+a.btn-write{
+	color:#fff!important;
+	background-color: #337ab7
+}
+
+a.btn-write:focus,
+a.btn-write:hover{
+	color:#337ab7!important;
+}
+
+label.error{
+	min-width:100%;
+	color:#737373;
+	font-weight: normal;
+	margin-left:5px;
+}
+
+/*post write*/
+
+.form-write{
+	width:100%;
+	height:400px;
+	border: 1px solid #333;
+}
+
+.write-tit{
+	padding:15px 0px;
+}
+
+.write-tit #title{
+	width:100%;
+	margin:0px;
+}
+
+/*board review*/
+.br-thumb{
+	float: left;
+}
+
+.br-thumb li{
+	width:290px;
+	float: left;
+	position: relative;
+}
+
+.br-thumb li .thumbnail-title{
+	border: 0;
+}
+
+/*news for member*/
+.news{
+	padding:0px 10px;
+	width:300px;
+}
+
+.news-list li{
+	border-bottom: 1px solid #555;
+	padding:10px 0;
+}
+
+.news-list li:last-child{
+	border:0;
+}
+
+.news-list li a{
+	color:#555;
+	text-align=center;
+}
+
+.news-list li a:hover,
+.news-list li a:focus{
+	color:#888;
+	text-decoration: none;
+}
+
+/*mypage*/
+.container ul.mypage-nav-wrap{
+	padding-left: 43%;
+}
+
+.profile-wrap{
+	position: absolute;
+	margin-left: 50%;
+	left:-150px;
+}
+
+.myprofile{
+	margin-top: 20px;
+}
+
+.myprofile tbody tr{
+	height: 50px;
+}
+
+.myprofile tbody tr td{
+	width:200px;
+}
+
+.myposts-wrap{
+	margin:0 auto;
+}
+
+/*index list*/
+
+.li-tit{
+	width:375px;
+	text-align: justify;
+}
+
+.li-small{
+	font-size: 12px;
+	text-align: center;
+}
+
+.tit-index-li a{
+	color:#333;
+}
+
+.tit-index-li a:hover,
+.tit-index-li a:focus{
+	text-decoration: none;
+	color:#777;
+}
+
+/*post read*/
+.post-foot a,
+.post-foot button{
+	font-size: 14px;
+	width:60px;
+}
+
+.panel-body{
+	display:block;
+}

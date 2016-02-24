@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+	<div id="post-contents" class="container">
+		<ol id="breadcrumb" class="breadcrumb">
+		  <li><a href="/">Home</a></li>
+		  <li><a href="/board/{{ post.category_id.category_name }}/{{ post.category_id.category_id }}/?page=1">{{ post.category_id.category_name }}</a></li>
+		  <li class="active">{{ post.title }}</li>
+		</ol>
+	</div>
+	<div class="container">
+		<div class="col-md-8 col-md-offset-2">
+			<div id="title" class="page-header">
+				<h2>{{ post.title }}<br><small>{{ post.created_date }} post by {{ post.user_id }}</small>
+			</h2>
+			</div>
+			<div style="margin:25px;"></div>
+			<div id="post">
+				{{ post.content|safe }}
+			</div>
+            <div class="post-foot pull-right">
+                <div class="btn-group pull-left" role="group" aria-label="...">
+                    <a href="#" class="btn btn-default btn-sm">수정</a>
+                    <a href="/board/post/{{ post.post_id }}/delete" class="btn btn-default btn-sm">삭제</a>
+                </div>
+            </div>
+		</div>
+	</div>
+	<div id="reply" class="container">
+        <hr>
+		<form method="post" action="/board/post/{{post.post_id}}/comment" class="form-reply">{% csrf_token %}
+
+			<textarea class="form-control" rows="3" placeholder="댓글을 남겨주세요" id="content" name="content"></textarea>
+			<button type="submit" class="btn btn-primary text-right">Reply</button>
+            <hr>
+		</form>
+		{% for comment in comments %}
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<span>{{ comment.user_id }}</span>
+				<p class="re-con">{{ comment.content }}</p>
+				<span class="gray-light">{{ comment.created_date }}</span>
+				<span class="re-reply"><a href="#">댓글</a></span>
+                <span class="re-delete"><a href="/board/post/{{ comment.board_id.post_id }}/comment/delete/?comment_id={{ comment.comment_id }}">삭제</a></span>
+                <span class="re-modify"><a href="#" name="/board/post/{{ comment.board_id.post_id }}/comment/update/?comment_id={{ comment.comment_id }}">수정</a></span>
+			</div>
+		</div>
+		
+	{% endfor %}
+	</div>
+	<script>
+
+	    // 대댓글
+	    $(document).on("click",".panel-body span.re-reply a", function(){//동적으로 버튼이 생긴 경우 처리 방식
+	        //자기 부모의 tr을 알아낸다.
+	        var parentElement = $(this).parent().parent();
+
+	        $(this).attr("href","#parentElement")
+	        //댓글달기 창을 없앤다.
+	        $(".form-reply").css({"display":"none"})
+	        //부모의 하단에 댓글달기 창을 삽입
+	        var formReply = '<div class="reply2">'+'<form method="post" action="#" class="form-reply">'+
+				'<textarea class="form-control" rows="3" placeholder="댓글을 남겨주세요" id="content"></textarea>'+
+				'<button type="submit" class="btn btn-primary text-right">Reply</button>'+'<span class="re-unreply"><a href="#reply">댓글취소</a></span>'+
+			'</form>'+'</div>';
+
+	        parentElement.after(formReply);
+
+	    });
+
+        //대댓취소
+        $(document).on("click",".panel span.re-unreply a", function(){//동적으로 버튼이 생긴 경우 처리 방식
+            $(".form-reply").css({"display":"block"})
+	        //댓글달기 창을 없앤다.
+	        $(".reply2").remove();
+	    });
+
+		// 댓글수정
+	    $(document).on("click",".panel-body span.re-modify a", function(){//동적으로 버튼이 생긴 경우 처리 방식
+	        //자기 부모의 tr을 알아낸다.
+	        var parentElement = $(this).parent().parent();
+	        var newParent=parentElement.parent();
+	        var commentContent=parentElement.children(".re-con").text();
+
+
+	        var csrftoken = getCookie('csrftoken');
+	        var actionUrl = $(this).attr("name");
+	        $(this).attr("href","#parentElement")
+
+	        //댓글달기 창을 없앤다.
+	        $(".form-reply").remove();
+	        parentElement.css({"display":"none"});
+	        //부모의 하단에 댓글달기 창을 삽입
+	        var formReply = '<div class="reply2">'+'<form method="post" action="'+actionUrl+'" class="form-reply">'+
+	        	'<input type="hidden" name="csrfmiddlewaretoken" value="'+csrftoken+'">'+
+				'<textarea class="form-control re-con" rows="3" id="content" name="content">'+commentContent+'</textarea>'+
+				'<button type="submit" class="btn btn-primary text-right">Reply</button>'+'<span class="re-unmodify"><a href="#">수정취소</a></span>'+
+			'</form>'+'</div>';
+	        newParent.append(formReply);
+	    });
+
+        // 댓글수정취소
+	    $(document).on("click",".panel span.re-unmodify a", function(){//동적으로 버튼이 생긴 경우 처리 방식
+	        //자기 부모의 tr을 알아낸다.
+	        var parentElement = $(this).parent().parent().parent();
+            console.log(parentElement)
+	        var newParent=parentElement.parent();
+
+
+	        var csrftoken = getCookie('csrftoken');
+	        var actionUrl = $(this).attr("name");
+	        $(this).attr("href","#parentElement")
+
+	        //댓글달기 창을 없앤다.
+	        $(".reply2").remove();
+	        newParent.children('.panel-body').css({"display":"block"});
+	        //부모의 하단에 댓글달기 창을 삽입
+	        //newParent.append(formReply);
+	    });
+		// 수동으로 csrf_token 생성
+        function getCookie(name) {
+    		var cookieValue = null;
+   			if (document.cookie && document.cookie != '') {
+        		var cookies = document.cookie.split(';');
+        		for (var i = 0; i < cookies.length; i++) {
+            		var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            		if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                		cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                		break;
+            		}
+        		}
+    		}
+    		return cookieValue;
+    	}
+    	</script>
+    
+{% endblock contents %}
