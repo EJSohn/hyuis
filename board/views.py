@@ -89,7 +89,7 @@ def post(request, post_id):
     '''
 
     comme = comment.objects.all().filter(board_id=post_id).filter(parent_id__isnull=True)
-    return render(request, 'board/post.html', {'post':post, 'comments':comme})
+    return render(request, 'board/post.html', {'post':post})
 
 #글쓰기
 def write(request):

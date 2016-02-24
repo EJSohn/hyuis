@@ -34,19 +34,24 @@
 			<button type="submit" class="btn btn-primary text-right">Reply</button>
             <hr>
 		</form>
-		{% for comment in comments %}
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<span>{{ comment.user_id }}</span>
-				<p class="re-con">{{ comment.content }}</p>
-				<span class="gray-light">{{ comment.created_date }}</span>
-				<span class="re-reply"><a href="#" name="{{ comment.comment_id }}">댓글</a></span>
-                <span class="re-delete"><a href="/board/post/{{ comment.board_id.post_id }}/comment/delete/?comment_id={{ comment.comment_id }}">삭제</a></span>
-                <span class="re-modify"><a href="#" name="/board/post/{{ comment.board_id.post_id }}/comment/update/?comment_id={{ comment.comment_id }}">수정</a></span>
+		{% for comment in post.comments.all %}
+			{% if comment.parent_id %}
+			{% else %}
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<span>{{ comment.user_id }}</span>
+					<p class="re-con">{{ comment.content }}</p>
+					<span class="gray-light">{{ comment.created_date }}</span>
+					<span class="re-reply"><a href="#" name="{{ comment.comment_id }}">댓글</a></span>
+					<span class="re-delete"><a href="/board/post/{{ comment.board_id.post_id }}/comment/delete/?comment_id={{ comment.comment_id }}">삭제</a></span>
+					<span class="re-modify"><a href="#" name="/board/post/{{ comment.board_id.post_id }}/comment/update/?comment_id={{ comment.comment_id }}">수정</a></span>
+				</div>
 			</div>
-		</div>
-
-	{% endfor %}
+			{% endif %}
+			{% for reply in comment.replies.all %}
+				<p>{{ reply.content }}</p>
+			{% endfor %}
+		{% endfor %}
 	</div>
 	<script>
 
