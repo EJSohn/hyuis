@@ -40,29 +40,32 @@
 				<span>{{ comment.user_id }}</span>
 				<p class="re-con">{{ comment.content }}</p>
 				<span class="gray-light">{{ comment.created_date }}</span>
-				<span class="re-reply"><a href="#">댓글</a></span>
+				<span class="re-reply"><a href="#" name="{{ comment.comment_id }}">댓글</a></span>
                 <span class="re-delete"><a href="/board/post/{{ comment.board_id.post_id }}/comment/delete/?comment_id={{ comment.comment_id }}">삭제</a></span>
                 <span class="re-modify"><a href="#" name="/board/post/{{ comment.board_id.post_id }}/comment/update/?comment_id={{ comment.comment_id }}">수정</a></span>
 			</div>
 		</div>
-		
+
 	{% endfor %}
 	</div>
 	<script>
 
 	    // 대댓글
+	    // 대댓글
 	    $(document).on("click",".panel-body span.re-reply a", function(){//동적으로 버튼이 생긴 경우 처리 방식
 	        //자기 부모의 tr을 알아낸다.
 	        var parentElement = $(this).parent().parent();
 
-	        var csrftoken = getCookie('csrftoken');
+            var csrftoken = getCookie('csrftoken');
 
+            var comment_id = $(this).attr("name")
 	        $(this).attr("href","#parentElement")
 	        //댓글달기 창을 없앤다.
 	        $(".form-reply").css({"display":"none"})
 	        //부모의 하단에 댓글달기 창을 삽입
 	        var formReply = '<div class="reply2">'+'<form method="post" action="#" class="form-reply">'+
-	        	'<input type="hidden" name="csrfmiddlewaretoken" value="'+csrftoken+'">'+
+                            '<input type="hidden" value="'+comment_id+'" name="comment_id" id="comment_id">'+
+                            '<input type="hidden" name="csrfmiddlewaretoken" value="'+csrftoken+'">'+
 				'<textarea class="form-control" rows="3" placeholder="댓글을 남겨주세요" id="content"></textarea>'+
 				'<button type="submit" class="btn btn-primary text-right">Reply</button>'+'<span class="re-unreply"><a href="#reply">댓글취소</a></span>'+
 			'</form>'+'</div>';
