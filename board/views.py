@@ -88,7 +88,7 @@ def post(request, post_id):
     some_post = paginator.page(current_page)
     '''
 
-    comme = comment.objects.all().filter(board_id=post_id)
+    comme = comment.objects.all().filter(board_id=post_id).filter(parent_id__isnull=True)
     return render(request, 'board/post.html', {'post':post, 'comments':comme})
 
 #글쓰기
@@ -156,6 +156,7 @@ def commenting(request, post_id):
     user_id = request.session['member']
     content = request.POST['content']
 
+
     comme = comment(content=content, created_date=created_date)
 
     user = hyu_users.objects.get(user_id=user_id)
@@ -167,6 +168,28 @@ def commenting(request, post_id):
     print('succeed')
 
     return HttpResponseRedirect(reverse('board:post', args=[post_id]))
+
+def recomment(request):
+    today = datetime.today()
+    created_date = today
+
+    user_id = request.session['member']
+    content = request.POST['content']
+    parent = request.POST['comment_id']
+
+    comme = comment(content=content, created_date=created_date)
+
+    user = hyu_users.objects.get(user_id=user_id)
+    parent_comment = comment.objects.get(comment_id=parent)
+    boar = parent_comment.board_id
+
+    comme.user_id = user
+    comme.board_id = boar
+    comme.parent_id = parent_comment
+
+    comme.save()
+    return HttpResponseRedirect(reverse('board:post', args=[boar.post_id]))
+
 
 def post_delete(request, post_id):
     boar = board.objects.get(post_id=post_id)

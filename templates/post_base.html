@@ -63,12 +63,12 @@
 	        //댓글달기 창을 없앤다.
 	        $(".form-reply").css({"display":"none"})
 	        //부모의 하단에 댓글달기 창을 삽입
-	        var formReply = '<div class="reply2">'+'<form method="post" action="#" class="form-reply">'+
+	        var formReply = '<div class="reply2">'+'<form method="post" action="/board/post/recomment" class="form-reply">'+
                             '<input type="hidden" value="'+comment_id+'" name="comment_id" id="comment_id">'+
                             '<input type="hidden" name="csrfmiddlewaretoken" value="'+csrftoken+'">'+
-				'<textarea class="form-control" rows="3" placeholder="댓글을 남겨주세요" id="content"></textarea>'+
-				'<button type="submit" class="btn btn-primary text-right">Reply</button>'+'<span class="re-unreply"><a href="#reply">댓글취소</a></span>'+
-			'</form>'+'</div>';
+							'<textarea class="form-control" rows="3" name ="content" placeholder="댓글을 남겨주세요" id="content"></textarea>'+
+							'<button type="submit" class="btn btn-primary text-right">Reply</button>'+'<span class="re-unreply"><a href="#reply">댓글취소</a></span>'+
+							'</form>'+'</div>';
 
 	        parentElement.after(formReply);
 

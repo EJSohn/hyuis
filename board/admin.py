@@ -11,7 +11,7 @@ class BoardAdmin(admin.ModelAdmin):
     list_display = ('post_id','category_id', 'user_id', 'title', 'content', 'created_date')
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('comment_id', 'user_id', 'board_id', 'created_date', 'content')
+    list_display = ('parent_id', 'comment_id', 'user_id', 'board_id', 'created_date', 'content')
 
 class imgAdmin(admin.ModelAdmin):
     list_display = ('image', 'post_id')

@@ -24,10 +24,14 @@ class board(models.Model):
 
 class comment(models.Model):
     comment_id = models.AutoField(primary_key=True)
+    parent_id = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
     user_id = models.ForeignKey(hyu_users, on_delete=models.CASCADE,)
     board_id = models.ForeignKey(board, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_created=True)
     content = models.CharField(max_length=300)
+
+    def __str__(self):
+        return str(self.comment_id)
 
 class imghandler(models.Model):
 

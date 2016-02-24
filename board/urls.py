@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^tip/([0-5]{1})/', views.some_board, name='tip'),
     url(r'^post/([0-9]+)/$', views.post, name='post'),
     url(r'^post/([0-9]+)/comment$', views.commenting, name='comment'),
+    url(r'^post/recomment$', views.recomment, name="recomment"),
     url(r'^write/$', views.write, name='write'),
     url(r'^write/writing$', views.writing, name='writing'),
     url(r'^mypage/', views.mypage, name='mypage'),
