@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from board.models import board, imghandler
 from datetime import datetime
-
+import hashlib
 
 def index(request):
     notice = board.objects.all().filter(category_id=1).order_by('-post_id')[:6]
@@ -28,7 +28,7 @@ def login(request):
     except:
         return HttpResponse('Wrong ID')
 
-    if m.password == pw:
+    if m.password == hashlib.md5(pw).hexdigest():
         username = m.user_name
         request.session['member'] = userid
 

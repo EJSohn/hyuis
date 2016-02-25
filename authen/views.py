@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from .models import hyu_users
 from board.models import board, comment
 from django.http import HttpResponse
+import hashlib
 
 # Create your views here.
 
@@ -20,9 +21,11 @@ def register_user(request):
     phone = request.POST['phone_number']
     self = request.POST['self_introduce']
 
+    encrypted_pw = hashlib.md5(pw).hexdigest()
+
     # 비밀번호 암호화 처리는 나중에..
 
-    user = hyu_users(user_id=user_id, user_name=user_name, password=pw, admission_year=admin_year, phone_number=phone,
+    user = hyu_users(user_id=user_id, user_name=user_name, password=encrypted_pw, admission_year=admin_year, phone_number=phone,
                  self_introduce=self)
 
 
