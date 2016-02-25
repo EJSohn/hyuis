@@ -1,5 +1,6 @@
 from django.db import models
 from authen.models import hyu_users
+import uuid
 
 # Create your models here.
 
@@ -46,7 +47,7 @@ class imghandler(models.Model):
             from urlparse import urlparse
 
             file_save_dir = self.upload_path
-            filename = urlparse(self.image_url).path.split('/')[-1]
+            filename = str(uuid.uuid4())
             urllib.urlretrieve(self.image_url, os.path.join(file_save_dir, filename))
             self.image = os.path.join('/static/media/image', filename)
             self.image_url = ''

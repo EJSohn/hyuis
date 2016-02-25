@@ -32,8 +32,8 @@ def entire_board(request):
 def some_board(request, category_id):
     today = datetime.today().date()
     some_list = board.objects.all().filter(category_id=category_id).order_by('-post_id')
-    current_category = category.objects.get(category_id=category_id).category_name
-    current_category_id=category.objects.get(category_id=category_id).category_id
+    current_category = category.objects.get(category_id=category_id)
+
     paginator = Paginator(some_list, 10)
 
     page = request.GET.get('page')
@@ -45,7 +45,7 @@ def some_board(request, category_id):
     except EmptyPage:
         some_post = paginator.page(paginator.num_pages)
 
-    return render(request, 'board/board.html', {'posts':some_post, 'category':current_category, 'categoryid':current_category_id, 'today':today})
+    return render(request, 'board/board.html', {'posts':some_post, 'category':current_category, 'today':today})
 
 #후기게시판
 def review(request):

@@ -5,11 +5,11 @@
 <div class="container">
 	<ol id="breadcrumb" class="breadcrumb">
 		<li><a href="index.html">Home</a></li>
-		<li class="active">{{ category }}</a></li>
+		<li class="active">{{ category.category_name }}</a></li>
 	</ol>
 	<div id="sidebar" class="col-md-3">
 		<div style="margin:32px;"></div>
-		{% if category == 'notice' %}
+		{% if category.category_name == 'notice' %}
 		<div class="list-group">
 			<a href="#" class="list-group-item">
 				교내 공지
@@ -18,20 +18,20 @@
 		</div>
 		{% endif %}
 		{% if 'member' in request.session%}
-		<script type="text/javascript">
-		$(document).ready(function() {
-			 $('#board-write').attr('href','/board/write?category_id={{categoryid}}');
-			 console.log('member');
-		});
-		 </script>
-		{%else%}
-		<script type="text/javascript">
-		$(document).ready(function() {
-			$('#board-write').click(function(){
-				alert("ss");
+			<script type="text/javascript">
+			$(document).ready(function() {
+				 $('#board-write').attr('href','/board/write?category_id={{category.category_id}}');
+				 console.log('member');
 			});
-		});
-		</script>
+			 </script>
+		{%else%}
+			<script type="text/javascript">
+			$(document).ready(function() {
+				$('#board-write').click(function(){
+					alert("로그인을 먼저 해주세요");
+				});
+			});
+			</script>
 		{% endif %}
 		<div class="list-group">
 			<a href="" id="board-write" class="list-group-item btn-write"><i class="fa fa-pencil-square-o fa-fw"></i>&nbsp; 글쓰기</a>

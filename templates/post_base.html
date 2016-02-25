@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
 
+{% block staticfiles %}
+	{% if 'member' in request.session %}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".form-reply").attr("action", "/board/post/{{post.post_id}}/comment");
+		});
+	</script>
+	{% else %}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".form-reply").click(function(){
+				alert("로그인을 먼저 해주세요");
+			});
+		});
+	</script>
+	{% endif %}
+{% endblock staticfiles %}
+
 {% block contents %}
 	<div id="post-contents" class="container">
 		<ol id="breadcrumb" class="breadcrumb">
@@ -28,7 +46,7 @@
 	</div>
 	<div id="reply" class="container">
         <hr>
-		<form method="post" action="/board/post/{{post.post_id}}/comment" class="form-reply">{% csrf_token %}
+		<form method="post" action="" class="form-reply">{% csrf_token %}
 
 			<textarea class="form-control" rows="3" placeholder="댓글을 남겨주세요" id="content" name="content"></textarea>
 			<button type="submit" class="btn btn-primary text-right">Reply</button>
