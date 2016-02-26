@@ -76,7 +76,7 @@
 					<span class="gray-light">{{ comment.created_date }}</span>
 					<span class="re-reply"><a href="#" name="{{ comment.comment_id }}">댓글</a></span>
 
-					{% if request.session.member == comment.user_id %}
+					{% if request.session.member == comment.user_id.user_id %}
 					<span class="re-delete"><a href="/board/post/{{ comment.board_id.post_id }}/comment/delete/?comment_id={{ comment.comment_id }}">삭제</a></span>
 					<span class="re-modify"><a href="#" name="/board/post/{{ comment.board_id.post_id }}/comment/update/?comment_id={{ comment.comment_id }}">수정</a></span>
 					{% else %}
@@ -92,12 +92,12 @@
                         <span>{{ reply.user_id }}</span>
                         <p class="re-con">{{ reply.content }}<p class="re-con">
                         <span class="gray-light">{{ reply.created_date }}</span>
-                        {% if request.session.member == reply.user_id %}
-                        <span class="re-delete"><a href="/board/post/{{ reply.board_id.post_id }}/reply/delete/?reply_id={{ reply.reply_id }}">삭제</a></span>
-                        <span class="re-modify"><a href="#" name="/board/post/{{ reply.board_id.post_id }}/reply/update/?reply_id={{ reply.reply_id }}">수정</a></span>
+                        {% if request.session.member == reply.user_id.user_id %}
+                        <span class="re-delete"><a href="/board/post/{{ reply.board_id.post_id }}/comment/delete/?comment_id={{ reply.comment_id }}">삭제</a></span>
+                        <span class="re-modify"><a href="#" name="/board/post/{{ reply.board_id.post_id }}/comment/update/?comment_id={{ reply.comment_id }}">수정</a></span>
                         {% else %}
                         <span class="re-delete"><a href="" class="authority">삭제</a></span>
-                        <span class="re-modify_none"><a href="#" class="authority" name="/board/post/{{ reply.board_id.post_id }}/reply/update/?reply_id={{ reply.reply_id }}">수정</a></span>
+                        <span class="re-modify_none"><a href="#" class="authority">수정</a></span>
                         {% endif %}
                     </div>
                 </div>
