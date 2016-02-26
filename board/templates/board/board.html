@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 
 {% block staticfiles %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
+<style>
+	a { color: #337AB7; }
+	.mdl-badge[data-badge]:after { background: #337AB7; }
+</style>
+
 	{% if 'member' in request.session%}
 		<script type="text/javascript">
 		$(document).ready(function() {
@@ -69,7 +77,10 @@
 					<td>{{ free.post_id }}</td>
 					<td><a href="/board/post/{{ free.post_id }}#post-contents">{{ free.title }}</a>
 						{% if free.created_date.date == today %}
-						<span class="label label-danger">N</span>
+							<span class="label label-danger">N</span>
+						{% endif %}
+						{% if free.comments.count > 0 %}
+							<span class="mdl-badge" id="cntcomment" data-badge="{{ free.comments.count }}" style="position: relative; float:middle;">댓글</span>
 						{% endif %}
 					</td>
                     <td class="board_date">{{ free.created_date }}</td>
