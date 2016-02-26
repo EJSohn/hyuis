@@ -155,13 +155,16 @@ def writing(request):
     parser = ImageParser()
     try:
         parser.feed(content)
-        resultSet = set(x for x in parser.result)
+        cnt = 0
+        for x in parser.result:
+            if cnt == 0 :
+                img = imghandler(image_url=x)
+                pst = board.objects.get(post_id=post.post_id)
+                img.post_id = pst
+                img.save()
+                cnt += 1
 
-        for x in sorted(resultSet):
-            img = imghandler(image_url=x)
-            pst = board.objects.get(post_id=post.post_id)
-            img.post_id = pst
-            img.save()
+            else : break
     except AttributeError:
         pass
 

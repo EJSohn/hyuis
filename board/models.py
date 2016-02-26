@@ -40,7 +40,7 @@ class imghandler(models.Model):
     upload_path = '/home/sonenju/Hyuis/deploy_static/media/image'
     image = models.ImageField(upload_to='/static/media/image', null=True, blank=True)
     image_url = models.URLField(null=True, blank=True)
-    post_id = models.ForeignKey(board, on_delete=models.CASCADE)
+    post_id = models.ForeignKey(board, on_delete=models.CASCADE, related_name='imgs')
 
     def save(self, *args, **kwargs):
         if self.image_url:
