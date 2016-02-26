@@ -58,6 +58,7 @@
             </div>
 		</div>
 	</div>
+
 	<div id="reply" class="container">
         <hr>
 		<form method="post" action="" class="form-reply">{% csrf_token %}
@@ -69,43 +70,44 @@
 		{% for comment in post.comments.all %}
 			{% if comment.parent_id %}
 			{% else %}
-			<div class="panel panel-default">
-				<div class="panel-body">
-					<span>{{ comment.user_id }}</span>
-					<p class="re-con">{{ comment.content }}<p class="re-con">
-					<span class="gray-light">{{ comment.created_date }}</span>
-					<span class="re-reply"><a href="#" name="{{ comment.comment_id }}">댓글</a></span>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<span>{{ comment.user_id }}</span>
+						<p class="re-con">{{ comment.content }}</p>
+						<span class="gray-light">{{ comment.created_date }}</span>
+						<span class="re-reply"><a href="#" name="{{ comment.comment_id }}">댓글</a></span>
 
-					{% if request.session.member == comment.user_id.user_id %}
-					<span class="re-delete"><a href="/board/post/{{ comment.board_id.post_id }}/comment/delete/?comment_id={{ comment.comment_id }}">삭제</a></span>
-					<span class="re-modify"><a href="#" name="/board/post/{{ comment.board_id.post_id }}/comment/update/?comment_id={{ comment.comment_id }}">수정</a></span>
-					{% else %}
-					<span class="re-delete"><a href="" class="authority">삭제</a></span>
-					<span class="re-modify_none"><a href="#" class="authority" name="/board/post/{{ comment.board_id.post_id }}/comment/update/?comment_id={{ comment.comment_id }}">수정</a></span>
-					{% endif %}
+						{% if request.session.member == comment.user_id.user_id %}
+							<span class="re-delete"><a href="/board/post/{{ comment.board_id.post_id }}/comment/delete/?comment_id={{ comment.comment_id }}">삭제</a></span>
+							<span class="re-modify"><a href="#" name="/board/post/{{ comment.board_id.post_id }}/comment/update/?comment_id={{ comment.comment_id }}">수정</a></span>
+						{% else %}
+							<span class="re-delete"><a href="" class="authority">삭제</a></span>
+							<span class="re-modify_none"><a href="#" class="authority" name="/board/post/{{ comment.board_id.post_id }}/comment/update/?comment_id={{ comment.comment_id }}">수정</a></span>
+						{% endif %}
 
+						{% for reply in comment.replies.all %}
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<span>{{ reply.user_id }}</span>
+									<p class="re-con">{{ reply.content }}<p class="re-con">
+									<span class="gray-light">{{ reply.created_date }}</span>
+									{% if request.session.member == reply.user_id.user_id %}
+										<span class="re-delete"><a href="/board/post/{{ reply.board_id.post_id }}/comment/delete/?comment_id={{ reply.comment_id }}">삭제</a></span>
+										<span class="re-modify"><a href="#" name="/board/post/{{ reply.board_id.post_id }}/comment/update/?comment_id={{ reply.comment_id }}">수정</a></span>
+									{% else %}
+										<span class="re-delete"><a href="" class="authority">삭제</a></span>
+										<span class="re-modify_none"><a href="#" class="authority">수정</a></span>
+									{% endif %}
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
 
 			{% endif %}
-			{% for reply in comment.replies.all %}
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <span>{{ reply.user_id }}</span>
-                        <p class="re-con">{{ reply.content }}<p class="re-con">
-                        <span class="gray-light">{{ reply.created_date }}</span>
-                        {% if request.session.member == reply.user_id.user_id %}
-                        <span class="re-delete"><a href="/board/post/{{ reply.board_id.post_id }}/comment/delete/?comment_id={{ reply.comment_id }}">삭제</a></span>
-                        <span class="re-modify"><a href="#" name="/board/post/{{ reply.board_id.post_id }}/comment/update/?comment_id={{ reply.comment_id }}">수정</a></span>
-                        {% else %}
-                        <span class="re-delete"><a href="" class="authority">삭제</a></span>
-                        <span class="re-modify_none"><a href="#" class="authority">수정</a></span>
-                        {% endif %}
-                    </div>
-                </div>
-			{% endfor %}
-                </div>
-			</div>
 		{% endfor %}
 	</div>
+
 	<script>
 
 	    // 대댓글
