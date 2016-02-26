@@ -440,8 +440,3 @@ label.error{
 .panel-body{
 	display:block;
 }
-
-#cntcomment {
-    position: relative;
-    float: right;
-}
