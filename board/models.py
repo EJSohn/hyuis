@@ -6,6 +6,7 @@ import uuid
 
 class category(models.Model):
     category_id = models.AutoField(primary_key=True)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, related_name='sub_categories')
     category_name = models.CharField(max_length=20)
 
     def __str__(self):

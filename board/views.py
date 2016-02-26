@@ -47,6 +47,26 @@ def some_board(request, category_id):
 
     return render(request, 'board/board.html', {'posts':some_post, 'category':current_category, 'today':today})
 
+def depth_board(request, category_id):
+    today = datetime.today().date()
+    depth_list = board.objects.all().filter(category_id__parent=category_id).order_by('-post_id')
+    current_category = category.objects.get(category_id=category_id)
+
+    paginator = Paginator(depth_list, 10)
+
+    page = request.GET.get('page')
+    request.session['current_page'] = page
+    try:
+        some_post = paginator.page(page)
+    except PageNotAnInteger:
+        some_post = paginator.page(1)
+    except EmptyPage:
+        some_post = paginator.page(paginator.num_pages)
+
+    return render(request, 'board/board.html', {'posts':some_post, 'category':current_category, 'today':today})
+
+
+
 #후기게시판
 def review(request):
     review_list = imghandler.objects.all().order_by('-post_id')

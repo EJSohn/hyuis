@@ -5,7 +5,7 @@ from django.contrib import admin
 from .models import category, board, comment, imghandler
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('category_id', 'category_name')
+    list_display = ('parent', 'category_id', 'category_name')
 
 class BoardAdmin(admin.ModelAdmin):
     list_display = ('post_id','category_id', 'user_id', 'title', 'content', 'created_date')

@@ -28,12 +28,19 @@
 	</ol>
 	<div id="sidebar" class="col-md-3">
 		<div style="margin:32px;"></div>
-		{% if category.category_name == 'notice' %}
+		{% if 'notice' in category.category_name %}
 		<div class="list-group">
-			<a href="#" class="list-group-item">
+			<a href="/board/notice/9?page=1" class="list-group-item">
 				교내 공지
 			</a>
-			<a href="#" class="list-group-item">과내 공지</a>
+			<a href="/board/notice/8?page=1" class="list-group-item">과내 공지</a>
+		</div>
+		{% elif 'Tip' in category.category_name or 'tip' in category.category_name %}
+		<div class="list-group">
+			<a href="/board/tip/6?page=1" class="list-group-item">
+				개발 팁
+			</a>
+			<a href="/board/tip/7?page=1" class="list-group-item">취업 팁</a>
 		</div>
 		{% endif %}
 		<div class="list-group">

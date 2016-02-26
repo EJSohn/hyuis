@@ -23,8 +23,6 @@ def register_user(request):
 
     encrypted_pw = hashlib.md5(pw).hexdigest()
 
-    # 비밀번호 암호화 처리는 나중에..
-
     user = hyu_users(user_id=user_id, user_name=user_name, password=encrypted_pw, admission_year=admin_year, phone_number=phone,
                  self_introduce=self)
 
