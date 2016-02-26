@@ -72,7 +72,7 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<span>{{ comment.user_id }}</span>
-					<p class="re-con">{{ comment.content }}</p>
+					<p class="re-con">{{ comment.content }}<p class="re-con">
 					<span class="gray-light">{{ comment.created_date }}</span>
 					<span class="re-reply"><a href="#" name="{{ comment.comment_id }}">댓글</a></span>
 
@@ -84,12 +84,26 @@
 					<span class="re-modify_none"><a href="#" class="authority" name="/board/post/{{ comment.board_id.post_id }}/comment/update/?comment_id={{ comment.comment_id }}">수정</a></span>
 					{% endif %}
 
-				</div>
-			</div>
+
 			{% endif %}
 			{% for reply in comment.replies.all %}
-				<p>{{ reply.content }}</p>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <span>{{ reply.user_id }}</span>
+                        <p class="re-con">{{ reply.content }}<p class="re-con">
+                        <span class="gray-light">{{ reply.created_date }}</span>
+                        {% if request.session.member == reply.user_id %}
+                        <span class="re-delete"><a href="/board/post/{{ reply.board_id.post_id }}/reply/delete/?reply_id={{ reply.reply_id }}">삭제</a></span>
+                        <span class="re-modify"><a href="#" name="/board/post/{{ reply.board_id.post_id }}/reply/update/?reply_id={{ reply.reply_id }}">수정</a></span>
+                        {% else %}
+                        <span class="re-delete"><a href="" class="authority">삭제</a></span>
+                        <span class="re-modify_none"><a href="#" class="authority" name="/board/post/{{ reply.board_id.post_id }}/reply/update/?reply_id={{ reply.reply_id }}">수정</a></span>
+                        {% endif %}
+                    </div>
+                </div>
 			{% endfor %}
+                </div>
+			</div>
 		{% endfor %}
 	</div>
 	<script>
