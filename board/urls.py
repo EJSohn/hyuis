@@ -21,8 +21,10 @@ urlpatterns = [
     url(r'^post/recomment$', views.recomment, name="recomment"),
     url(r'^write/$', views.write, name='write'),
     url(r'^write/writing$', views.writing, name='writing'),
+    url(r'^write/modifying/([0-9]+)/$', views.modifying, name='modifying'),
     url(r'^mypage/', views.mypage, name='mypage'),
     url(r'^post/([0-9]+)/delete$', views.post_delete, name='post_delete'),
+    url(r'^post/([0-9]+)/modify$', views.post_modify, name='post_modify' ),
     url(r'^post/([0-9]+)/comment/delete/$', views.comment_delete, name='comment_delete'),
     url(r'^post/([0-9]+)/comment/update/$', views.comment_update, name='comment_update'),
     ]

@@ -5,6 +5,10 @@
 {% block menu_banner %}
 <script type="text/javascript">
 $(document).ready(function() {
+	$("#find_idpw").click(function(){
+		alert("서비스가 준비중입니다.");
+	});
+
 	$("#login-btn").click(function() {
 		var action = $("#form-login").attr('action');
 		var form_data = {
@@ -64,7 +68,7 @@ $(document).ready(function() {
                                     <button type="submit" id="login-btn" class="btn btn-default">Sign in</button>
                                 </form>
                                 <div id="message"></div>
-                                <p class="login-alpa"><a href="/authen/findmine">아이디/비밀번호 찾기</a> | <a href="/authen/register"><i class="fa fa-user-plus fa-fw"></i>&nbsp; 회원가입</a></p></li>
+                                <p class="login-alpa"><a id="find_idpw" href="#">아이디/비밀번호 찾기</a> | <a href="/authen/register"><i class="fa fa-user-plus fa-fw"></i>&nbsp; 회원가입</a></p></li>
                           </ul>
 						</li>
 						{% else %}
@@ -117,57 +121,37 @@ $(document).ready(function() {
 		  </ol>
 
 		  <!-- Wrapper for slides -->
-		  <ul class="rslides carousel-inner" role="listbox">
-		  	{% load staticfiles %}
-		    <li class="item">
+		  <div class="carousel-inner" role="listbox">
+		    <div class="item active">
+		    {% load staticfiles %}
+		      <img src="{% static 'images/univ_main.jpg'%}" alt="...">
+		      <div class="carousel-caption tit-head">
+					  <h1 style="text-shadow:#999999 5px 5px 5px;">Hyuis</h1><h3>정보시스템 커뮤니티 HYUIS</h3>
+				      <p>business + computer science = information system</p>
+		      </div>
+		    </div>
+		    <div class="item">
 		      <img src="{% static 'images/lion_king.jpg'%}" alt="...">
-		      <div class="carousel-caption tit-head">
+		      <div class="carousel-caption tit-head"><br><br><br><br><br><br><br><br><br>
+				  <hr>
+				  <h2><a href="#">정보시스템 커뮤니티 HYUIS</a></h2>
+				  <p></p>
+				<p></p>
 		      </div>
-		    </li>
-			<li class="item">
-		      <img src="{% static 'images/wide_sea.jpg'%}" alt="...">
-		      <div class="carousel-caption tit-head">
-		      </div>
-		    </li>
-		  </ul>
-
-
-
+		    </div>
+		  </div>
 
 		  <!-- Controls -->
-		  <a class="left carousel-control" href="#" role="button" data-slide="prev">
+		  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 		    <span class="sr-only">Previous</span>
 		  </a>
-		  <a class="right carousel-control" href="#" role="button" data-slide="next">
+		  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
 		    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 		    <span class="sr-only">Next</span>
 		  </a>
 		</div>
 	</header>
-
-    <script>
-  $(function() {
-    $(".rslides").responsiveSlides({
-      auto: true,             // Boolean: Animate automatically, true or false
-      speed: 900,            // Integer: Speed of the transition, in milliseconds
-      timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
-      pager: true,           // Boolean: Show pager, true or false
-      nav: true,             // Boolean: Show navigation, true or false
-      random: false,          // Boolean: Randomize the order of the slides, true or false
-      pause: false,           // Boolean: Pause on hover, true or false
-      pauseControls: true,    // Boolean: Pause when hovering controls, true or false
-      prevText: "Previous",   // String: Text for the "previous" button
-      nextText: "Next",       // String: Text for the "next" button
-      maxwidth: "",           // Integer: Max-width of the slideshow, in pixels
-      navContainer: "",       // Selector: Where controls should be appended to, default is after the 'ul'
-      manualControls: "",     // Selector: Declare custom pager navigation
-      namespace: "rslides",   // String: Change the default namespace used
-      before: function(){},   // Function: Before callback
-      after: function(){}     // Function: After callback
-    });
-  });
-</script>
 
 {% endblock header %}
 
