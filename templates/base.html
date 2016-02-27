@@ -114,26 +114,19 @@ $(document).ready(function() {
 		  <ol class="carousel-indicators">
 		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
 		  </ol>
 
 		  <!-- Wrapper for slides -->
 		  <ul class="rslides carousel-inner" role="listbox">
-		    <li class="item active">
-		    {% load staticfiles %}
-		      <img src="{% static 'images/univ_main.jpg'%}" alt="...">
+		  	{% load staticfiles %}
+		    <li class="item">
+		      <img src="{% static 'images/lion_king.jpg'%}" alt="...">
 		      <div class="carousel-caption tit-head">
-                  <h1>Hyuis</h1><h3>정보시스템 커뮤니티 HYUIS</h3>
-                  <p>business + computer science = information system</p>
 		      </div>
 		    </li>
-		    <li class="item">
-		      <img src="{% static 'images/hyuis_main.jpg'%}" alt="...">
+			<li class="item">
+		      <img src="{% static 'images/wide_sea.jpg'%}" alt="...">
 		      <div class="carousel-caption tit-head">
-				  <h2><a href="#">정보시스템 커뮤니티 HYUIS</a></h2>
-				  <hr>
-				  <p></p>
-				<p></p>
 		      </div>
 		    </li>
 		  </ul>
@@ -157,7 +150,7 @@ $(document).ready(function() {
   $(function() {
     $(".rslides").responsiveSlides({
       auto: true,             // Boolean: Animate automatically, true or false
-      speed: 500,            // Integer: Speed of the transition, in milliseconds
+      speed: 900,            // Integer: Speed of the transition, in milliseconds
       timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
       pager: true,           // Boolean: Show pager, true or false
       nav: true,             // Boolean: Show navigation, true or false
