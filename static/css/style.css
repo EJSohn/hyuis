@@ -143,10 +143,14 @@ a.welcome:focus{
 	margin-bottom: 25px
 }
 
-#breadcrumb{
+.breadcrumb{
 	background-color: #fff;
 	margin-bottom: 0;
 	padding-bottom: 0;
+}
+
+ol.breadcrumb li a{
+	color:#00B9F1;
 }
 
 #sidebar{
@@ -309,12 +313,12 @@ a.welcome:focus{
 
 a.btn-write{
 	color:#fff!important;
-	background-color: #337ab7
+	background-color: #00B9F1
 }
 
 a.btn-write:focus,
 a.btn-write:hover{
-	color:#337ab7!important;
+	color:#00B9F1!important;
 }
 
 label.error{
@@ -451,4 +455,49 @@ label.error{
 
 .carousel-control{
 	z-index:5;
+}
+
+
+/*navigations*/
+.nav.nav-tabs li a{
+	color:#555;
+}
+
+.nav.nav-tabs li a:hover,
+.nav.nav-tabs li a:focus{
+	background-color:#fff;
+	border:0px;
+	border-bottom:2px solid #00B9F1;
+}
+
+
+.dropdown-menu > li > a{
+	color:#555;
+}
+
+/*slide fade out*/
+.carousel-fade .carousel-inner .item {
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+.carousel-fade .carousel-inner .item,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  opacity: 0;
+}
+.carousel-fade .carousel-inner .active,
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+.carousel-fade .carousel-inner .next,
+.carousel-fade .carousel-inner .prev,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.carousel-fade .carousel-control {
+  z-index: 2;
 }

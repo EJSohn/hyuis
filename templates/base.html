@@ -112,8 +112,11 @@ $(document).ready(function() {
 
 <!-- place for header. -->
 {% block header %}
+<script type="text/javascript">
+	$('.carousel').carousel();
+</script>
 	<header>
-		<div id="carousel-example-generic" class="carousel slide full-head" data-ride="carousel">
+		<div id="carousel-example-generic" class="carousel slide full-head carousel-fade" data-ride="carousel">
 		  <!-- Indicators -->
 		  <ol class="carousel-indicators">
 		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
