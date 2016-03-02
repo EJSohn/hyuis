@@ -17,6 +17,10 @@ def index(request):
 
     return render(request, 'index.html', {'notices': notice, 'frees':free_board, 'reviews':review, 'today':today})
 
+def about(request):
+
+    return render(request, 'about.html')
+
 
 @require_http_methods(["GET", "POST"])
 def login(request):

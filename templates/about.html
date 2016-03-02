@@ -1,0 +1,55 @@
+{% extends 'common.html' %}
+{% block staticfiles %}
+<style>
+body{
+	background:#000;
+	color:#fff;
+}
+
+h1{
+	font-size: 36px;
+}
+
+.term-01{
+	
+	height:300px;
+}
+
+.term-01 img{
+	width:100%;
+}
+
+footer{
+	background:#000 !important;
+}
+
+footer .container{
+	background-color: #000
+}
+</style>
+{% endblock staticfiles %}
+	{% block base %}
+	<h1 class="text-center">한양대학교 정보시스템학과</h1>
+	<div class="text-center clearfix">
+		jquery를 어떻게든 넣어보자... 예쁜.....<a href="http://themes.semicolonweb.com/html/canvas/one-page/index-dark.php#">포토폴리오</a>....<a href="http://wrapbootstrap.com/preview/WB04X111M">원페이지....</a>
+		<div class="pull-left">
+		{% load staticfiles %}
+			<img src="{% static 'images/lion.jpg'%}">
+		</div>
+	</div>
+	<div style="background:#555;" class="term-01">
+		<img src="{% static 'images/computer.jpg'%}">
+	</div>
+	<div>
+		
+	</div>
+	{% endblock base %}
+<!-- place for footer -->
+{% block footer %}
+	<footer class="footer">
+		<div class="container">
+			<p class="text-center">Copyright(c)2016 All rights reserved by Toma, Information System Department in HYU</p>
+		</div>
+		
+	</footer>
+{% endblock footer %}

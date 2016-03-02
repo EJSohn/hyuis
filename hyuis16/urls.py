@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from hyuis16.views import index, login, logout
+from hyuis16.views import index, about, login, logout
 
 urlpatterns = [
     url(r'^$', index, name='home'),
@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^authen/logout$', logout),
     url(r'^board/', include('board.urls', namespace='board')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^about/', about, name='about'),
 ]
